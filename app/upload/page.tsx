@@ -1,4 +1,4 @@
-import { Upload } from '@/containers'
+import { Upload } from '~/containers'
 
 const UploadPage = () => {
   return <Upload />

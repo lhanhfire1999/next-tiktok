@@ -1,4 +1,4 @@
-import { Search } from '@/containers'
+import { Search } from '~/containers'
 
 const SearchPage = () => {
   return <Search />

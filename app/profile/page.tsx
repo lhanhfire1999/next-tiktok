@@ -1,4 +1,4 @@
-import { Profile } from '@/containers'
+import { Profile } from '~/containers'
 
 const ProfilePage = () => {
   return <Profile />

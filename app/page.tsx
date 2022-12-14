@@ -1,4 +1,4 @@
-import { Home } from '@/containers'
+import { Home } from '~/containers'
 
 const HomePage = () => {
   return <Home />

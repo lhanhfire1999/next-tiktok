@@ -1,4 +1,4 @@
-import { Following } from '@/containers'
+import { Following } from '~/containers'
 
 const FollowingPage = () => {
   return <Following />

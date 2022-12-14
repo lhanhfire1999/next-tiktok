@@ -1,5 +1,6 @@
 import '../styles/global.scss'
 import { Roboto } from '@next/font/google'
+import { Header } from '~/components'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -10,7 +11,10 @@ const roboto = Roboto({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${roboto.className} mdl-js`}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
