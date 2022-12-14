@@ -1,4 +1,4 @@
-import '../styles/global.scss'
+import '../styles/App.scss'
 import { Roboto } from '@next/font/google'
 import { Header } from '~/components'
 
