@@ -1,0 +1,16 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  @include flex;
+  height: $header-height;
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+
+  position: sticky;
+  top: 0;
+  z-index: z-index('header');
+
+  .content {
+    width: $header-width;
+    height: 100%;
+  }
+}

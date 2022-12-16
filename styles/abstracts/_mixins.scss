@@ -1,10 +1,9 @@
-@use './variables' as *;
+@use './_variables' as *;
 
-@mixin flex($display: flex, $align: center, $justify: center, $direction: row) {
+@mixin flex($display: flex, $align: center, $justify: center) {
   display: $display;
   align-items: $align;
   justify-content: $justify;
-  flex-direction: $direction;
 }
 
 @function z-index($name) {
@@ -25,7 +24,7 @@
   z-index: $z-index;
 }
 
-@mixin media-query($breakpoint) {
+@mixin responsive($breakpoint) {
   // If the breakpoint exists in the map.
   @if map-has-key($breakpoints, $breakpoint) {
     // Get the breakpoint value.
