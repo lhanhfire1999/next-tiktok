@@ -10,6 +10,8 @@
   z-index: z-index('header');
 
   .content {
+    @include flex(flex, center, space-between);
+
     width: $header-width;
     height: 100%;
   }
