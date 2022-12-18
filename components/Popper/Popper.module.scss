@@ -1,0 +1,19 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  @include position(absolute, calc(100% + 0.8rem), 0, null, null, null);
+  max-height: min((100vh - 96px) - 60px, 734px);
+  min-height: 100px;
+  width: 100%;
+  border-radius: 8px;
+  background: $white;
+  box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+  overflow: hidden auto;
+
+  .menu-item {
+    &:hover {
+      cursor: pointer;
+      background: rgba(22, 24, 35, 0.03);
+    }
+  }
+}

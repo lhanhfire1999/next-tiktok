@@ -12,7 +12,7 @@ $sidebar-mobile-width: 72px;
 $search-bar-width: 361px;
 $search-bar-height: 46px;
 
-$z-indexes: ('header', 'sidebar');
+$z-indexes: ('search-popper', 'header', 'sidebar');
 $breakpoints: (
   // 420px
   'xs': 42em,

@@ -8,6 +8,15 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    formats: ['image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'files.fullstack.edu.vn',
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig

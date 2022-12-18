@@ -1,9 +1,11 @@
 'use client'
 import classNames from 'classnames/bind'
-import Image from 'next/image'
 import React from 'react'
 
-import { CircleXIcon, SearchIcon, SpinnerIcon } from '~/components/Icons'
+import { CircleXIcon, SearchIcon, SpinnerIcon, TickIcon } from '~/components/Icons'
+import ImageWithFallback from '~/components/ImageWithFallback'
+import Popper from '~/components/Popper'
+
 import useDebounce from '~/hooks/useDebounce'
 import { Account } from '~/services/search/type'
 import { HeaderSearchProvider, useHeaderSearch } from '../../contexts/HeaderSearchContext'
@@ -19,11 +21,53 @@ interface SearchHistoryAccountProp {
 
 interface SearchComposition {
   SearchBar: typeof SearchBar
-  SearchHistoryAccountList: typeof SearchHistoryAccountList
-  SearchHistoryAccountItem: typeof SearchHistoryAccountItem
+  SearchHistoryAccount: typeof SearchHistoryAccount
 }
 
 const cx = classNames.bind(styles)
+
+const MOCKUP_DATA = [
+  {
+    id: 1,
+    first_name: 'Đào Lê',
+    last_name: 'Phương Hoa',
+    full_name: 'Đào Lê Phương Hoa',
+    nickname: 'hoaahanassii',
+    avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
+    bio: `✨ 1998 ✨\nVietnam 🇻🇳\nĐỪNG LẤY VIDEO CỦA TÔI ĐI SO SÁNH NỮA. XIN HÃY TÔN TRỌNG !`,
+    tick: true,
+    followings_count: 1,
+    followers_count: 37,
+    likes_count: 1000,
+    website_url: 'https://fullstack.edu.vn/',
+    facebook_url: '',
+    youtube_url: '',
+    twitter_url: '',
+    instagram_url: '',
+    created_at: '2022-05-05 23:10:05',
+    updated_at: '2022-05-05 23:11:39',
+  },
+  {
+    id: 2,
+    first_name: 'Đào Lê',
+    last_name: 'Phương Hoa',
+    full_name: 'Đào Lê Phương Hoa',
+    nickname: 'hoaahanassii',
+    avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
+    bio: `✨ 1998 ✨\nVietnam 🇻🇳\nĐỪNG LẤY VIDEO CỦA TÔI ĐI SO SÁNH NỮA. XIN HÃY TÔN TRỌNG !`,
+    tick: true,
+    followings_count: 1,
+    followers_count: 37,
+    likes_count: 1000,
+    website_url: 'https://fullstack.edu.vn/',
+    facebook_url: '',
+    youtube_url: '',
+    twitter_url: '',
+    instagram_url: '',
+    created_at: '2022-05-05 23:10:05',
+    updated_at: '2022-05-05 23:11:39',
+  },
+]
 
 const Search: React.FC<ChildrenProp> & SearchComposition = ({ children }) => {
   return (
@@ -41,6 +85,10 @@ const SearchBar = () => {
     handleChangeSearchText(e.currentTarget.value)
   }
 
+  const handleClearSearch = () => {
+    handleChangeSearchText('')
+  }
+
   return (
     <>
       <input type="text" value={searchText} onChange={handleChangeSearch} placeholder="Search accounts" />
@@ -48,7 +96,7 @@ const SearchBar = () => {
       {loading && <SpinnerIcon className={cx('loading-icon')} />}
 
       {!loading && !!searchText && (
-        <button className={cx('btn', 'clear-btn')}>
+        <button className={cx('btn', 'clear-btn')} onClick={handleClearSearch}>
           <CircleXIcon className={cx('clear-icon')} />
         </button>
       )}
@@ -60,28 +108,46 @@ const SearchBar = () => {
   )
 }
 
-const SearchHistoryAccountList = () => {
+const SearchHistoryAccount = () => {
   const { searchText } = useHeaderSearch()
-  const debouncedSearchText = useDebounce(searchText, 1000)
+  const debouncedSearchText = useDebounce(searchText, 500)
 
-  return <ul className={cx('wrapper-search', { active: !!debouncedSearchText })}></ul>
-}
-
-const SearchHistoryAccountItem: React.FC<SearchHistoryAccountProp> = ({ accountList }) => {
   return (
-    <>
-      {accountList.map((account) => (
-        <li key={account.id}>
-          <Image src={account.avatar} alt={account.nickname} />
-          <div className={cx('account-info-detail')}></div>
-        </li>
-      ))}
-    </>
+    <Popper className={cx('search-popper')}>
+      <Popper.HeaderTitle className={cx('title')}>Account</Popper.HeaderTitle>
+
+      <Popper.MenuList>
+        {MOCKUP_DATA.map((info) => (
+          <Popper.MenuItem className={cx('menu-item')} key={info.id} navigateTo={`/@${info.nickname}`}>
+            <ImageWithFallback
+              src={info.avatar}
+              alt={info.nickname}
+              width="40"
+              height="40"
+              className={cx('avatar')}
+              objectFit="cover"
+              objectPosition="center"
+            />
+
+            <div className={cx('info')}>
+              <h4 className={cx('full-name')}>
+                <span>{info.full_name}</span>
+                {info.tick && <TickIcon className={cx('tick-icon')} />}
+              </h4>
+              <span className={cx('user-name')}>{info.nickname}</span>
+            </div>
+          </Popper.MenuItem>
+        ))}
+      </Popper.MenuList>
+
+      <Popper.Footer className={cx('footer')}>
+        <p>{`View all results for "${debouncedSearchText}"`}</p>
+      </Popper.Footer>
+    </Popper>
   )
 }
 
 Search.SearchBar = SearchBar
-Search.SearchHistoryAccountList = SearchHistoryAccountList
-Search.SearchHistoryAccountItem = SearchHistoryAccountItem
+Search.SearchHistoryAccount = SearchHistoryAccount
 
 export default Search
