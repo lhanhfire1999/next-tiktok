@@ -1,6 +1,10 @@
 @use '~/styles/abstracts/' as *;
 
 .search {
+  $search-bar-border-radius: 92px;
+  $background-color: rgba(22, 24, 35, 0.06);
+  $background-color-icon: rgba(22, 24, 35, 0.34);
+
   flex: 1 0 auto;
   position: relative;
   @include flex(flex, center, initial);
@@ -10,24 +14,34 @@
   min-width: 200px;
 
   margin: 0 8px;
-  padding: 12px 16px;
+  padding: 12px 0 12px 16px;
 
-  background: rgba(22, 24, 35, 0.06);
+  background: $background-color;
+  border-radius: $search-bar-border-radius;
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s;
 
-  border-radius: 92px;
+  &:focus-within {
+    border-color: rgba(22, 24, 35, 0.2);
+  }
 
   input {
     flex: 1 0 auto;
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 2.2rem;
+
     border: none;
-    background: transparent;
     outline: none;
-    padding: 0px;
+    background: transparent;
+
     color: rgb(22, 24, 35);
     caret-color: rgb(254, 44, 85);
     appearance: textfield;
+  }
+
+  input:not(:placeholder-shown) ~ .search-btn > .search-icon {
+    color: rgba(22, 24, 35, 0.75);
   }
 
   .btn {
@@ -38,16 +52,54 @@
     }
 
     .clear-icon {
-      color: rgba(22, 24, 35, 0.34);
+      color: $background-color-icon;
       margin: 0px 12px;
     }
-
     .search-icon {
-      color: rgba(22, 24, 35, 0.34);
+      color: $background-color-icon;
     }
   }
 
   .search-btn {
-    padding: 11px 16px 11px 12px;
+    position: relative;
+    min-height: $search-bar-height;
+    min-width: 52px;
+    border-top-right-radius: $search-bar-border-radius;
+    border-bottom-right-radius: $search-bar-border-radius;
+
+    background: transparent;
+    transition: background-color 0.2s;
+
+    &::after {
+      @include pseudo;
+      @include vertical-center;
+      right: 100%;
+      width: 1px;
+      height: 28px;
+      background: rgba(22, 24, 35, 0.12);
+    }
+
+    &:hover {
+      background: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+      background: rgba(22, 24, 35, 0.06);
+    }
+  }
+
+  .loading-icon {
+    color: $background-color-icon;
+    animation: spinner 0.8s linear infinite;
+    margin: 0px 12px;
+  }
+
+  @keyframes spinner {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 }

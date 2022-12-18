@@ -92,7 +92,7 @@
   }
 }
 
-@mixin vertical-center($pos) {
+@mixin vertical-center($pos: undefined) {
   @if variable-exists($pos) {
     position: $pos;
   }
@@ -103,7 +103,7 @@
   transform: translateY(-50%);
 }
 
-@mixin horizontal-center($pos) {
+@mixin horizontal-center($pos: undefined) {
   @if variable-exists($pos) {
     position: $pos;
   }

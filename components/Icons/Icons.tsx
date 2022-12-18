@@ -82,8 +82,6 @@ export const CircleXIcon = ({ width = '1.6rem', height = '1.6rem', className = '
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
     className={className}
-    // style="margin: 0px 12px;"
-    // fill="rgba(22, 24, 35, .34)"
   >
     <path
       fillRule="evenodd"
@@ -103,8 +101,6 @@ export const SpinnerIcon = ({ width = '1.6rem', height = '1.6rem', className = '
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       data-e2e=""
-      // fill="rgba(22, 24, 35, .34)"
-      // style="margin: 0px 12px;"
     >
       <path
         fillRule="evenodd"
@@ -124,7 +120,7 @@ export const SearchIcon = ({ width = '2.4rem', height = '2.4rem', className = ''
       viewBox="0 0 48 48"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
-      // fill="rgba(22, 24, 35, .34)"
+      className={className}
     >
       <path
         fillRule="evenodd"
