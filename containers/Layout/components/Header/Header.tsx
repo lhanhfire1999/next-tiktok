@@ -17,7 +17,7 @@ const Header = () => {
 
         <Search>
           <Search.SearchBar />
-          <Search.SearchHistoryAccount />
+          <Search.PopperSearch />
         </Search>
 
         <div>ACTION</div>

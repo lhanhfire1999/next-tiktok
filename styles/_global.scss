@@ -37,6 +37,11 @@ body {
   overflow-y: overlay;
 }
 
+ul,
+li {
+  list-style-type: none;
+}
+
 button,
 input,
 [tabIndex] {

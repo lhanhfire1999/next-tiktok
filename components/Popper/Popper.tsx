@@ -42,7 +42,7 @@ const MenuItem: React.FC<MenuItem> = ({ children, className, navigateTo }) => {
 }
 
 const Footer: React.FC<GeneralProp> = ({ children, className }) => {
-  return <footer className={className}>{children}</footer>
+  return <footer className={cx('footer', className)}>{children}</footer>
 }
 
 Popper.HeaderTitle = HeaderTitle

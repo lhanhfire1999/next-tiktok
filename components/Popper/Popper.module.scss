@@ -1,19 +1,35 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper {
-  @include position(absolute, calc(100% + 0.8rem), 0, null, null, null);
+  $spacer: 0.8rem;
+  $border-radius: 0.8rem;
+
+  @include position(absolute, calc(100% + $spacer), 0, null, null, null);
   max-height: min((100vh - 96px) - 60px, 734px);
   min-height: 100px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: $border-radius;
   background: $white;
   box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
-  overflow: hidden auto;
+  overflow-y: auto;
+
+  &::before {
+    @include pseudo;
+    top: calc(($spacer + 0.6rem) * -1);
+    left: 0;
+    width: 100%;
+    height: calc(1rem + $spacer);
+    background-color: transparent;
+  }
 
   .menu-item {
     &:hover {
       cursor: pointer;
       background: rgba(22, 24, 35, 0.03);
     }
+  }
+  .footer {
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
   }
 }
