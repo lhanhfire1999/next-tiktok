@@ -47,13 +47,13 @@
   .btn {
     @include flex;
 
-    &:hover {
-      cursor: pointer;
-    }
-
     .clear-icon {
       color: $background-color-icon;
       margin: 0px 12px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
     .search-icon {
       color: $background-color-icon;
@@ -81,6 +81,7 @@
 
     &:hover {
       background: rgba(22, 24, 35, 0.03);
+      cursor: pointer;
     }
 
     &:active {

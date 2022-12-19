@@ -1,12 +1,16 @@
 import classNames from 'classnames/bind'
+import { useRef } from 'react'
 
 import { TickIcon } from '~/components/Icons'
 import ImageWithFallback from '~/components/ImageWithFallback'
 import Popper from '~/components/Popper'
-import { useHeaderSearch } from '~/containers/Layout/contexts/HeaderSearchContext'
+import { useSearchAccountList } from '~/containers/Layout/contexts/SearchAccountsContext'
+
+import useSearchAccounts from '~/containers/Layout/hooks/useSearchHistory'
 import useDebounce from '~/hooks/useDebounce'
+import useOnClickOutside from '~/hooks/useOnClickOutside'
 import { Account } from '~/services/search/type'
-import styles from './PopperSearch.module.scss'
+import styles from './SearchPopper.module.scss'
 
 interface SearchHistoryAccountProp {
   accountList: Account[]
@@ -57,12 +61,14 @@ const MOCKUP_DATA = [
 
 const cx = classNames.bind(styles)
 
-const PopperSearch = () => {
-  const { searchText } = useHeaderSearch()
-  const debouncedSearchText = useDebounce(searchText, 500)
+const SearchPopper = () => {
+  const { debouncedValue } = useSearchAccountList()
+
+  const searchPopperRef = useRef<HTMLDivElement>(null)
+  useOnClickOutside(searchPopperRef, () => {})
 
   return (
-    <Popper className={cx('search-popper')}>
+    <Popper className={cx('search-popper')} ref={searchPopperRef} isActive={true}>
       <Popper.HeaderTitle className={cx('title')}>Account</Popper.HeaderTitle>
 
       <Popper.MenuList>
@@ -90,10 +96,10 @@ const PopperSearch = () => {
       </Popper.MenuList>
 
       <Popper.Footer className={cx('footer')}>
-        <p>{`View all results for "${debouncedSearchText}"`}</p>
+        <p>{`View all results for "${debouncedValue}"`}</p>
       </Popper.Footer>
     </Popper>
   )
 }
 
-export default PopperSearch
+export default SearchPopper

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classNames from 'classnames/bind'
 import styles from './Popper.module.scss'
 import Link from 'next/link'
@@ -8,22 +8,24 @@ interface GeneralProp {
   className?: string
 }
 
+interface Popper extends GeneralProp {
+  isActive: boolean
+}
+
 interface MenuItem extends GeneralProp {
   navigateTo: string
 }
 
-interface PopperComposition {
-  HeaderTitle: typeof HeaderTitle
-  MenuList: typeof MenuList
-  MenuItem: typeof MenuItem
-  Footer: typeof Footer
-}
-
 const cx = classNames.bind(styles)
 
-const Popper: React.FC<GeneralProp> & PopperComposition = ({ children, className }) => {
-  return <div className={cx('wrapper', className)}>{children}</div>
-}
+// eslint-disable-next-line react/display-name
+const Popper = forwardRef<HTMLDivElement, Popper>(({ children, className, isActive }, ref) => {
+  return (
+    <div className={cx('wrapper', className, { active: isActive })} ref={ref}>
+      {children}
+    </div>
+  )
+})
 
 const HeaderTitle: React.FC<GeneralProp> = ({ children, className }) => {
   return <h4 className={className}>{children}</h4>
@@ -45,9 +47,6 @@ const Footer: React.FC<GeneralProp> = ({ children, className }) => {
   return <footer className={cx('footer', className)}>{children}</footer>
 }
 
-Popper.HeaderTitle = HeaderTitle
-Popper.MenuList = MenuList
-Popper.MenuItem = MenuItem
-Popper.Footer = Footer
+const CompoundPopper = Object.assign(Popper, { HeaderTitle, MenuList, MenuItem, Footer })
 
-export default Popper
+export default CompoundPopper

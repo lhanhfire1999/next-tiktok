@@ -1,8 +1,9 @@
-import { JSONResponse } from './type'
+import { JSONResponse, SearchQueryParam } from './type'
 
-export const getAccountList = async () => {
+export const getSearchAccounts = async ({ query, type = 'less' }: SearchQueryParam) => {
   try {
-    const response = await fetch(process.env.NEXT_PUBLIC_API_URL as string)
+    const queryParams = new URLSearchParams({ q: query, type })
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/search?${queryParams}`)
     if (response.ok) {
       const { data }: JSONResponse = await response.json()
       return data
@@ -10,6 +11,6 @@ export const getAccountList = async () => {
       throw response
     }
   } catch (error) {
-    console.log('Something went wrong', error)
+    throw error
   }
 }

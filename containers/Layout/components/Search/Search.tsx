@@ -1,52 +1,56 @@
 'use client'
 import classNames from 'classnames/bind'
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { CircleXIcon, SearchIcon, SpinnerIcon } from '~/components/Icons'
-import { HeaderSearchProvider, useHeaderSearch } from '../../contexts/HeaderSearchContext'
-import PopperSearch from './PopperSearch'
+import { SearchBarProvider, useSearchBar } from '../../contexts/SearchBarContext'
+import PopperSearch from './SearchPopper'
 import styles from './Search.module.scss'
+import { SearchAccountListProvider, useSearchAccountList } from '../../contexts/SearchAccountsContext'
 
 interface ChildrenProp {
   children: React.ReactNode
 }
 
-interface SearchComposition {
-  SearchBar: typeof SearchBar
-  PopperSearch: typeof PopperSearch
-}
-
 const cx = classNames.bind(styles)
 
-const Search: React.FC<ChildrenProp> & SearchComposition = ({ children }) => {
+const Search: React.FC<ChildrenProp> = ({ children }) => {
   return (
-    <HeaderSearchProvider>
-      <div className={cx('search')}>{children} </div>
-    </HeaderSearchProvider>
+    <SearchBarProvider>
+      <SearchAccountListProvider>
+        <div className={cx('search')}>{children} </div>
+      </SearchAccountListProvider>
+    </SearchBarProvider>
   )
 }
 
 const SearchBar = () => {
-  const { searchText, handleChangeSearchText } = useHeaderSearch()
-  const loading = false
+  const { searchText, handleChangeSearchText } = useSearchBar()
+  const { isLoading } = useSearchAccountList()
+  const searchRef = useRef<HTMLInputElement>(null)
 
-  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChangeSearchText(e.currentTarget.value)
   }
 
   const handleClearSearch = () => {
+    if (isLoading) return
     handleChangeSearchText('')
+    searchRef.current?.focus()
   }
 
   return (
     <>
-      <input type="text" value={searchText} onChange={handleChangeSearch} placeholder="Search accounts" />
-
-      {loading && <SpinnerIcon className={cx('loading-icon')} />}
-
-      {!loading && !!searchText && (
-        <button className={cx('btn', 'clear-btn')} onClick={handleClearSearch}>
-          <CircleXIcon className={cx('clear-icon')} />
+      <input
+        ref={searchRef}
+        type="text"
+        value={searchText}
+        onChange={handleOnChangeSearch}
+        placeholder="Search accounts"
+      />
+      {!!searchText && (
+        <button className={cx('btn')} onClick={handleClearSearch}>
+          {isLoading ? <SpinnerIcon className={cx('loading-icon')} /> : <CircleXIcon className={cx('clear-icon')} />}
         </button>
       )}
 
@@ -57,7 +61,6 @@ const SearchBar = () => {
   )
 }
 
-Search.SearchBar = SearchBar
-Search.PopperSearch = PopperSearch
+const CompoundSearch = Object.assign(Search, { SearchBar, PopperSearch })
 
-export default Search
+export default CompoundSearch

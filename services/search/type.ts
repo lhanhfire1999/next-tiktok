@@ -22,3 +22,8 @@ export interface Account {
 export interface JSONResponse {
   data: Account[]
 }
+
+export interface SearchQueryParam {
+  query: string
+  type?: 'less' | 'more'
+}
