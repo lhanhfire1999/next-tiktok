@@ -14,12 +14,8 @@ $search-bar-height: 46px;
 
 $z-indexes: ('search-popper', 'header', 'sidebar');
 $breakpoints: (
-  // 420px
-  'xs': 420px,
-  // 480px
-  'sm': 480px,
   // 768px
-  'md': 768px,
+  'tablet': 768px,
   // 1072px
   'desktop': 1072px
 );

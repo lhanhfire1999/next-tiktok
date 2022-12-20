@@ -18,7 +18,7 @@ interface ImageWithFallbackProp {
 
 // eslint-disable-next-line react/display-name
 const ImageWithFallback = forwardRef<HTMLImageElement, ImageWithFallbackProp>((props, ref) => {
-  const { src, fallbackSrc = './images/default-image.svg', alt, ...rest } = props
+  const { src, fallbackSrc = '/images/no-image.webp', alt, ...rest } = props
   const [imgSrc, setImgSrc] = useState(src)
 
   return (

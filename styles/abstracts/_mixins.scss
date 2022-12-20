@@ -122,5 +122,6 @@
   } @else if $type== 'show' {
     visibility: visible;
     opacity: 1;
+    transition: visibility 1s, opacity 1s;
   }
 }

@@ -9,7 +9,7 @@ interface GeneralProp {
 }
 
 interface Popper extends GeneralProp {
-  isActive: boolean
+  isActive?: boolean
 }
 
 interface MenuItem extends GeneralProp {
@@ -18,14 +18,9 @@ interface MenuItem extends GeneralProp {
 
 const cx = classNames.bind(styles)
 
-// eslint-disable-next-line react/display-name
-const Popper = forwardRef<HTMLDivElement, Popper>(({ children, className, isActive }, ref) => {
-  return (
-    <div className={cx('wrapper', className, { active: isActive })} ref={ref}>
-      {children}
-    </div>
-  )
-})
+const Popper: React.FC<Popper> = ({ children, className, isActive = true }) => {
+  return <div className={cx('wrapper', className, { active: isActive })}>{children}</div>
+}
 
 const HeaderTitle: React.FC<GeneralProp> = ({ children, className }) => {
   return <h4 className={className}>{children}</h4>

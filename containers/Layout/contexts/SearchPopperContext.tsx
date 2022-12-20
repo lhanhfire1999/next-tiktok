@@ -1,16 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { KeyedMutator } from 'swr/_internal'
+
 import useDebounce from '~/hooks/useDebounce'
 import { Account } from '~/services/search'
 import useSearchAccounts from '../hooks/useSearchHistory'
 import { useSearchBar } from './SearchBarContext'
 
-interface SearchAccountContextProp {
+interface SearchPopperProviderProp {
   children: React.ReactNode
+  hasShowPopper: boolean
+  onChangeShowPopper: (value: boolean) => void
 }
 
 interface ContextProp {
-  debouncedValue: string
+  hasShowPopper: boolean
+  handleChangeShowPopper: (value: boolean) => void
+  searchText: string
   accountList?: Account[]
   isLoading: boolean
   isError: boolean
@@ -19,7 +24,11 @@ interface ContextProp {
 
 const Context = React.createContext<ContextProp | null>(null)
 
-export const SearchAccountListProvider: React.FC<SearchAccountContextProp> = ({ children }) => {
+export const SearchPopperProvider: React.FC<SearchPopperProviderProp> = ({
+  children,
+  hasShowPopper,
+  onChangeShowPopper,
+}) => {
   const { searchText } = useSearchBar()
   const debouncedValue = useDebounce(searchText)
 
@@ -32,11 +41,13 @@ export const SearchAccountListProvider: React.FC<SearchAccountContextProp> = ({ 
   return (
     <Context.Provider
       value={{
-        debouncedValue,
+        searchText,
+        hasShowPopper,
         accountList: data,
         isLoading,
         isError,
         mutate,
+        handleChangeShowPopper: onChangeShowPopper,
       }}
     >
       {children}
@@ -44,6 +55,6 @@ export const SearchAccountListProvider: React.FC<SearchAccountContextProp> = ({ 
   )
 }
 
-export const useSearchAccountList = () => {
+export const useSearchPopper = () => {
   return useContext(Context) as ContextProp
 }

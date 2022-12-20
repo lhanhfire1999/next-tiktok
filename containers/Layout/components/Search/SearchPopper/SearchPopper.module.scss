@@ -25,6 +25,7 @@
 
   .info {
     margin-left: 1.2rem;
+
     .full-name {
       @include flex(flex, center, null);
       @include text-shorten;
