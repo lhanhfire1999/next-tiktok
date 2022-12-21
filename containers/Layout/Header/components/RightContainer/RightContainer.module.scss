@@ -1,0 +1,5 @@
+@use '~/styles/abstracts' as *;
+
+.wrapper {
+  @include flex(inline-flex, center, null);
+}

@@ -1,0 +1,95 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  @include flex;
+  min-height: 36px;
+  min-width: 100px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+
+  padding: 0 16px;
+  border: 1px solid transparent;
+  background-color: $white;
+  user-select: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  & + .wrapper {
+    margin-left: 16px;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.icon + .title,
+.title + .icon {
+  margin-left: 8px;
+}
+
+.icon {
+  @include flex;
+  width: 20px;
+  height: 20px;
+}
+
+.primary {
+  background-color: $primary;
+  color: $white;
+  border-color: $primary;
+
+  &:hover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
+  }
+}
+
+.outlinePrimary {
+  color: $primary;
+  border-color: currentColor;
+
+  &:hover {
+    background-color: rgba(254, 44, 85, 0.06);
+  }
+}
+
+.outlineGray {
+  color: rgb(22, 24, 35);
+  border-color: rgba(22, 24, 35, 0.12);
+
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.rounded {
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  color: rgba(22, 24, 35, 0.75);
+  border-color: rgba(22, 24, 35, 0.12);
+  border-radius: 52px;
+
+  &:hover {
+    border-color: rgba(22, 24, 35, 0.2);
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+.small {
+  min-height: 28px;
+  min-width: 88px;
+
+  font-weight: 600;
+  padding: 0 10px;
+}
+
+.large {
+  min-width: 168px;
+  min-height: 48px;
+
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  font-weight: 600;
+  padding: 6px 8px;
+}

@@ -2,7 +2,7 @@ import classNames from 'classnames/bind'
 import Link from 'next/link'
 
 import { LogoIcon } from '~/components/Icons'
-import { Search } from './components'
+import { RightContainer, Search } from './components'
 
 import styles from './Header.module.scss'
 
@@ -21,7 +21,7 @@ const Header = () => {
           <Search.PopperSearch />
         </Search>
 
-        <div>ACTION</div>
+        <RightContainer />
       </div>
     </header>
   )
