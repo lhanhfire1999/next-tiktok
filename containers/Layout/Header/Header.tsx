@@ -2,7 +2,8 @@ import classNames from 'classnames/bind'
 import Link from 'next/link'
 
 import { LogoIcon } from '~/components/Icons'
-import Search from '../Search'
+import { Search } from './components'
+
 import styles from './Header.module.scss'
 
 const cx = classNames.bind(styles)

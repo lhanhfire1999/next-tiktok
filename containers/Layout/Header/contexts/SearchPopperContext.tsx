@@ -3,7 +3,7 @@ import { KeyedMutator } from 'swr/_internal'
 
 import useDebounce from '~/hooks/useDebounce'
 import { Account } from '~/services/search'
-import useSearchAccounts from '../hooks/useSearchHistory'
+import useSearchAccounts from '../hooks/useSearchAccount'
 import { useSearchBar } from './SearchBarContext'
 
 interface SearchPopperProviderProp {

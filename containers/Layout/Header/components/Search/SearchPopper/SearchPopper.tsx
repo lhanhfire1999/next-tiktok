@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import { TickIcon } from '~/components/Icons'
 import ImageWithFallback from '~/components/ImageWithFallback'
 import Popper from '~/components/Popper'
-import { useSearchPopper } from '~/containers/Layout/contexts/SearchPopperContext'
+import { useSearchPopper } from '../../../contexts/SearchPopperContext'
 
 import styles from './SearchPopper.module.scss'
 
