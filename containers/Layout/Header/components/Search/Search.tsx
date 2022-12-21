@@ -4,8 +4,9 @@ import React, { useRef, useState } from 'react'
 
 import { CircleXIcon, SearchIcon, SpinnerIcon } from '~/components/Icons'
 import useOnClickOutside from '~/hooks/useOnClickOutside'
-import { SearchBarProvider, useSearchBar } from '../../contexts/SearchBarContext'
-import { SearchPopperProvider, useSearchPopper } from '../../contexts/SearchPopperContext'
+import { SearchBarProvider, useSearchBar } from './contexts/SearchBarContext'
+import { SearchPopperProvider, useSearchPopper } from './contexts/SearchPopperContext'
+
 import styles from './Search.module.scss'
 import PopperSearch from './SearchPopper'
 

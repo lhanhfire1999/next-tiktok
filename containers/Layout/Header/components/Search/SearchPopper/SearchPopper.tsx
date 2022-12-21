@@ -1,9 +1,7 @@
 import classNames from 'classnames/bind'
 
-import { TickIcon } from '~/components/Icons'
-import ImageWithFallback from '~/components/ImageWithFallback'
-import Popper from '~/components/Popper'
-import { useSearchPopper } from '../../../contexts/SearchPopperContext'
+import { ImageWithFallback, Popper, TickIcon } from '~/components'
+import { useSearchPopper } from '../contexts/SearchPopperContext'
 
 import styles from './SearchPopper.module.scss'
 
@@ -21,7 +19,7 @@ const SearchPopper = () => {
       <Popper.MenuList>
         {accountList &&
           accountList.map((item) => (
-            <Popper.MenuItem className={cx('menu-item')} key={item.id} navigateTo={`/@${item.nickname}`}>
+            <Popper.MenuItem className={cx('menu-item')} key={item.id} href={`/@${item.nickname}`}>
               <ImageWithFallback
                 src={item.avatar}
                 alt={item.nickname}
