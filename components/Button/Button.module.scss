@@ -1,7 +1,7 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper {
-  @include flex;
+  @include flex(inline-flex, center, center);
   min-height: 36px;
   min-width: 100px;
   font-weight: 700;
@@ -10,7 +10,7 @@
 
   padding: 0 16px;
   border: 1px solid transparent;
-  background-color: $white;
+  background-color: transparent;
   user-select: none;
   border-radius: 4px;
   cursor: pointer;
@@ -49,6 +49,7 @@
 .outlinePrimary {
   color: $primary;
   border-color: currentColor;
+  background-color: $white;
 
   &:hover {
     background-color: rgba(254, 44, 85, 0.06);
@@ -58,6 +59,7 @@
 .outlineGray {
   color: rgb(22, 24, 35);
   border-color: rgba(22, 24, 35, 0.12);
+  background-color: $white;
 
   &:hover {
     background-color: rgba(22, 24, 35, 0.03);
@@ -69,6 +71,7 @@
   color: rgba(22, 24, 35, 0.75);
   border-color: rgba(22, 24, 35, 0.12);
   border-radius: 52px;
+  background-color: $white;
 
   &:hover {
     border-color: rgba(22, 24, 35, 0.2);

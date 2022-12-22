@@ -1,0 +1,33 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  @include flex;
+  margin-left: 16px;
+  padding: 8px 4px;
+  position: relative;
+
+  &:hover {
+    .popper-wrapper {
+      @include fade('show');
+    }
+  }
+}
+
+.popper-wrapper {
+  @include fade('hide');
+  min-width: 223px;
+  z-index: z-index('header-popper');
+
+  .wrapper-item {
+    &:last-child {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  .item {
+    width: 100%;
+    justify-content: left;
+    font-weight: 600;
+  }
+}

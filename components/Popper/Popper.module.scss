@@ -1,8 +1,8 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper {
-  $spacer: 0.8rem;
-  $border-radius: 0.8rem;
+  $spacer: 8px;
+  $border-radius: 8px;
 
   @include position(absolute, calc(100% + $spacer), 0, null, null, null);
   max-height: min((100vh - 96px) - 60px, 734px);
@@ -11,19 +11,13 @@
   border-radius: $border-radius;
   background: $white;
   box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
-  overflow-y: auto;
-  @include fade('hide');
-
-  &.active {
-    @include fade('show');
-  }
 
   &::before {
     @include pseudo;
-    top: calc(($spacer + 0.6rem) * -1);
+    top: calc(($spacer + 6px) * -1);
     left: 0;
     width: 100%;
-    height: calc(1rem + $spacer);
+    height: calc(10px + $spacer);
     background-color: transparent;
   }
 
