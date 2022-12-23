@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind'
 import React from 'react'
 
-import { Button, MoreIcon, Popper, ToggleButton } from '~/components'
+import { Button, MoreIcon, Popper } from '~/components'
 
 import { NON_USER_ITEMS } from '~/constants'
+import ToggleThemeButton from '../ToggleThemeButton'
 
 import styles from './Profile.module.scss'
 const cx = classNames.bind(styles)
@@ -29,7 +30,7 @@ const MenuPopper = () => {
             <Button href={to} className={cx('item')} LeftIcon={<Icon />}>
               {title}
             </Button>
-            {isTheme && <ToggleButton />}
+            {isTheme && <ToggleThemeButton />}
           </Popper.MenuItem>
         ))}
       </Popper.MenuList>

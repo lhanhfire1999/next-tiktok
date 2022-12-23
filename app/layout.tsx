@@ -1,6 +1,7 @@
 import '../styles/App.scss'
 import { Roboto } from '@next/font/google'
 import { DefaultLayout } from '~/containers'
+import { ThemeProvider } from '~/contexts/ThemeContext'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -12,7 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${roboto.className} mdl-js`}>
       <body>
-        <DefaultLayout>{children}</DefaultLayout>
+        <ThemeProvider>
+          <DefaultLayout>{children}</DefaultLayout>
+        </ThemeProvider>
       </body>
     </html>
   )

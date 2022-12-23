@@ -1,6 +1,90 @@
 @use './abstracts/' as *;
 @import 'normalize.css';
+
 :root {
+  --colorWhite: rgba(255, 255, 255, 1);
+  --colorBlack: rgba(0, 0, 0, 1);
+}
+
+:root[data-theme='light'] {
+  --colorPrimary: rgba(254, 44, 85, 1);
+  --colorLink: rgba(254, 44, 85, 1);
+  --colorPrimary2: rgba(22, 24, 35, 1);
+
+  --colorTextPrimary: rgba(22, 24, 35, 1);
+  --colorTextSecondary: rgba(22, 24, 35, 0.75);
+  --colorTextTertiary: rgba(22, 24, 35, 0.5);
+
+  --colorTextQuaternary: rgba(22, 24, 35, 0.34);
+  --colorBGPrimary: rgba(255, 255, 255, 1);
+  --colorBGSecondary: rgba(255, 255, 255, 1);
+  --colorBGTertiary: rgba(255, 255, 255, 1);
+  --colorBGQuaternary: rgba(255, 255, 255, 1);
+  --colorBGQuinary: rgba(255, 255, 255, 1);
+  --colorBGSecondary2: rgba(255, 255, 255, 1);
+  --colorBGTertiary2: rgba(255, 255, 255, 1);
+
+  --colorBGPlaceholderDefault: rgba(22, 24, 35, 0.06);
+  --colorBGPlaceholderOpaque: rgba(241, 241, 241, 1);
+
+  --colorBGInput: rgba(22, 24, 35, 0.06);
+  --colorBGInput2: rgba(22, 24, 35, 0.06);
+  --colorBGView: rgba(22, 24, 35, 0.03);
+  --colorBGCreation3: rgba(248, 248, 248, 1);
+  --colorBGCreation4: rgba(255, 255, 255, 1);
+  --colorBGHover: rgba(22, 24, 35, 0.06);
+
+  --colorBGBrand: rgba(254, 44, 85, 0.06);
+  --colorLinePrimary: rgba(22, 24, 35, 0.2);
+  --colorLineSecondary: rgba(22, 24, 35, 0.12);
+  --colorLineInput: rgba(22, 24, 35, 0.5);
+  --colorLinePrimary2: rgba(22, 24, 35, 0.2);
+  --colorLineSecondary2: rgba(22, 24, 35, 0.12);
+  --colorLineSecondary3: rgba(22, 24, 35, 0.12);
+  --colorLineDarker: rgba(22, 24, 35, 0.12);
+
+  --colorSDSecondary: rgba(0, 0, 0, 0.5);
+  --colorSDTertiary: rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme='dark'] {
+  --colorPrimary: rgba(255, 59, 92, 1);
+  --colorLink: rgba(255, 59, 92, 1);
+  --colorPrimary2: rgba(255, 255, 255, 0.9);
+
+  --colorTextPrimary: rgba(255, 255, 255, 0.9);
+  --colorTextSecondary: rgba(255, 255, 255, 0.75);
+  --colorTextTertiary: rgba(255, 255, 255, 0.5);
+
+  --colorTextQuaternary: rgba(255, 255, 255, 0.34);
+  --colorBGPrimary: rgba(18, 18, 18, 1);
+  --colorBGSecondary: rgba(37, 37, 37, 1);
+  --colorBGTertiary: rgba(46, 46, 46, 1);
+  --colorBGQuaternary: rgba(56, 56, 56, 1);
+  --colorBGQuinary: rgba(75, 75, 75, 1);
+  --colorBGSecondary2: rgba(255, 255, 255, 0.08);
+  --colorBGTertiary2: rgba(255, 255, 255, 0.12);
+
+  --colorBGPlaceholderDefault: rgba(255, 255, 255, 0.08);
+  --colorBGPlaceholderOpaque: rgba(37, 37, 37, 1);
+
+  --colorBGInput: rgba(255, 255, 255, 0.12);
+  --colorBGInput2: rgba(255, 255, 255, 0.08);
+  --colorBGView: rgba(255, 255, 255, 0.04);
+  --colorBGCreation3: rgba(18, 18, 18, 1);
+  --colorBGCreation4: rgba(27, 27, 27, 1);
+  --colorBGBrand: rgba(254, 44, 85, 0.34);
+
+  --colorLinePrimary: rgba(255, 255, 255, 0);
+  --colorLineSecondary: rgba(255, 255, 255, 0.12);
+  --colorLineInput: rgba(255, 255, 255, 0.5);
+  --colorLinePrimary2: rgba(255, 255, 255, 0.2);
+  --colorLineSecondary2: rgba(255, 255, 255, 0);
+  --colorLineSecondary3: rgba(255, 255, 255, 0.5);
+  --colorLineDarker: rgba(0, 0, 0, 0.6);
+
+  --colorSDSecondary: rgba(0, 0, 0, 0.68);
+  --colorSDTertiary: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -33,8 +117,10 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
-  color: $text-color;
+  color: var(--colorTextPrimary);
   overflow-y: overlay;
+  background-color: var(--colorBGPrimary);
+  min-height: 100vh;
 }
 
 ul,

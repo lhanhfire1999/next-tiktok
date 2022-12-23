@@ -37,19 +37,19 @@
 }
 
 .primary {
-  background-color: $primary;
-  color: $white;
-  border-color: $primary;
+  background-color: var(--colorPrimary);
+  color: var(--colorWhite);
+  border-color: var(--colorPrimary);
 
   &:hover {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), var(--colorPrimary);
   }
 }
 
 .outlinePrimary {
-  color: $primary;
+  color: var(--colorPrimary);
   border-color: currentColor;
-  background-color: $white;
+  background-color: var(--colorBGSecondary2);
 
   &:hover {
     background-color: rgba(254, 44, 85, 0.06);
@@ -57,25 +57,12 @@
 }
 
 .outlineGray {
-  color: rgb(22, 24, 35);
-  border-color: rgba(22, 24, 35, 0.12);
-  background-color: $white;
+  color: var(--colorTextPrimary);
+  border-color: var(--colorLineSecondary2);
+  background-color: var(--colorBGSecondary2);
 
   &:hover {
-    background-color: rgba(22, 24, 35, 0.03);
-  }
-}
-
-.rounded {
-  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
-  color: rgba(22, 24, 35, 0.75);
-  border-color: rgba(22, 24, 35, 0.12);
-  border-radius: 52px;
-  background-color: $white;
-
-  &:hover {
-    border-color: rgba(22, 24, 35, 0.2);
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--colorBGView);
   }
 }
 
