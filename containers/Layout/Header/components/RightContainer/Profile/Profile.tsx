@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind'
 import React from 'react'
 
-import { Button, MoreIcon, Popper } from '~/components'
-import ToggleButton from '~/components/ToggleButton'
+import { Button, MoreIcon, Popper, ToggleButton } from '~/components'
+
 import { NON_USER_ITEMS } from '~/constants'
 
 import styles from './Profile.module.scss'
