@@ -33,7 +33,7 @@ export const NON_USER_ITEMS = [
 
   { Icon: QuestionIcon, title: 'Feedback and help', to: '/feedback' },
   { Icon: KeyboardIcon, title: 'Keyboard shortcuts' },
-  { Icon: ThemeIcon, title: 'Dark mode' },
+  { Icon: ThemeIcon, title: 'Dark mode', isTheme: true },
 ]
 
 export const USER_ITEMS = [
@@ -43,5 +43,5 @@ export const USER_ITEMS = [
   { Icon: SettingIcon, title: 'Settings', to: '/settings' },
 
   { ...NON_USER_ITEMS },
-  { Icon: LogoutIcon, title: 'Log out', to: '/logout', separate: true },
+  { Icon: LogoutIcon, title: 'Log out', to: '/logout', isSeparate: true },
 ]

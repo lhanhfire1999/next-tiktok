@@ -6,28 +6,42 @@
   padding: 8px 4px;
   position: relative;
 
-  &:hover {
-    .popper-wrapper {
-      @include fade('show');
-    }
+  &:hover .popper-wrapper {
+    @include fade('show');
+  }
+
+  .more-icon:hover {
+    cursor: pointer;
   }
 }
 
 .popper-wrapper {
   @include fade('hide');
   min-width: 223px;
+
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  padding: 8px 0px;
+  margin: 0px;
+
+  min-width: 223px;
   z-index: z-index('header-popper');
 
   .wrapper-item {
-    &:last-child {
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
+    @include flex(flex, center, space-between);
+    padding: 0 16px;
+  }
+
+  .wrapper-item:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 
   .item {
     width: 100%;
     justify-content: left;
     font-weight: 600;
+    padding: 0;
   }
 }

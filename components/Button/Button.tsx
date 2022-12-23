@@ -13,8 +13,8 @@ interface ButtonProp extends Children {
   className?: string
   onClick?: () => void
 
-  LeftIcon?: React.ReactElement
-  RightIcon?: React.ReactElement
+  LeftIcon?: React.ReactElement | null
+  RightIcon?: React.ReactElement | null
   outlineGray?: boolean
   primary?: boolean
   outlinePrimary?: boolean

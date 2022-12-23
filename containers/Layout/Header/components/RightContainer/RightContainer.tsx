@@ -16,6 +16,7 @@ const RightContainer = () => {
       <Button primary>Login</Button>
 
       <Profile>
+        <Profile.AvatarOrIcon />
         <Profile.MenuPopper />
       </Profile>
     </div>
