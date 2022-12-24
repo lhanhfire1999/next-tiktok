@@ -5,8 +5,8 @@
 
   @include responsive('tablet') {
     $search-bar-border-radius: 92px;
-    $background-color: rgba(22, 24, 35, 0.06);
-    $background-color-icon: rgba(22, 24, 35, 0.34);
+    $background-color: var(--colorBGInput);
+    $background-color-icon: var(--colorTextQuaternary);
 
     display: block;
     flex: 1 0 auto;
@@ -26,7 +26,7 @@
     transition: border-color 0.2s;
 
     &:focus-within {
-      border-color: rgba(22, 24, 35, 0.2);
+      border-color: var(--colorLinePrimary);
     }
 
     input {
@@ -39,17 +39,18 @@
       outline: none;
       background: transparent;
 
-      color: rgb(22, 24, 35);
+      color: var(--colorTextPrimary);
       caret-color: rgb(254, 44, 85);
       appearance: textfield;
     }
 
     input:not(:placeholder-shown) ~ .search-btn > .search-icon {
-      color: rgba(22, 24, 35, 0.75);
+      color: var(--colorTextSecondary);
     }
 
     .btn {
       @include flex;
+      background-color: transparent;
 
       .clear-icon {
         color: $background-color-icon;
@@ -80,11 +81,11 @@
         right: 100%;
         width: 1px;
         height: 28px;
-        background: rgba(22, 24, 35, 0.12);
+        background: var(--colorLineSecondary);
       }
 
       &:hover {
-        background: rgba(22, 24, 35, 0.03);
+        background: var(--colorBGView);
         cursor: pointer;
       }
 

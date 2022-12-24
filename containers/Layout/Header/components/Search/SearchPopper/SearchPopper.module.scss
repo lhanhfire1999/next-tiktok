@@ -10,7 +10,7 @@
     font-size: 1.4rem;
     line-height: 2rem;
     font-weight: 600;
-    color: rgba(22, 24, 35, 0.5);
+    color: var(--colorTextTertiary);
   }
   .menu-item {
     a {
@@ -44,7 +44,7 @@
       @include text-shorten;
       font-size: 1.4rem;
       line-height: 2rem;
-      color: rgba(22, 24, 35, 0.5);
+      color: var(--colorTextTertiary);
       font-weight: 400;
     }
   }
@@ -54,7 +54,7 @@
 
     &:hover {
       cursor: pointer;
-      background: rgba(22, 24, 35, 0.03);
+      background: var(--colorBGView);
     }
 
     p {
@@ -62,7 +62,7 @@
       font-weight: 600;
       font-size: 1.6rem;
       line-height: 2.2rem;
-      color: rgb(22, 24, 35);
+      color: var(--colorTextPrimary);
     }
   }
 }

@@ -136,6 +136,6 @@ input,
 }
 
 a {
-  color: $text-color;
+  color: var(--colorTextPrimary);
   text-decoration: none;
 }

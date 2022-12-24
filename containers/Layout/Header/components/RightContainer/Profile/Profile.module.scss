@@ -16,6 +16,8 @@
 }
 
 .popper-wrapper {
+  $color: var(--colorTextPrimary);
+
   @include fade('hide');
   min-width: 223px;
 
@@ -43,5 +45,6 @@
     justify-content: left;
     font-weight: 600;
     padding: 0;
+    color: var(--colorTextPrimary);
   }
 }

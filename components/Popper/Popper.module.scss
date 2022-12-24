@@ -9,7 +9,7 @@
   min-height: 100px;
   width: 100%;
   border-radius: $border-radius;
-  background: $white;
+  background: var(--colorBGSecondary);
   box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
 
   &::before {
@@ -24,7 +24,7 @@
   .menu-item {
     &:hover {
       cursor: pointer;
-      background: rgba(22, 24, 35, 0.03);
+      background: var(--colorBGView);
     }
   }
   .footer {
