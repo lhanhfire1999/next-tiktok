@@ -10,7 +10,25 @@ import {
   ThemeIcon,
 } from '~/components'
 
-export const NON_USER_ITEMS = [
+interface Item {
+  Icon: typeof LanguageIcon
+  title: string
+  to?: string
+  isTheme?: boolean
+  isSeparate?: boolean
+  children?: SubList
+}
+
+interface SubList {
+  title: string
+  data: {
+    type: string
+    code: string
+    title: string
+  }[]
+}
+
+export const NON_USER_ITEMS: Item[] = [
   {
     Icon: LanguageIcon,
     title: 'English',
@@ -36,12 +54,16 @@ export const NON_USER_ITEMS = [
   { Icon: ThemeIcon, title: 'Dark mode', isTheme: true },
 ]
 
-export const USER_ITEMS = [
+export const USER_ITEMS: Item[] = [
   { Icon: ProfileIcon, title: 'View Profile', to: '/@tess' },
   { Icon: CoinIcon, title: 'Get Coins', to: '/coin' },
   { Icon: LiveIcon, title: 'Live Studio', to: '/studio/download' },
   { Icon: SettingIcon, title: 'Settings', to: '/settings' },
-
-  { ...NON_USER_ITEMS },
-  { Icon: LogoutIcon, title: 'Log out', to: '/logout', isSeparate: true },
+  ...NON_USER_ITEMS,
+  {
+    Icon: LogoutIcon,
+    title: 'Log out',
+    // to: '/logout',
+    isSeparate: true,
+  },
 ]

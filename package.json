@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^13.0.6",
+    "@tippyjs/react": "^4.2.6",
     "@types/node": "18.11.13",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",

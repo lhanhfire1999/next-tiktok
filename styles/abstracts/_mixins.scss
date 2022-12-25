@@ -118,10 +118,10 @@
   @if $type== 'hide' {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0.4s, opacity 0.4s;
+    transition: visibility 0.5s, opacity 0.5s;
   } @else if $type== 'show' {
     visibility: visible;
     opacity: 1;
-    transition: visibility 0.4s, opacity 0.4s;
+    transition: visibility 0.5s, opacity 0.5s;
   }
 }

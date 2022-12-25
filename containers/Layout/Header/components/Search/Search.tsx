@@ -86,7 +86,7 @@ const SearchBar = () => {
         </button>
       )}
 
-      <button className={cx('btn', 'search-btn')}>
+      <button className={cx('btn', 'search-btn')} onMouseDown={(e) => e.preventDefault()}>
         <SearchIcon className={cx('search-icon')} />
       </button>
     </>

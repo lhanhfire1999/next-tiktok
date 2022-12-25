@@ -7,10 +7,19 @@
   position: relative;
 
   &:hover .popper-wrapper {
-    @include fade('show');
+    visibility: visible;
+    opacity: 1;
   }
 
-  .more-icon:hover {
+  .more-icon {
+    cursor: pointer;
+  }
+
+  .avatar {
+    margin-left: 8px;
+    border-radius: 50%;
+    object-position: center;
+    object-fit: cover;
     cursor: pointer;
   }
 }
@@ -46,5 +55,9 @@
     font-weight: 600;
     padding: 0;
     color: var(--colorTextPrimary);
+  }
+
+  .wrapper-item.separate {
+    border-top: 1px solid var(--colorLineSecondary);
   }
 }

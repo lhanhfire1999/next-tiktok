@@ -1,0 +1,17 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper-icon {
+  @include flex(inline-flex, center, null);
+  margin-left: 16px;
+
+  cursor: pointer;
+}
+
+.wrapper-message-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.icon {
+  color: var(--colorTextPrimary);
+}

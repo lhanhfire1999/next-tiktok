@@ -1,19 +1,19 @@
 import classNames from 'classnames/bind'
-import React from 'react'
 import { Button, UploadIcon } from '~/components'
+import ActionButtons from './ActionButtons'
 import Profile from './Profile'
 import styles from './RightContainer.module.scss'
 
 const cx = classNames.bind(styles)
 
 const RightContainer = () => {
-  const hasToken = false
   return (
     <div className={cx('wrapper')}>
       <Button href="upload" outlineGray LeftIcon={<UploadIcon width="100%" height="100%" />}>
         Upload
       </Button>
-      <Button primary>Login</Button>
+
+      <ActionButtons />
 
       <Profile>
         <Profile.AvatarOrIcon />
