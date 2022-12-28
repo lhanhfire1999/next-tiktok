@@ -6,11 +6,6 @@
   padding: 8px 4px;
   position: relative;
 
-  &:hover .popper-wrapper {
-    visibility: visible;
-    opacity: 1;
-  }
-
   .more-icon {
     cursor: pointer;
   }
@@ -22,6 +17,11 @@
     object-fit: cover;
     cursor: pointer;
   }
+}
+
+.wrapper.active > .popper-wrapper {
+  visibility: visible;
+  opacity: 1;
 }
 
 .popper-wrapper {
@@ -59,5 +59,30 @@
 
   .wrapper-item.separate {
     border-top: 1px solid var(--colorLineSecondary);
+  }
+
+  .header {
+    @include flex(flex, center, null);
+    position: relative;
+    height: 50px;
+
+    .title {
+      @include flex(flex, null, center);
+      flex: 1 0 auto;
+    }
+  }
+
+  i {
+    @include flex;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .language-list {
+    max-height: 590px;
+    overflow-y: auto;
+    .language-item {
+      padding: 10px 24px;
+    }
   }
 }

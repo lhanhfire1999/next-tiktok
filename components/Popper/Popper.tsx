@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react'
 import classNames from 'classnames/bind'
+import React from 'react'
+
 import styles from './Popper.module.scss'
-import Link from 'next/link'
 import Menu from '../Menu'
 
 interface GeneralProp {
@@ -9,9 +9,7 @@ interface GeneralProp {
   className?: string
 }
 
-interface Popper extends GeneralProp {
-  isActive?: boolean
-}
+interface Popper extends GeneralProp {}
 
 interface MenuItem extends GeneralProp {
   href?: string
@@ -19,8 +17,12 @@ interface MenuItem extends GeneralProp {
 
 const cx = classNames.bind(styles)
 
-const Popper: React.FC<Popper> = ({ children, className, isActive = true }) => {
-  return <div className={cx('wrapper', className, { active: isActive })}>{children}</div>
+const Popper: React.FC<Popper> = ({ children, className }) => {
+  return <div className={cx('wrapper', className)}>{children}</div>
+}
+
+const Header: React.FC<GeneralProp> = ({ children, className }) => {
+  return <header className={className}>{children}</header>
 }
 
 const HeaderTitle: React.FC<GeneralProp> = ({ children, className }) => {
@@ -39,6 +41,6 @@ const Footer: React.FC<GeneralProp> = ({ children, className }) => {
   return <footer className={cx('footer', className)}>{children}</footer>
 }
 
-const CompoundPopper = Object.assign(Popper, { HeaderTitle, MenuList: Menu, MenuItem, Footer })
+const CompoundPopper = Object.assign(Popper, { Header, HeaderTitle, MenuList: Menu, MenuItem, Footer })
 
 export default CompoundPopper

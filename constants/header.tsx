@@ -16,10 +16,10 @@ interface Item {
   to?: string
   isTheme?: boolean
   isSeparate?: boolean
-  children?: SubList
+  children?: Language
 }
 
-interface SubList {
+interface Language {
   title: string
   data: {
     type: string
@@ -28,25 +28,27 @@ interface SubList {
   }[]
 }
 
+export const LANGUAGE: Language = {
+  title: 'Language',
+  data: [
+    {
+      type: 'language',
+      code: 'en',
+      title: 'English',
+    },
+    {
+      type: 'language',
+      code: 'vi',
+      title: 'Tiếng Việt',
+    },
+  ],
+}
+
 export const NON_USER_ITEMS: Item[] = [
   {
     Icon: LanguageIcon,
     title: 'English',
-    children: {
-      title: 'Language',
-      data: [
-        {
-          type: 'language',
-          code: 'en',
-          title: 'English',
-        },
-        {
-          type: 'language',
-          code: 'vi',
-          title: 'Tiếng Việt',
-        },
-      ],
-    },
+    children: LANGUAGE,
   },
 
   { Icon: QuestionIcon, title: 'Feedback and help', to: '/feedback' },

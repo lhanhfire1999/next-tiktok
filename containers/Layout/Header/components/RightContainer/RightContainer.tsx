@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import { Button, UploadIcon } from '~/components'
 import ActionButtons from './ActionButtons'
-import Profile from './Profile'
+import Menu from './Menu'
 import styles from './RightContainer.module.scss'
 
 const cx = classNames.bind(styles)
@@ -15,10 +15,12 @@ const RightContainer = () => {
 
       <ActionButtons />
 
-      <Profile>
-        <Profile.AvatarOrIcon />
-        <Profile.MenuPopper />
-      </Profile>
+      <Menu>
+        <Menu.Wrapper>
+          <Menu.AvatarOrIcon />
+          <Menu.MenuPopper />
+        </Menu.Wrapper>
+      </Menu>
     </div>
   )
 }
