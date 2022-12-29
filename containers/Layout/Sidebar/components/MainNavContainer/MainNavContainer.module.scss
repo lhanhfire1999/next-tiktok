@@ -1,0 +1,49 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper-item {
+  label {
+    @include flex(flex, center, center);
+    padding: 8px;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  label:hover {
+    background: var(--colorBGView);
+  }
+
+  label:active {
+    background: var(--colorBGInput);
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    color: var(--colorLink);
+  }
+
+  .wrapper-icon {
+    @include flex;
+  }
+
+  .title {
+    display: none;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+  }
+
+  @include responsive('desktop') {
+    label {
+      justify-content: flex-start;
+    }
+
+    .title {
+      display: block;
+      margin-left: 8px;
+    }
+  }
+}

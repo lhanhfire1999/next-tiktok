@@ -3,7 +3,7 @@
 .wrapper {
   @include flex;
   height: $header-height;
-  box-shadow: 0px 1px 1px var(--colorLineDarker);
+  box-shadow: 0px 1px 1px var(--colorLineSecondary);
   background: var(--colorBGPrimary);
 
   position: sticky;

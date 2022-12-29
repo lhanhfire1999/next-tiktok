@@ -13,10 +13,8 @@
     color: var(--colorTextTertiary);
   }
   .menu-item {
-    a {
-      @include flex(flex, center, null);
-      padding: 0.9rem 1.6rem;
-    }
+    @include flex(flex, center, null);
+    padding: 0.9rem 1.6rem;
   }
 
   .avatar {

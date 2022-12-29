@@ -19,8 +19,18 @@ const Menu: React.FC<MenuProp> = ({ children, className }) => {
   return <ul className={className}>{children}</ul>
 }
 
-const Item: React.FC<ItemProp> = ({ children, href, ...restProp }) => {
-  return <li {...restProp}>{href ? <Link href={href}>{children}</Link> : children}</li>
+const Item: React.FC<ItemProp> = ({ children, href, className, onClick }) => {
+  return (
+    <li className={!href ? className : undefined} onClick={onClick}>
+      {href ? (
+        <Link href={href} className={className}>
+          {children}
+        </Link>
+      ) : (
+        children
+      )}
+    </li>
+  )
 }
 
 const CompoundMenu = Object.assign(Menu, { Item })

@@ -14,13 +14,20 @@
     position: sticky;
     top: $header-height;
     width: $sidebar-mobile-width;
+    height: calc(100vh - $header-height);
 
-    height: 100vh;
+    padding: 12px 0 26px;
+    border-right: 1px solid var(--colorLineSecondary);
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 6%);
+
     overflow-y: auto;
     overflow-x: hidden;
 
     @include responsive('desktop') {
       width: $sidebar-desktop-width;
+      padding-left: 8px;
+      box-shadow: none;
+      border-right: none;
     }
   }
 
