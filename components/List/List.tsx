@@ -12,7 +12,7 @@ interface MenuProp extends Children {
 interface ItemProp extends Children {
   className?: string
   onClick?: () => void
-  href?: string
+  href?: string | null
 }
 
 const Menu: React.FC<MenuProp> = ({ children, className }) => {

@@ -1,0 +1,32 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  display: none;
+
+  @include responsive('desktop') {
+    display: block;
+    padding: 20px 8px 24px 8px;
+    position: relative;
+
+    &::before {
+      @include pseudo;
+      top: 0;
+      left: 8px;
+      right: 8px;
+      height: 1px;
+      background: var(--colorLineSecondary);
+      transform: scaleY(0.5);
+    }
+
+    .paragraph {
+      color: var(--colorTextTertiary);
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+    }
+
+    .login-btn {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+}

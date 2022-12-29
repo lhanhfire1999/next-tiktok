@@ -1,0 +1,47 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  display: none;
+
+  @include responsive('desktop') {
+    padding-top: 16px;
+    padding-left: 8px;
+    display: block;
+    position: relative;
+
+    &::before {
+      @include pseudo;
+      top: 0;
+      left: 8px;
+      right: 8px;
+      height: 1px;
+      background: var(--colorLineSecondary);
+      transform: scaleY(0.5);
+    }
+
+    .list {
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1.7rem;
+
+      & + .list {
+        margin-top: 8px;
+      }
+    }
+
+    li,
+    .item {
+      display: inline-block;
+    }
+
+    .item {
+      margin-right: 6px;
+      margin-top: 5px;
+      color: var(--colorTextTertiary);
+    }
+
+    .item:hover {
+      text-decoration: underline;
+    }
+  }
+}
