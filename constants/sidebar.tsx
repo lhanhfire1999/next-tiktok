@@ -1,4 +1,4 @@
-import { FollowingIcon, HomeIcon, LiveIcon } from '~/components'
+import { FollowingIcon, HashtagIcon, HomeIcon, LiveIcon, MusicIcon } from '~/components'
 
 export const MAIN_NAV_SIDEBAR = [
   { Icon: HomeIcon, title: 'For You', href: '/' },
@@ -33,3 +33,16 @@ export const FOOTER_SIDEBAR = {
   ],
   layout4: [{ title: '© 2022 TikTok', href: null }],
 }
+
+export const DISCOVER_CONTAINER_SIDEBAR = [
+  { title: 'Suthatla', Icon: HashtagIcon, href: '/' },
+  { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
+  { title: 'We dont talk anymoreaaaaaaaaaaaa aaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa', Icon: MusicIcon, href: '/' },
+  { title: 'I like you', Icon: MusicIcon, href: '/' },
+  { title: 'Suthatla', Icon: HashtagIcon, href: '/' },
+  { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
+  { title: 'We dont talk anymore', Icon: MusicIcon, href: '/' },
+  { title: 'I like you', Icon: MusicIcon, href: '/' },
+  { title: 'Suthatla', Icon: HashtagIcon, href: '/' },
+  { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
+]

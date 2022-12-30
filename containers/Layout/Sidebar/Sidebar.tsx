@@ -1,11 +1,12 @@
 import React from 'react'
-import { FooterContainer, LoginContainer, MainNavContainer } from './components'
+import { DiscoverContainer, FooterContainer, LoginContainer, MainNavContainer } from './components'
 
 const Sidebar = () => {
   return (
     <>
       <MainNavContainer />
       <LoginContainer />
+      <DiscoverContainer />
       <FooterContainer />
     </>
   )

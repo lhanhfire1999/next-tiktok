@@ -1,0 +1,61 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  display: none;
+
+  @include responsive('desktop') {
+    display: block;
+    position: relative;
+    padding: 16px 8px 8px;
+
+    &::before {
+      @include pseudo;
+      top: 0;
+      left: 8px;
+      right: 8px;
+      height: 1px;
+      background: var(--colorLineSecondary);
+      transform: scaleY(0.5);
+    }
+
+    .header {
+      color: var(--colorTextSecondary);
+      font-weight: 600;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      padding-bottom: 16px;
+    }
+
+    .icon {
+      flex: 1 0 auto;
+    }
+
+    .list {
+      @include flex(flex, null, null);
+      flex-wrap: wrap;
+      gap: 12px 8px;
+    }
+
+    .item {
+      @include flex(flex, center, null);
+
+      width: fit-content;
+      max-width: 100%;
+      height: 24px;
+      padding: 3px 10px;
+      border: 1px solid var(--colorLinePrimary);
+      border-radius: 12px;
+      background-color: var(--colorBGSecondary2);
+      transition: background-color 200ms ease-in-out 0s;
+    }
+
+    .item:hover {
+      background-color: var(--colorBGView);
+    }
+
+    .title {
+      @include text-shorten;
+      margin-left: 8px;
+    }
+  }
+}
