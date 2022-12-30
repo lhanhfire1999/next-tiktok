@@ -11,8 +11,6 @@ interface ImageWithFallbackProp {
   height?: SafeNumber
   fill?: boolean
   layout?: 'fixed' | 'fill' | 'intrinsic' | 'responsive'
-  objectFit?: string
-  objectPosition?: string
   className?: string
 }
 

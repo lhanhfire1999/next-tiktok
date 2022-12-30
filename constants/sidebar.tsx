@@ -36,13 +36,13 @@ export const FOOTER_SIDEBAR = {
 
 export const DISCOVER_CONTAINER_SIDEBAR = [
   { title: 'Suthatla', Icon: HashtagIcon, href: '/' },
-  { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
+  { title: 'Mackedoi1', Icon: HashtagIcon, href: '/' },
   { title: 'We dont talk anymoreaaaaaaaaaaaa aaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa', Icon: MusicIcon, href: '/' },
-  { title: 'I like you', Icon: MusicIcon, href: '/' },
-  { title: 'Suthatla', Icon: HashtagIcon, href: '/' },
+  { title: 'I like you2', Icon: MusicIcon, href: '/' },
+  { title: 'Suthatla1', Icon: HashtagIcon, href: '/' },
   { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
   { title: 'We dont talk anymore', Icon: MusicIcon, href: '/' },
-  { title: 'I like you', Icon: MusicIcon, href: '/' },
-  { title: 'Suthatla', Icon: HashtagIcon, href: '/' },
-  { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
+  { title: 'I like you3', Icon: MusicIcon, href: '/' },
+  { title: 'Suthatla2', Icon: HashtagIcon, href: '/' },
+  { title: 'Mackedoi2', Icon: HashtagIcon, href: '/' },
 ]

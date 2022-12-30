@@ -1,0 +1,68 @@
+@use '~/styles/abstracts/' as *;
+
+.item {
+  @include flex(flex, center, center);
+
+  @include responsive('desktop') {
+    justify-content: initial;
+  }
+
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 200ms ease-in-out 0s;
+
+  &:hover {
+    background: var(--colorBGView);
+  }
+
+  &:active {
+    background: var(--colorBGInput);
+  }
+
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    background-color: rgba(136, 136, 136, 0.5);
+    border-color: var(--colorLineSecondary);
+    border-width: 0.5px;
+  }
+}
+
+.wrapper-info {
+  display: none;
+
+  @include responsive('desktop') {
+    @include flex(flex, null, null);
+    flex-direction: column;
+    margin-left: 12px;
+  }
+
+  .nickname {
+    @include flex(flex, center, null);
+    color: var(--colorTextPrimary);
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin-top: -2px;
+    max-width: 260px;
+
+    p {
+      @include text-shorten;
+    }
+
+    .tick-icon {
+      margin-left: 4px;
+      flex: 1 0 auto;
+    }
+  }
+
+  .name {
+    color: var(--colorTextSecondary);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    max-width: 260px;
+    @include text-shorten;
+  }
+}

@@ -26,8 +26,6 @@ const SearchPopper = () => {
                 width="40"
                 height="40"
                 className={cx('avatar')}
-                objectFit="cover"
-                objectPosition="center"
               />
 
               <div className={cx('info')}>

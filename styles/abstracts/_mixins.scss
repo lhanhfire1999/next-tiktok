@@ -43,10 +43,12 @@
 @mixin text-shorten($numLines: 1) {
   white-space: nowrap;
   text-overflow: ellipsis;
+  word-break: break-word;
   overflow: hidden;
 
   @supports (-webkit-line-clamp: $numLines) {
     overflow: hidden;
+    word-break: break-word;
     text-overflow: ellipsis;
     white-space: initial;
     display: -webkit-box;
