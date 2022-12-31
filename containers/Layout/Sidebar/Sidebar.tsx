@@ -1,6 +1,9 @@
 import React from 'react'
+import { useAuthentication } from '~/contexts/AuthenticationContext'
+
 import {
   DiscoverContainer,
+  FollowingAccountsContainer,
   FooterContainer,
   LoginContainer,
   MainNavContainer,
@@ -8,11 +11,13 @@ import {
 } from './components'
 
 const Sidebar = () => {
+  const { token } = useAuthentication()
   return (
     <>
       <MainNavContainer />
-      <LoginContainer />
+      {!token && <LoginContainer />}
       <SuggestedAccountsContainer />
+      {token && <FollowingAccountsContainer />}
       <DiscoverContainer />
       <FooterContainer />
     </>

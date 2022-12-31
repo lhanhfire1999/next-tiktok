@@ -1,5 +1,40 @@
 @use '~/styles/abstracts/' as *;
 
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  padding: 8px 0;
+  color: var(--colorTextSecondary);
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  position: relative;
+
+  @include responsive('desktop') {
+    padding: 16px 0;
+  }
+
+  &::before {
+    @include pseudo;
+    top: 0;
+    left: 8px;
+    right: 8px;
+    height: 1px;
+    background: var(--colorLineSecondary);
+    transform: scaleY(0.5);
+  }
+}
+
+.title {
+  display: none;
+  padding: 0 8px;
+  margin-bottom: 8px;
+
+  @include responsive('desktop') {
+    display: block;
+  }
+}
+
 .item {
   @include flex(flex, center, center);
 
@@ -64,5 +99,18 @@
     line-height: 1.5rem;
     max-width: 260px;
     @include text-shorten;
+  }
+}
+
+.btn {
+  display: none;
+  padding: 0px 8px;
+  margin-top: 8px;
+  color: var(--colorPrimary);
+  background-color: transparent;
+  cursor: pointer;
+
+  @include responsive('desktop') {
+    display: block;
   }
 }

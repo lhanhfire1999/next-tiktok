@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Account from '../Account'
 
 const FollowingAccountsContainer = () => {
-  return <div>FollowingAccountsContainer</div>
+  const [isShowMore, setIsShowMore] = useState(false)
+
+  const handleShowMore = () => {
+    setIsShowMore((prev) => !prev)
+  }
+  return (
+    <Account>
+      <Account.Title>Following Accounts</Account.Title>
+      <Account.List>
+        <Account.Item />
+        <Account.Item />
+        <Account.Item />
+        <Account.Item />
+        <Account.Item />
+      </Account.List>
+      <Account.MoreOrLessButton isShowMore={isShowMore} onClick={handleShowMore} />
+    </Account>
+  )
 }
 
 export default FollowingAccountsContainer

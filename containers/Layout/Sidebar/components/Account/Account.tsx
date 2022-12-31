@@ -10,12 +10,28 @@ interface Children {
   children: React.ReactNode
 }
 
+interface AccountProp extends Children {
+  className?: string
+}
+
+interface MoreOrLessButtonProp {
+  isShowMore?: boolean
+  onClick?: () => void
+}
 interface ItemProp {
   src?: string
   alt?: string
 }
 
-const Account: React.FC<Children> = ({ children }) => {
+const Account: React.FC<AccountProp> = ({ children, className }) => {
+  return <div className={cx('wrapper', className)}>{children}</div>
+}
+
+const Title: React.FC<Children> = ({ children }) => {
+  return <h4 className={cx('title')}>{children}</h4>
+}
+
+const ListItems: React.FC<Children> = ({ children }) => {
   return <List className={cx('list')}>{children}</List>
 }
 
@@ -34,6 +50,14 @@ const Item: React.FC<ItemProp> = ({ src = '/images/no-image.webp', alt = 'avatar
   )
 }
 
-const CompoundAccount = Object.assign(Account, { Item })
+const MoreOrLessButton: React.FC<MoreOrLessButtonProp> = ({ isShowMore = true, onClick }) => {
+  return (
+    <p className={cx('btn')} onClick={onClick}>
+      {isShowMore ? 'See more' : 'See less'}
+    </p>
+  )
+}
+
+const CompoundAccount = Object.assign(Account, { Title, List: ListItems, Item, MoreOrLessButton })
 
 export default CompoundAccount
