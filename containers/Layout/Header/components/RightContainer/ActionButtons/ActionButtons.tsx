@@ -7,11 +7,18 @@ import { Button, InboxIcon, MessageIcon } from '~/components'
 import { useAuthentication } from '~/contexts/AuthenticationContext'
 import className from 'classnames/bind'
 import styles from './ActionButtons.module.scss'
+import { useAuthModal } from '~/contexts/AuthModalContext'
 
 const cx = className.bind(styles)
 
 const ActionButtons = () => {
-  const { token, handleSignIn } = useAuthentication()
+  const { token } = useAuthentication()
+
+  const { handleToggleModal } = useAuthModal()
+
+  const handleOpenSignInModal = () => {
+    handleToggleModal(true)
+  }
 
   if (token)
     return (
@@ -31,8 +38,8 @@ const ActionButtons = () => {
     )
 
   return (
-    <Button primary onClick={handleSignIn}>
-      Login
+    <Button primary onClick={handleOpenSignInModal}>
+      Log in
     </Button>
   )
 }

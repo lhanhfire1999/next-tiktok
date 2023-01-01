@@ -1,17 +1,20 @@
-import React from 'react'
 import classNames from 'classnames/bind'
-import styles from './LoginContainer.module.scss'
 import { Button } from '~/components'
-import { useAuthentication } from '~/contexts/AuthenticationContext'
+import { useAuthModal } from '~/contexts/AuthModalContext'
+import styles from './LoginContainer.module.scss'
 
 const cx = classNames.bind(styles)
 
 const LoginContainer = () => {
-  const { handleSignIn } = useAuthentication()
+  const { handleToggleModal } = useAuthModal()
+
+  const handleOpenSignInModal = () => {
+    handleToggleModal(true)
+  }
   return (
     <div className={cx('wrapper')}>
       <p className={cx('paragraph')}>Log in to follow creators, like videos, and view comments.</p>
-      <Button large outlinePrimary className={cx('login-btn')} onClick={handleSignIn}>
+      <Button large outlinePrimary className={cx('login-btn')} onClick={handleOpenSignInModal}>
         Log in
       </Button>
     </div>

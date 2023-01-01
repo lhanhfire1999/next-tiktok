@@ -6,6 +6,7 @@ import classNames from 'classnames/bind'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 import styles from './DefaultLayout.module.scss'
+import AuthModal from '~/containers/AuthModal'
 
 const cx = classNames.bind(styles)
 
@@ -27,6 +28,7 @@ const DefaultLayout: React.FC<Prop> = ({ children }) => {
         )}
         <div className={cx('main-content')}>{children}</div>
       </div>
+      <AuthModal />
     </>
   )
 }

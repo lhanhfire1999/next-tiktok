@@ -1,5 +1,4 @@
 'use client'
-
 import { createContext, useContext, useState } from 'react'
 
 interface Context {
@@ -15,7 +14,7 @@ interface ProviderContext {
 const Context = createContext<Context | null>(null)
 
 export const AuthenticationProvider: React.FC<ProviderContext> = ({ children }) => {
-  const [token, setToken] = useState('111')
+  const [token, setToken] = useState('')
   const handleSignIn = () => {
     setToken('sign-in')
   }

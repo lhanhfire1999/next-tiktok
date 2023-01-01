@@ -1,6 +1,9 @@
+'use client'
+import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 
 import { AuthenticationProvider } from '~/contexts/AuthenticationContext'
+import { AuthModalProvider } from '~/contexts/AuthModalContext'
 import { ThemeProvider } from '~/contexts/ThemeContext'
 
 interface ProviderProp {
@@ -9,9 +12,13 @@ interface ProviderProp {
 
 const Provider: React.FC<ProviderProp> = ({ children }) => {
   return (
-    <ThemeProvider>
-      <AuthenticationProvider>{children}</AuthenticationProvider>
-    </ThemeProvider>
+    <SessionProvider>
+      <AuthModalProvider>
+        <ThemeProvider>
+          <AuthenticationProvider>{children}</AuthenticationProvider>
+        </ThemeProvider>
+      </AuthModalProvider>
+    </SessionProvider>
   )
 }
 
