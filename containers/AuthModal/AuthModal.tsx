@@ -18,6 +18,7 @@ import classNames from 'classnames/bind'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { useTitle } from '~/hooks'
 import styles from './AuthModal.module.scss'
+import Link from 'next/link'
 
 const cx = classNames.bind(styles)
 
@@ -81,8 +82,15 @@ const Content = () => {
 
         {!isSignIn && (
           <p className={cx('policy-confirm-tips')}>
-            {` By continuing, you agree to TikTok's Terms of Service and confirm that you have read TikTok's Privacy
-            Policy.`}
+            {`By continuing, you agree to TikTok's `}
+            <Link href="https://www.tiktok.com/legal/page/row/terms-of-service/en" target="_blank">
+              Terms of Service{' '}
+            </Link>
+            {`and confirm that you have read TikTok's `}
+            <Link href="https://www.tiktok.com/legal/page/row/privacy-policy/en" target="_blank">
+              Privacy Policy
+            </Link>
+            .
           </p>
         )}
 

@@ -6,7 +6,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.68);
+  background-color: var(--colorSDSecondary);
   z-index: z-index('modal');
 }
 
@@ -19,7 +19,7 @@
   transform: translate(-50%, -50%);
   max-height: 693px;
   height: 80%;
-  background-color: rgb(37, 37, 37);
+  background-color: var(--colorBGSecondary);
   padding: 48px 0px 0px;
 
   .close-btn {
@@ -32,7 +32,7 @@
 
     border-radius: 50%;
     transform: scale(1.7);
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--colorBGView);
     z-index: calc(z-index('modal')) + 1;
     cursor: pointer;
   }

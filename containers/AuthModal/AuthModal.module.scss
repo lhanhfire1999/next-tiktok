@@ -13,11 +13,11 @@
 
 .content {
   width: 375px;
-
+  color: var(--colorTextPrimary);
   margin: auto;
 
   .header-title {
-    color: rgba(255, 255, 255, 0.9);
+    color: unset;
     font-size: 3.2rem;
     margin: 16px auto;
     font-weight: bold;
@@ -28,12 +28,12 @@
     @include flex(flex, center, null);
     height: 44px;
     padding: 0px 12px;
-    border: 1px solid rgba(255, 255, 255, 0);
+    border: 1px solid var(--colorLineSecondary2);
 
     font-weight: 600;
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgb(46, 46, 46);
+    color: unset;
+    background: var(--colorBGTertiary);
     margin-bottom: 16px;
     cursor: pointer;
   }
@@ -46,29 +46,39 @@
 
 .policy-confirm-tips {
   width: 100%;
-  @include flex;
-  font-size: 1.4rem;
-  background: rgb(18, 18, 18);
-  border-bottom: 1px solid rgba(255, 255, 255, 0);
-  border-top-color: rgba(255, 255, 255, 0);
-  border-right-color: rgba(255, 255, 255, 0);
-  border-left-color: rgba(255, 255, 255, 0);
+  background: var(--colorBGPrimary);
+  border-bottom: 1px solid var(--colorLineSecondary2);
+  border-top-color: var(--colorLineSecondary2);
+  border-right-color: var(--colorLineSecondary2);
+  border-left-color: var(--colorLineSecondary2);
   padding: 16px 30px;
   text-align: center;
+  color: var(--colorTextTertiary);
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+
+  a:hover {
+    color: unset;
+    text-decoration: underline;
+  }
 }
 
 .footer {
   @include flex(flex, center, center);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--colorTextPrimary);
   height: 64px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--colorLineSecondary);
   font-size: 1.5rem;
   line-height: 1.8rem;
 
   .footer-toggle-auth {
     margin-left: 5px;
     font-weight: 600;
-    color: rgb(255, 59, 92);
+    color: var(--colorLink);
     cursor: pointer;
+  }
+
+  .footer-toggle-auth:hover {
+    text-decoration: underline;
   }
 }
