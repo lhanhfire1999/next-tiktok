@@ -105,7 +105,14 @@ html *::-webkit-scrollbar {
 
 html *::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme='light'] *::-webkit-scrollbar-thumb {
+  background-color: rgba(22, 24, 35, 0.06);
+}
+
+html[data-theme='dark'] *::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 html *::-webkit-scrollbar-track {
