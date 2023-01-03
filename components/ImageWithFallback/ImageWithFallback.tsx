@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { useState, forwardRef } from 'react'
+import { forwardRef, useState } from 'react'
+import { DEFAULT_IMAGE_FALLBACK } from '~/constants'
 
 type SafeNumber = number | `${number}`
 
@@ -16,7 +17,7 @@ interface ImageWithFallbackProp {
 
 // eslint-disable-next-line react/display-name
 const ImageWithFallback = forwardRef<HTMLImageElement, ImageWithFallbackProp>((props, ref) => {
-  const { src, fallbackSrc = '/images/no-image.webp', alt, ...rest } = props
+  const { src, fallbackSrc = DEFAULT_IMAGE_FALLBACK, alt, ...rest } = props
   const [imgSrc, setImgSrc] = useState(src)
 
   return (

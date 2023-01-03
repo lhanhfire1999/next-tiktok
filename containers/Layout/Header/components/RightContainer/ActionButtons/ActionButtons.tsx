@@ -1,26 +1,26 @@
+'use client'
 import 'tippy.js/dist/tippy.css'
 
 import Tippy from '@tippyjs/react'
 import Link from 'next/link'
 
-import { Button, InboxIcon, MessageIcon } from '~/components'
-import { useAuthentication } from '~/contexts/AuthenticationContext'
 import className from 'classnames/bind'
-import styles from './ActionButtons.module.scss'
+import { useSession } from 'next-auth/react'
+import { Button, InboxIcon, MessageIcon } from '~/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
+import styles from './ActionButtons.module.scss'
 
 const cx = className.bind(styles)
 
 const ActionButtons = () => {
-  const { token } = useAuthentication()
-
+  const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
 
   const handleOpenSignInModal = () => {
     handleToggleModal(true)
   }
 
-  if (token)
+  if (session)
     return (
       <>
         <Tippy delay={[0, 50]} content="Message" placement="bottom">

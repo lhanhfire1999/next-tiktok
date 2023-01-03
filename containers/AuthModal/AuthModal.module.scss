@@ -38,6 +38,10 @@
     cursor: pointer;
   }
 
+  .item.disabled {
+    cursor: not-allowed;
+  }
+
   .item-title {
     flex: 1 0 auto;
     text-align: center;

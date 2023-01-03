@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'files.fullstack.edu.vn',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
     ],
   },
 }

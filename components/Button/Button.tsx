@@ -8,7 +8,7 @@ interface Children {
 }
 
 interface ButtonProp extends Children {
-  href?: string
+  href?: string | null
   disabled?: boolean
   className?: string
   onClick?: () => void

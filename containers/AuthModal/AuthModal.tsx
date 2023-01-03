@@ -1,38 +1,15 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import {
-  AppleIcon,
-  FacebookIcon,
-  GoogleIcon,
-  InstagramIcon,
-  KaKaoTalkIcon,
-  LineIcon,
-  List,
-  Modal,
-  QRIcon,
-  TwitterIcon,
-  UserIcon,
-} from '~/components'
+import { List, Modal } from '~/components'
 
 import classNames from 'classnames/bind'
+import Link from 'next/link'
+import { AUTH_MODAL_DATA } from '~/constants'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { useTitle } from '~/hooks'
 import styles from './AuthModal.module.scss'
-import Link from 'next/link'
 
 const cx = classNames.bind(styles)
-
-const AUTH_MODAL_DATA = [
-  { Icon: QRIcon, title: 'Use QR code' },
-  { Icon: UserIcon, title: 'Use phone / mail / username' },
-  { Icon: FacebookIcon, title: 'Use with Facebook' },
-  { Icon: GoogleIcon, title: 'Use with Google' },
-  { Icon: TwitterIcon, title: 'Use with Twitter' },
-  { Icon: LineIcon, title: 'Use with Line' },
-  { Icon: KaKaoTalkIcon, title: 'Use with KaKaoTalk' },
-  { Icon: AppleIcon, title: 'Use with Apple' },
-  { Icon: InstagramIcon, title: 'Use with Instagram' },
-]
 
 const AuthModal = () => {
   const { isOpenModal } = useAuthModal()
@@ -70,8 +47,8 @@ const Content = () => {
               {`${isSignIn ? 'Log in' : 'Sign Up'}`} to TikTok
             </Modal.Title>
             <List className={cx('list')}>
-              {AUTH_MODAL_DATA.map(({ Icon, title }, key) => (
-                <List.Item key={key} className={cx('item')}>
+              {AUTH_MODAL_DATA.map(({ Icon, title, onClick }, key) => (
+                <List.Item key={key} className={cx('item', { disabled: !onClick })} onClick={onClick}>
                   <Icon className={cx('item-icon')} />
                   <span className={cx('item-title')}>{title}</span>
                 </List.Item>

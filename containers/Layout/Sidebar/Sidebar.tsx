@@ -1,5 +1,5 @@
-import React from 'react'
-import { useAuthentication } from '~/contexts/AuthenticationContext'
+'use client'
+import { useSession } from 'next-auth/react'
 
 import {
   DiscoverContainer,
@@ -11,13 +11,13 @@ import {
 } from './components'
 
 const Sidebar = () => {
-  const { token } = useAuthentication()
+  const { data: session } = useSession()
   return (
     <>
       <MainNavContainer />
-      {!token && <LoginContainer />}
+      {!session && <LoginContainer />}
       <SuggestedAccountsContainer />
-      {token && <FollowingAccountsContainer />}
+      {session && <FollowingAccountsContainer />}
       <DiscoverContainer />
       <FooterContainer />
     </>
