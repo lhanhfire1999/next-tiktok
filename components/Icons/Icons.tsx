@@ -367,6 +367,7 @@ export const BackIcon = ({ width = '2rem', height = '2rem', className = '' }) =>
     </svg>
   )
 }
+
 export const HomeIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
     <svg
@@ -386,6 +387,7 @@ export const HomeIcon = ({ width = '2rem', height = '2rem', className = '' }) =>
     </svg>
   )
 }
+
 export const FollowingIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
     <svg
@@ -455,6 +457,7 @@ export const MusicIcon = ({ width = '1.6rem', height = '1.6rem', className = '' 
     </svg>
   )
 }
+
 export const CloseIcon = ({ width = '1.5rem', height = '1.5rem', className = '' }) => {
   return (
     <svg
@@ -562,6 +565,7 @@ export const GoogleIcon = ({ width = '2rem', height = '2rem', className = '' }) 
     </svg>
   )
 }
+
 export const TwitterIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
     <svg width={width} data-e2e="" height={height} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -575,6 +579,7 @@ export const TwitterIcon = ({ width = '2rem', height = '2rem', className = '' })
     </svg>
   )
 }
+
 export const LineIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
     <svg
@@ -615,6 +620,7 @@ export const LineIcon = ({ width = '2rem', height = '2rem', className = '' }) =>
     </svg>
   )
 }
+
 export const KaKaoTalkIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
     <svg width={width} data-e2e="" height={height} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -636,6 +642,7 @@ export const KaKaoTalkIcon = ({ width = '2rem', height = '2rem', className = '' 
     </svg>
   )
 }
+
 export const AppleIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 48 48" width={width} height={height}>
@@ -648,6 +655,7 @@ export const AppleIcon = ({ width = '2rem', height = '2rem', className = '' }) =
     </svg>
   )
 }
+
 export const InstagramIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
     <svg width={width} data-e2e="" height={height} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -712,7 +720,7 @@ export const InstagramIcon = ({ width = '2rem', height = '2rem', className = '' 
   )
 }
 
-export const EditIcon = ({ width = '1.6rem', height = '1.2rem', className = '' }) => {
+export const EditIcon = ({ width = '2.2rem', height = '1.8rem', className = '' }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -726,7 +734,7 @@ export const EditIcon = ({ width = '1.6rem', height = '1.2rem', className = '' }
         fillRule="evenodd"
         clipRule="evenodd"
         d="M7.66699 0C7.4829 0 7.33366 0.149239 7.33366 0.333333V11.6667C7.33366 11.8508 7.4829 12 7.66699 12H8.33366C8.51775 12 8.66699 11.8508 8.66699 11.6667V0.333333C8.66699 0.149238 8.51775 0 8.33366 0H7.66699ZM0.862254 6.47141L3.29322 8.90237C3.42339 9.03254 3.63445 9.03254 3.76462 8.90237L4.23603 8.43097C4.3662 8.30079 4.3662 8.08974 4.23603 7.95956L2.94313 6.66667H5.66699C5.85109 6.66667 6.00033 6.51743 6.00033 6.33333V5.66667C6.00033 5.48257 5.85109 5.33333 5.66699 5.33333L2.94313 5.33333L4.23603 4.04044C4.3662 3.91027 4.3662 3.69921 4.23603 3.56904L3.76462 3.09763C3.63445 2.96746 3.42339 2.96746 3.29322 3.09763L0.862254 5.5286C0.601905 5.78895 0.601905 6.21106 0.862254 6.47141ZM15.1384 6.47141L12.7074 8.90237C12.5773 9.03254 12.3662 9.03254 12.236 8.90237L11.7646 8.43097C11.6344 8.30079 11.6344 8.08974 11.7646 7.95956L13.0575 6.66667H10.3337C10.1496 6.66667 10.0003 6.51743 10.0003 6.33333V5.66667C10.0003 5.48257 10.1496 5.33333 10.3337 5.33333L13.0575 5.33333L11.7646 4.04044C11.6344 3.91027 11.6344 3.69921 11.7646 3.56904L12.236 3.09763C12.3662 2.96746 12.5773 2.96746 12.7074 3.09763L15.1384 5.5286C15.3987 5.78895 15.3987 6.21106 15.1384 6.47141Z"
-        fill="black"
+        fill="currentColor"
       />
     </svg>
   )
@@ -746,8 +754,27 @@ export const TagPersonIcon = ({ width = '2rem', height = '2rem', className = '' 
         fillRule="evenodd"
         clipRule="evenodd"
         d="M9.88544 8.10312C8.98768 8.10312 8.4541 8.83333 8.4541 10.0588C8.4541 11.2758 8.98768 12.0144 9.87697 12.0144C10.7917 12.0144 11.3591 11.2674 11.3591 10.0588C11.3591 8.85012 10.7917 8.10312 9.88544 8.10312ZM10.1652 3C14.1797 3 17 5.5012 17 9.23621C17 11.8801 15.7381 13.5839 13.6715 13.5839C12.6213 13.5839 11.8167 13.0803 11.6304 12.2662H11.5118C11.1645 13.1055 10.4531 13.5588 9.47066 13.5588C7.70901 13.5588 6.53176 12.1403 6.53176 10.0084C6.53176 7.96882 7.69207 6.57554 9.38596 6.57554C10.3007 6.57554 11.0629 7.02878 11.3932 7.76739H11.5118V6.76019H13.2311V11.2506C13.2311 11.8297 13.5021 12.199 14.0357 12.199C14.8657 12.199 15.4416 11.1499 15.4416 9.36211C15.4416 6.30695 13.3158 4.33453 10.1059 4.33453C6.84513 4.33453 4.55838 6.66787 4.55838 10.042C4.55838 13.5755 6.93829 15.6403 10.4277 15.6403C11.3339 15.6403 12.2571 15.5228 12.7399 15.3465V16.6894C12.0793 16.8825 11.2154 17 10.3007 17C6.01512 17 3 14.3393 3 10C3 5.83693 5.9389 3 10.1652 3Z"
-        fill="#161823"
+        fill="currentColor"
       />
+    </svg>
+  )
+}
+
+export const DownIcon = ({ width = '1.4rem', height = '1.4rem', className = '' }) => {
+  return (
+    <svg
+      className={className}
+      width={width}
+      height={height}
+      viewBox="0 0 48 48"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M25.5187 35.2284C24.7205 36.1596 23.2798 36.1596 22.4816 35.2284L8.83008 19.3016C7.71807 18.0042 8.63988 16 10.3486 16H37.6517C39.3604 16 40.2822 18.0042 39.1702 19.3016L25.5187 35.2284Z"
+      ></path>
     </svg>
   )
 }

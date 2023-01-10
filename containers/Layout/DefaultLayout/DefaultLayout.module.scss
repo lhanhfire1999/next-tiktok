@@ -1,9 +1,20 @@
 @use '~/styles/abstracts/' as *;
 
+.wrapper-content.upload {
+  background-color: var(--colorBGCreation3);
+
+  .content {
+    max-width: $upload-width;
+    display: block;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
 .content {
+  display: flex;
   max-width: $header-width;
   margin: 0 auto;
-  display: flex;
   column-gap: 1.6rem;
 
   @include responsive('desktop') {

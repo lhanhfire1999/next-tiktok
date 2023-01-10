@@ -8,6 +8,7 @@ const FormContainer = () => {
       <CompoundFormContainer.EditorEntrance />
       <CompoundFormContainer.Caption />
       <CompoundFormContainer.SettingVideo />
+      <CompoundFormContainer.AllowUser />
       <CompoundFormContainer.Copyright />
       <CompoundFormContainer.ActionButtons />
     </CompoundFormContainer>

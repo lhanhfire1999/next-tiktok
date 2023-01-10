@@ -1,0 +1,29 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  box-shadow: var(--colorLineSecondary) 0px 2px 8px;
+  border-radius: 8px;
+  padding: 24px 40px;
+  background: var(--colorBGPrimary);
+
+  .title {
+    font-size: 2.4rem;
+    line-height: 1.5;
+    font-weight: 700;
+    color: var(--colorTextPrimary);
+  }
+
+  .paragraph {
+    margin-top: 2px;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--colorTextTertiary);
+  }
+}
+
+.wrapper-content {
+  display: flex;
+  margin-top: 24px;
+  margin-bottom: 130px;
+}

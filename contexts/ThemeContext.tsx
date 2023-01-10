@@ -18,7 +18,7 @@ interface ThemeProvider {
 const Context = createContext<ContextProp | null>(null)
 
 export const ThemeProvider: React.FC<ThemeProvider> = ({ children }) => {
-  const [theme, setTheme] = useState(MODE_THEME.LIGHT)
+  const [theme, setTheme] = useState<string>(MODE_THEME.LIGHT)
   const isFirstRenderRef = useRef(true)
 
   const handleChangeTheme = () => {
@@ -32,7 +32,7 @@ export const ThemeProvider: React.FC<ThemeProvider> = ({ children }) => {
     if (isFirstRenderRef.current) {
       const themeStorage = localStorage!.getItem('theme')
       const preferDarkSchema = window!.matchMedia && window!.matchMedia('(prefers-color-scheme: dark)').matches
-      const defaultTheme = themeStorage || preferDarkSchema ? MODE_THEME.DARK : MODE_THEME.LIGHT
+      const defaultTheme = themeStorage || (preferDarkSchema ? MODE_THEME.DARK : MODE_THEME.LIGHT)
 
       if (defaultTheme !== theme) {
         document.documentElement.setAttribute('data-theme', defaultTheme)

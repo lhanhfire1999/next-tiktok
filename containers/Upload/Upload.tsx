@@ -7,8 +7,8 @@ const cx = classNames.bind(styles)
 const Upload = () => {
   return (
     <div className={cx('wrapper')}>
-      <h1>Upload video</h1>
-      <p>Post a video to your account</p>
+      <h2 className={cx('title')}>Upload video</h2>
+      <p className={cx('paragraph')}>Post a video to your account</p>
 
       <div className={cx('wrapper-content')}>
         <UploadVideoContainer />
