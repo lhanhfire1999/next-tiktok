@@ -37,7 +37,7 @@
   margin: 0px;
 
   min-width: 223px;
-  z-index: z-index('header-popper');
+  z-index: z-index('popper');
 
   .wrapper-item {
     @include flex(flex, center, space-between);

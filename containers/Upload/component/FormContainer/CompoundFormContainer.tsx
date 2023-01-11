@@ -107,7 +107,7 @@ const AllowUser = () => {
       <List className={cx('option-list') + ' mt-1'}>
         {UPLOAD_STATIC_DATA.allowUser.data.map((optionName, idx) => (
           <List.Item key={idx} className={cx('option-item')}>
-            <input type="checkbox" id={id + `-${idx}`} onChange={() => {}} checked={false} />
+            <input type="checkbox" id={id + `-${idx}`} onChange={() => {}} />
             <label htmlFor={id + `-${idx}`}>{optionName}</label>
           </List.Item>
         ))}
@@ -130,9 +130,9 @@ const Copyright = () => {
         <ToggleButton onChange={handleChangeChecked} />
       </div>
 
-      <p>
+      <p className={cx('paragraph')}>
         {isChecked ? UPLOAD_STATIC_DATA.copyright.checkedText : UPLOAD_STATIC_DATA.copyright.notCheckedText}
-        <span>Learn more</span>
+        <span className={cx('learn-more')}> Learn more</span>
       </p>
     </div>
   )
@@ -141,10 +141,10 @@ const Copyright = () => {
 const ActionButtons = () => {
   return (
     <div className={cx('wrapper-action-buttons') + ' mt-6'}>
-      <Button outlineGray large>
+      <Button outlineGray large className="btn">
         Discard
       </Button>
-      <Button primary large>
+      <Button primary large className="btn">
         Post
       </Button>
     </div>
