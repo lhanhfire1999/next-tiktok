@@ -10,12 +10,12 @@
     display: block;
     width: 44px;
     height: 24px;
-    background: rgba(22, 24, 35, 0.12);
+    background: var(--colorLineSecondary3);
     border-radius: 100px;
     cursor: pointer;
 
     &:hover {
-      background: rgba(22, 24, 35, 0.16);
+      background: var(--colorLinePrimary2);
     }
 
     &::before {

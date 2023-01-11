@@ -1,7 +1,7 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper {
-  flex: 1 1 auto;
+  max-width: 100%;
   margin-left: 24px;
 
   p {
