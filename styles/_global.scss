@@ -126,6 +126,7 @@ body {
   text-rendering: optimizeSpeed;
   color: var(--colorTextPrimary);
   overflow-y: overlay;
+  overflow-x: hidden;
   background-color: var(--colorBGPrimary);
   min-height: 100vh;
 }

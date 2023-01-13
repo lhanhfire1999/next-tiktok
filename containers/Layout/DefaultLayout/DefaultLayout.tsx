@@ -7,6 +7,7 @@ import Header from '../Header'
 import Sidebar from '../Sidebar'
 import styles from './DefaultLayout.module.scss'
 import AuthModal from '~/containers/AuthModal'
+import Footer from '../Footer'
 
 const cx = classNames.bind(styles)
 
@@ -33,6 +34,7 @@ const DefaultLayout: React.FC<Prop> = ({ children }) => {
           <div className={cx('main-content')}>{children}</div>
         </div>
       </div>
+      {pathname === '/upload' && <Footer />}
       <AuthModal />
     </>
   )
