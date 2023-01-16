@@ -62,37 +62,3 @@
     text-decoration: underline;
   }
 }
-
-.wrapper-footer-bottom {
-  margin-top: 72px;
-  @include flex(flex, center, null);
-  flex-direction: column;
-
-  @include responsive('footer') {
-    margin-top: 60px;
-    @include flex(flex, null, space-around);
-    flex-direction: row;
-  }
-
-  .wrapper-language {
-    width: 172px;
-    height: 36px;
-  }
-
-  .language-list {
-    top: -100px;
-  }
-
-  .copyright {
-    margin-top: 20px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.4rem;
-    line-height: 2.4rem;
-    color: #8a8b91;
-
-    @include responsive('footer') {
-      margin-top: 0;
-    }
-  }
-}

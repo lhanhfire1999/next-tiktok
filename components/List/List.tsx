@@ -20,8 +20,13 @@ const Menu: React.FC<MenuProp> = ({ children, className }) => {
 }
 
 const Item: React.FC<ItemProp> = ({ children, href, className, onClick }) => {
+  const handleClick: React.MouseEventHandler<HTMLLIElement> = (e) => {
+    e.stopPropagation()
+    if (onClick) onClick()
+  }
+
   return (
-    <li className={!href ? className : undefined} onClick={onClick}>
+    <li className={!href ? className : undefined} onClick={handleClick}>
       {href ? (
         <Link href={href} className={className}>
           {children}

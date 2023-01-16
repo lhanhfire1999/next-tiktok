@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-.wrapper.isActive .option-list {
+.option-list.is-active {
   @include fade('show');
 }
 
