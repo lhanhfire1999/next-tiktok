@@ -40,7 +40,7 @@ const SelectMenu: React.FC<SelectMenuProp> = ({
   return (
     <div className={cx('wrapper', wrapperClassName)} onClick={onClick} ref={selectMenuRef}>
       <span className={cx('title', titleClassName)}>{selectedValue}</span>
-      <DownIcon className={cx(iconClassName)} />
+      <DownIcon className={cx('icon', iconClassName)} />
 
       {children}
     </div>

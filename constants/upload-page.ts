@@ -1,6 +1,10 @@
 import { CloudIcon } from '~/components'
 
-export const UploadPageFormContainer = {
+export type AllowUserMode = typeof UPLOAD_PAGE_FORM_CONTAINER.allowUser.data[number]
+export type AllowUserModeList = typeof UPLOAD_PAGE_FORM_CONTAINER.allowUser.data[number][]
+export type WatchMode = typeof UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.data[number]
+
+export const UPLOAD_PAGE_FORM_CONTAINER = {
   caption: {
     title: 'Caption',
   },
@@ -11,12 +15,12 @@ export const UploadPageFormContainer = {
   },
   whoCanWatch: {
     title: 'Who can watch this video',
-    data: ['Public', 'Friends', 'Private'],
+    data: ['Public', 'Friends', 'Private'] as const,
   },
 
   allowUser: {
     title: 'Allow users to',
-    data: ['Comment', 'Duet', 'Stitch'],
+    data: ['Comment', 'Duet', 'Stitch'] as const,
   },
   copyright: {
     title: 'Run a copyright check',
