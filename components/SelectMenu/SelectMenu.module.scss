@@ -15,11 +15,17 @@
 
   .icon {
     color: unset;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
   }
 }
 
-.option-list.is-active {
-  @include fade('show');
+.wrapper.is-active {
+  .option-list {
+    @include fade('show');
+  }
+  .icon {
+    transform: rotate(180deg);
+  }
 }
 
 .option-list {

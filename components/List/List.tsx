@@ -5,7 +5,7 @@ interface Children {
   children: React.ReactNode
 }
 
-interface MenuProp extends Children {
+interface ListProp extends Children {
   className?: string
 }
 
@@ -15,7 +15,7 @@ interface ItemProp extends Children {
   href?: string | null
 }
 
-const Menu: React.FC<MenuProp> = ({ children, className }) => {
+const List: React.FC<ListProp> = ({ children, className }) => {
   return <ul className={className}>{children}</ul>
 }
 
@@ -38,6 +38,6 @@ const Item: React.FC<ItemProp> = ({ children, href, className, onClick }) => {
   )
 }
 
-const CompoundMenu = Object.assign(Menu, { Item })
+const CompoundList = Object.assign(List, { Item })
 
-export default CompoundMenu
+export default CompoundList

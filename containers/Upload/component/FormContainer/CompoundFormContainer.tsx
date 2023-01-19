@@ -4,8 +4,8 @@ import React, { useId, useRef, useState } from 'react'
 import styles from './FormContainer.module.scss'
 
 import { useWatch } from 'react-hook-form'
-import { Button, DownIcon, EditIcon, HashtagIcon, List, TagPersonIcon, ToggleButton } from '~/components'
-import { UPLOAD_PAGE_FORM_CONTAINER } from '~/constants'
+import { Button, EditIcon, HashtagIcon, List, SelectMenu, TagPersonIcon, ToggleButton } from '~/components'
+import { UPLOAD_PAGE_FORM_CONTAINER, WatchMode } from '~/constants'
 import { useUploadForm } from '../../contexts/UploadFormContext'
 
 interface FormContainerProp {
@@ -44,7 +44,7 @@ const Caption = () => {
 
   const captionRef = useRef<HTMLInputElement | null>(null)
 
-  const handleAddHashtag = () => {
+  const handleClickHashtag = () => {
     const cursorPosition = captionRef.current!.selectionStart || captionValue.length
 
     setValue(
@@ -52,6 +52,11 @@ const Caption = () => {
       captionValue.substring(0, cursorPosition) + '#' + captionValue.substring(cursorPosition, captionValue.length)
     )
     captionRef.current!.setSelectionRange(cursorPosition + 1, cursorPosition + 1)
+    captionRef.current!.focus()
+  }
+
+  const handleClickTagPerson = () => {
+    setValue('caption', '')
     captionRef.current!.focus()
   }
 
@@ -73,9 +78,11 @@ const Caption = () => {
           autoFocus
         />
         <div className={cx('wrapper-icon')}>
-          <TagPersonIcon className={cx('icon')} width="2rem" height="2rem" />
+          <i onClick={handleClickTagPerson}>
+            <TagPersonIcon className={cx('icon', '')} width="2rem" height="2rem" />
+          </i>
 
-          <i onClick={handleAddHashtag}>
+          <i onClick={handleClickHashtag}>
             <HashtagIcon className={cx('icon')} width="2rem" height="1.7rem" />
           </i>
         </div>
@@ -85,21 +92,41 @@ const Caption = () => {
 }
 
 const SettingVideo = () => {
+  const [isShowSelectMenu, setIsShowSelectMenu] = useState(false)
+  const { setValue, control } = useUploadForm()
+  const currentWatchMode = useWatch({ control, name: 'watchMode' })
+
+  const handleToggleSelectMenu = () => {
+    setIsShowSelectMenu((prev) => !prev)
+  }
+
+  const handleClosedSelectMenu = () => {
+    setIsShowSelectMenu(false)
+  }
+
+  const handleChangeWatchMode = (value: WatchMode) => {
+    setValue('watchMode', value)
+    handleClosedSelectMenu()
+  }
+
   return (
     <div className={cx('wrapper-setting-video') + ' mt-6'}>
       <h4>{UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.title}</h4>
 
-      <div className={cx('wrapper-select') + ' mt-1'}>
-        <span className={cx('title')}>Public</span>
-        <DownIcon />
-        <List className={cx('option-list')}>
+      <SelectMenu
+        onClickOutSide={handleClosedSelectMenu}
+        selectedValue={currentWatchMode}
+        onClick={handleToggleSelectMenu}
+        isActive={isShowSelectMenu}
+      >
+        <SelectMenu.List>
           {UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.data.map((optionName, idx) => (
-            <List.Item key={idx} className={cx('option-item')}>
+            <List.Item key={idx} className={cx('option-item')} onClick={handleChangeWatchMode.bind(null, optionName)}>
               {optionName}
             </List.Item>
           ))}
-        </List>
-      </div>
+        </SelectMenu.List>
+      </SelectMenu>
     </div>
   )
 }
