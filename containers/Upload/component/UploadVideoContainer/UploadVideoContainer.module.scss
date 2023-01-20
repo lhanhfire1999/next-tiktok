@@ -1,12 +1,6 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper {
-  & > input[type='file'] {
-    display: none;
-  }
-}
-
-.upload-card {
   @include flex;
   flex-direction: column;
   width: 260px;
@@ -59,5 +53,43 @@
     margin-top: 32px;
     width: 186px;
     border-radius: 0px;
+  }
+}
+
+.wrapper-change-video {
+  @include flex(inline-flex, center, space-between);
+  display: flex;
+  height: fit-content;
+  width: 284px;
+  margin-right: 8px;
+
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+
+  background: var(--colorBGSecondary2);
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid var(--colorLineSecondary2);
+  margin-top: 16px;
+  color: var(--colorTextPrimary);
+
+  .file {
+    font-weight: 400;
+    color: var(--colorTextSecondary);
+    @include flex(flex, center, center);
+    max-width: 150px;
+  }
+  .name {
+    @include text-shorten(1);
+  }
+
+  .button {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    text-decoration: underline;
   }
 }
