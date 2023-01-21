@@ -10,8 +10,9 @@
   transition: background 0.15s ease-in-out 0s;
   padding-left: 35px;
   padding-right: 35px;
-  cursor: pointer;
   background: var(--colorBGSecondary);
+
+  cursor: pointer;
 
   &:hover {
     background: var(--colorBGView);
@@ -61,6 +62,7 @@
   display: flex;
   height: fit-content;
   width: 284px;
+  flex: 1 0 auto;
   margin-right: 8px;
 
   font-size: 1.2rem;

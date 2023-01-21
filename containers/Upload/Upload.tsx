@@ -1,7 +1,9 @@
 'use client'
 import classNames from 'classnames/bind'
+import { Modal } from '~/components'
+import { UploadChangeVideoModal, useUploadChangeVideoModal } from '~/containers/Upload/contexts/UploadChangeVideoModal'
 import { FormContainer, UploadVideoContainer } from './component'
-import { UploadFormProvider } from './contexts/UploadFormContext'
+import { UploadFormProvider, useUploadForm } from './contexts/UploadFormContext'
 import styles from './Upload.module.scss'
 
 const cx = classNames.bind(styles)
@@ -11,7 +13,11 @@ interface UploadProp {
 }
 
 const Upload: React.FC<UploadProp> = ({ children }) => {
-  return <UploadFormProvider>{children}</UploadFormProvider>
+  return (
+    <UploadFormProvider>
+      <UploadChangeVideoModal>{children}</UploadChangeVideoModal>
+    </UploadFormProvider>
+  )
 }
 
 const Content = () => {
@@ -28,6 +34,43 @@ const Content = () => {
   )
 }
 
-const CompoundUpload = Object.assign(Upload, { Content })
+const ChangeVideoModal = () => {
+  const { isOpenModal, handleToggleModal } = useUploadChangeVideoModal()
+  const { setValue } = useUploadForm()
+
+  const handleNotChangeVideo = () => {
+    handleToggleModal(false)
+  }
+
+  const handleChangeVideo = () => {
+    setValue('uploadVideo', null)
+    handleToggleModal(false)
+  }
+
+  if (isOpenModal) {
+    return (
+      <Modal>
+        <Modal.Content className={cx('wrapper-modal')} onClickOutside={handleNotChangeVideo}>
+          <header>
+            <Modal.Title as="h3" className={cx('title')}>
+              Replace this video
+            </Modal.Title>
+            <p className={cx('paragraph')}>Caption and video settings will still be saved</p>
+          </header>
+          <span className={cx('btn', 'primary')} onClick={handleChangeVideo}>
+            Replace
+          </span>
+          <span className={cx('btn')} onClick={handleNotChangeVideo}>
+            Continue editing
+          </span>
+        </Modal.Content>
+      </Modal>
+    )
+  }
+
+  return null
+}
+
+const CompoundUpload = Object.assign(Upload, { Content, ChangeVideoModal })
 
 export default CompoundUpload

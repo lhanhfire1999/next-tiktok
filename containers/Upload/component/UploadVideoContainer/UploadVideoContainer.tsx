@@ -1,10 +1,11 @@
 'use client'
 import classNames from 'classnames/bind'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useWatch } from 'react-hook-form'
 
 import { Button, List } from '~/components'
 import { UploadPageUploadVideoContainer } from '~/constants'
+import { useUploadChangeVideoModal } from '../../contexts/UploadChangeVideoModal'
 import { useUploadForm } from '../../contexts/UploadFormContext'
 
 import styles from './UploadVideoContainer.module.scss'
@@ -18,14 +19,14 @@ const UploadVideoContainer = () => {
   const { ref, ...rest } = register('uploadVideo')
   const uploadVideo = useWatch({ control, name: 'uploadVideo' })
 
+  const { handleToggleModal } = useUploadChangeVideoModal()
+
   const handleClickUpload = () => {
     inputRef.current!.click()
   }
 
-  const handleDeleteVideo = () => {
-    if (uploadVideo) {
-      setValue('uploadVideo', null)
-    }
+  const handleClickChangeVideo = () => {
+    handleToggleModal(true)
   }
 
   if (uploadVideo?.length) {
@@ -34,7 +35,7 @@ const UploadVideoContainer = () => {
         <div className={cx('file')}>
           <span className={cx('name')}>{uploadVideo![0].name}</span>
         </div>
-        <span className={cx('button')} onClick={handleDeleteVideo}>
+        <span className={cx('button')} onClick={handleClickChangeVideo}>
           Change video
         </span>
       </div>
