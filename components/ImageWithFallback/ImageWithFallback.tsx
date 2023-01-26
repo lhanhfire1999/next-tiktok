@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import { forwardRef, useState } from 'react'
 import { DEFAULT_IMAGE_FALLBACK } from '~/constants'

@@ -12,7 +12,7 @@
 
   .content {
     @include flex(flex, center, space-between);
-
+    padding: 0 24px;
     width: $header-width;
     height: 100%;
   }

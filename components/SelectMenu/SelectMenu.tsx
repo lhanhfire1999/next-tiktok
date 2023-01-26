@@ -1,3 +1,4 @@
+'use client'
 import classNames from 'classnames/bind'
 import React, { useRef } from 'react'
 

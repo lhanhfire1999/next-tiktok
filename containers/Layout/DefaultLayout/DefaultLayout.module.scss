@@ -26,6 +26,7 @@
     top: $header-height;
     width: $sidebar-mobile-width;
     height: calc(100vh - $header-height);
+    flex-shrink: 0;
 
     padding: 12px 0 26px;
     border-right: 1px solid var(--colorLineSecondary);

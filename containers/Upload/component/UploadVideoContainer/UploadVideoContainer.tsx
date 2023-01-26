@@ -15,7 +15,7 @@ const cx = classNames.bind(styles)
 const UploadVideoContainer = () => {
   const inputRef = useRef<HTMLInputElement | null>(null)
 
-  const { control, setValue, register } = useUploadForm()
+  const { control, register } = useUploadForm()
   const { ref, ...rest } = register('uploadVideo')
   const uploadVideo = useWatch({ control, name: 'uploadVideo' })
 
