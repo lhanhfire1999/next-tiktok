@@ -45,6 +45,7 @@ export const UploadFormProvider: React.FC<FormProviderProp> = ({ children }) => 
       uploadVideo: null,
     },
   })
+
   return (
     <Context.Provider value={{ control, register, handleSubmit, reset, getValues, setValue, resetField }}>
       {children}

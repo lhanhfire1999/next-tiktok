@@ -1,6 +1,6 @@
 'use client'
 import classNames from 'classnames/bind'
-import { useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useWatch } from 'react-hook-form'
 
 import { Button, List } from '~/components'
@@ -15,9 +15,22 @@ const cx = classNames.bind(styles)
 const UploadVideoContainer = () => {
   const inputRef = useRef<HTMLInputElement | null>(null)
 
-  const { control, register } = useUploadForm()
-  const { ref, ...rest } = register('uploadVideo')
+  const { control, setValue, getValues, register, resetField } = useUploadForm()
+  const { ref, ...rest } = register('uploadVideo', { required: true })
   const uploadVideo = useWatch({ control, name: 'uploadVideo' })
+
+  useEffect(() => {
+    // Caption field
+    if (!getValues('caption') && uploadVideo) {
+      setValue('caption', uploadVideo[0].name, { shouldValidate: true })
+      return
+    }
+
+    if (!uploadVideo) {
+      resetField('caption')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uploadVideo])
 
   const { handleToggleModal } = useUploadChangeVideoModal()
 
@@ -29,7 +42,21 @@ const UploadVideoContainer = () => {
     handleToggleModal(true)
   }
 
-  if (uploadVideo?.length) {
+  const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
+    e.stopPropagation()
+    e.preventDefault()
+  }
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.stopPropagation()
+    e.preventDefault()
+    const { files } = e.dataTransfer
+    if (files[0].type.startsWith('video/')) {
+      setValue('uploadVideo', e.dataTransfer.files, { shouldValidate: true })
+    }
+  }
+
+  if (uploadVideo) {
     return (
       <div className={cx('wrapper-change-video')}>
         <div className={cx('file')}>
@@ -43,7 +70,7 @@ const UploadVideoContainer = () => {
   }
 
   return (
-    <div className={cx('wrapper') + ' mt-6'} onClick={handleClickUpload}>
+    <div className={cx('wrapper') + ' mt-6'} onClick={handleClickUpload} onDragOver={handleDrag} onDrop={handleDrop}>
       <input
         type="file"
         ref={(e) => {

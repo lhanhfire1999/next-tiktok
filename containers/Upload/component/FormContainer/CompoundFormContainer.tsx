@@ -1,12 +1,13 @@
 'use client'
 import classNames from 'classnames/bind'
-import React, { useId, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
 import styles from './FormContainer.module.scss'
 
-import { useWatch } from 'react-hook-form'
+import { useFormState, useWatch } from 'react-hook-form'
 import { Button, EditIcon, HashtagIcon, List, SelectMenu, TagPersonIcon, ToggleButton } from '~/components'
-import { UPLOAD_PAGE_FORM_CONTAINER, WatchMode } from '~/constants'
+import { AllowUserMode, UPLOAD_PAGE_FORM_CONTAINER, WatchMode } from '~/constants'
 import { useUploadForm } from '../../contexts/UploadFormContext'
+import { getVideoDuration } from '~/utils'
 
 interface FormContainerProp {
   children: React.ReactNode
@@ -39,7 +40,7 @@ const EditorEntrance = () => {
 
 const Caption = () => {
   const { control, register, setValue } = useUploadForm()
-  const { ref, ...rest } = register('caption')
+  const { ref, ...rest } = register('caption', { required: true })
   const captionValue = useWatch({ control, name: 'caption' })
 
   const captionRef = useRef<HTMLInputElement | null>(null)
@@ -134,8 +135,42 @@ const SettingVideo = () => {
 const AllowUser = () => {
   const id = useId()
 
-  const { register } = useUploadForm()
+  const { register, control, setValue, resetField } = useUploadForm()
   const { ...rest } = register('allowUserMode')
+  const uploadVideo = useWatch({ control, name: 'uploadVideo' })
+  const [isOverVideoDuration, setIsOverVideoDuration] = useState(false)
+
+  useEffect(() => {
+    // Upload video field
+    if (uploadVideo) {
+      const handleUploadVideoField = async (file: File) => {
+        const videoDuration = await getVideoDuration(file)
+        // > 1 minute
+        if (videoDuration > 1) {
+          setValue('allowUserMode', ['Comment'])
+          setIsOverVideoDuration(true)
+        }
+      }
+
+      handleUploadVideoField(uploadVideo[0])
+      return
+    }
+
+    resetField('allowUserMode')
+    setIsOverVideoDuration(false)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uploadVideo])
+
+  const handleIsDisabled = useCallback(
+    (value: AllowUserMode) => {
+      if (isOverVideoDuration && value !== 'Comment') {
+        return true
+      }
+      return false
+    },
+    [isOverVideoDuration]
+  )
 
   return (
     <div className={cx('wrapper-allow-user') + ' mt-6'}>
@@ -143,12 +178,22 @@ const AllowUser = () => {
 
       <List className={cx('option-list') + ' mt-1'}>
         {UPLOAD_PAGE_FORM_CONTAINER.allowUser.data.map((optionName, idx) => (
-          <List.Item key={idx} className={cx('option-item')}>
-            <input {...rest} type="checkbox" id={id + `-${idx}`} value={optionName} />
+          <List.Item key={idx} className={cx('option-item', { disabled: handleIsDisabled(optionName) })}>
+            <input
+              {...rest}
+              type="checkbox"
+              id={id + `-${idx}`}
+              value={optionName}
+              disabled={handleIsDisabled(optionName)}
+            />
             <label htmlFor={id + `-${idx}`}>{optionName}</label>
           </List.Item>
         ))}
       </List>
+
+      {isOverVideoDuration && (
+        <p className={cx('warning')}> {UPLOAD_PAGE_FORM_CONTAINER.allowUser.overVideoDuration}</p>
+      )}
     </div>
   )
 }
@@ -178,12 +223,24 @@ const Copyright = () => {
 }
 
 const ActionButtons = () => {
+  const { control, reset, getValues } = useUploadForm()
+
+  const { isValid } = useFormState({ control })
+
+  const handleDiscard = () => {
+    reset()
+  }
+
+  const handleSubmitForm = () => {
+    console.log(getValues())
+  }
+
   return (
     <div className={cx('wrapper-action-buttons') + ' mt-6'}>
-      <Button outlineGray large className={cx('btn')}>
+      <Button outlineGray large className={cx('btn')} onClick={handleDiscard}>
         Discard
       </Button>
-      <Button primary large className={cx('btn')}>
+      <Button primary large className={cx('btn')} onClick={handleSubmitForm} disabled={!isValid}>
         Post
       </Button>
     </div>

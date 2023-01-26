@@ -21,6 +21,7 @@ export const UPLOAD_PAGE_FORM_CONTAINER = {
   allowUser: {
     title: 'Allow users to',
     data: ['Comment', 'Duet', 'Stitch'] as const,
+    overVideoDuration: 'Duet and Stitch not available for videos over 60s',
   },
   copyright: {
     title: 'Run a copyright check',

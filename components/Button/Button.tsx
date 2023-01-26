@@ -39,7 +39,15 @@ const Button: React.FC<ButtonProp> = ({
   ...restProps
 }) => {
   let Comp: keyof JSX.IntrinsicElements | any = 'button'
-  const classes = cx('wrapper', className, { primary, outlinePrimary, outlineGray, rounded, small, large })
+  const classes = cx('wrapper', className, {
+    primary,
+    outlinePrimary,
+    outlineGray,
+    rounded,
+    small,
+    large,
+    disabled: restProps.disabled,
+  })
 
   if (restProps.href) {
     Comp = Link
