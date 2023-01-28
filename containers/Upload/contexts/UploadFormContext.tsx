@@ -7,15 +7,15 @@ import {
   UseFormHandleSubmit,
   UseFormRegister,
   UseFormReset,
-  UseFormSetValue,
   UseFormResetField,
+  UseFormSetValue,
 } from 'react-hook-form'
-import { AllowUserModeList, UPLOAD_PAGE_FORM_CONTAINER, WatchMode } from '~/constants'
+import { AllowUserMode, WatchMode } from '~/services/upload'
 
 interface FormValues {
   caption: string
   watchMode: WatchMode
-  allowUserMode: AllowUserModeList
+  allowUserMode: AllowUserMode[]
   uploadVideo: FileList | null
 }
 
@@ -40,8 +40,8 @@ export const UploadFormProvider: React.FC<FormProviderProp> = ({ children }) => 
     mode: 'all',
     defaultValues: {
       caption: '',
-      watchMode: 'Public',
-      allowUserMode: [...UPLOAD_PAGE_FORM_CONTAINER.allowUser.data],
+      watchMode: '0',
+      allowUserMode: ['0', '1', '2'],
       uploadVideo: null,
     },
   })

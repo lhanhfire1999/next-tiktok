@@ -1,9 +1,5 @@
 import { CloudIcon } from '~/components'
 
-export type AllowUserMode = typeof UPLOAD_PAGE_FORM_CONTAINER.allowUser.data[number]
-export type AllowUserModeList = typeof UPLOAD_PAGE_FORM_CONTAINER.allowUser.data[number][]
-export type WatchMode = typeof UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.data[number]
-
 export const UPLOAD_PAGE_FORM_CONTAINER = {
   caption: {
     title: 'Caption',
@@ -15,12 +11,39 @@ export const UPLOAD_PAGE_FORM_CONTAINER = {
   },
   whoCanWatch: {
     title: 'Who can watch this video',
-    data: ['Public', 'Friends', 'Private'] as const,
+    data: [
+      {
+        key: '0',
+        value: 'Public',
+      },
+      {
+        key: '1',
+        value: 'Friends',
+      },
+      {
+        key: '2',
+        value: 'Private',
+      },
+    ] as const,
   },
 
   allowUser: {
     title: 'Allow users to',
-    data: ['Comment', 'Duet', 'Stitch'] as const,
+    data: [
+      {
+        key: '0',
+        value: 'Comment',
+      },
+      {
+        key: '1',
+        value: 'Duet',
+      },
+      {
+        key: '2',
+        value: 'Stitch',
+      },
+    ] as const,
+
     overVideoDuration: 'Duet and Stitch not available for videos over 60s',
   },
   copyright: {

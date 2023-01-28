@@ -1,13 +1,16 @@
 'use client'
 import classNames from 'classnames/bind'
-import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
-import styles from './FormContainer.module.scss'
-
+import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { useFormState, useWatch } from 'react-hook-form'
+
 import { Button, EditIcon, HashtagIcon, List, SelectMenu, TagPersonIcon, ToggleButton } from '~/components'
-import { AllowUserMode, UPLOAD_PAGE_FORM_CONTAINER, WatchMode } from '~/constants'
-import { useUploadForm } from '../../contexts/UploadFormContext'
+import { UPLOAD_PAGE_FORM_CONTAINER } from '~/constants'
+import { AllowUserMode, UploadBodyParams, WatchMode } from '~/services/upload'
 import { getVideoDuration } from '~/utils'
+import { useUploadForm } from '../../contexts/UploadFormContext'
+import { usePostUploadForm } from '../../hooks/usePostUploadForm'
+
+import styles from './FormContainer.module.scss'
 
 interface FormContainerProp {
   children: React.ReactNode
@@ -97,6 +100,12 @@ const SettingVideo = () => {
   const { setValue, control } = useUploadForm()
   const currentWatchMode = useWatch({ control, name: 'watchMode' })
 
+  const currentSelectedValue = useMemo(() => {
+    const { data } = UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch
+    const infoData = data.find((item) => item.key === currentWatchMode)
+    return infoData?.value || data[0].value
+  }, [currentWatchMode])
+
   const handleToggleSelectMenu = () => {
     setIsShowSelectMenu((prev) => !prev)
   }
@@ -116,14 +125,14 @@ const SettingVideo = () => {
 
       <SelectMenu
         onClickOutSide={handleClosedSelectMenu}
-        selectedValue={currentWatchMode}
+        selectedValue={currentSelectedValue}
         onClick={handleToggleSelectMenu}
         isActive={isShowSelectMenu}
       >
         <SelectMenu.List>
-          {UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.data.map((optionName, idx) => (
-            <List.Item key={idx} className={cx('option-item')} onClick={handleChangeWatchMode.bind(null, optionName)}>
-              {optionName}
+          {UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.data.map(({ key, value }) => (
+            <List.Item key={key} className={cx('option-item')} onClick={handleChangeWatchMode.bind(null, key)}>
+              {value}
             </List.Item>
           ))}
         </SelectMenu.List>
@@ -147,7 +156,7 @@ const AllowUser = () => {
         const videoDuration = await getVideoDuration(file)
         // > 1 minute
         if (videoDuration > 1) {
-          setValue('allowUserMode', ['Comment'])
+          setValue('allowUserMode', ['0'])
           setIsOverVideoDuration(true)
         }
       }
@@ -164,7 +173,7 @@ const AllowUser = () => {
 
   const handleIsDisabled = useCallback(
     (value: AllowUserMode) => {
-      if (isOverVideoDuration && value !== 'Comment') {
+      if (isOverVideoDuration && value !== '0') {
         return true
       }
       return false
@@ -177,15 +186,9 @@ const AllowUser = () => {
       <h4>{UPLOAD_PAGE_FORM_CONTAINER.allowUser.title}</h4>
 
       <List className={cx('option-list') + ' mt-1'}>
-        {UPLOAD_PAGE_FORM_CONTAINER.allowUser.data.map((optionName, idx) => (
-          <List.Item key={idx} className={cx('option-item', { disabled: handleIsDisabled(optionName) })}>
-            <input
-              {...rest}
-              type="checkbox"
-              id={id + `-${idx}`}
-              value={optionName}
-              disabled={handleIsDisabled(optionName)}
-            />
+        {UPLOAD_PAGE_FORM_CONTAINER.allowUser.data.map(({ key: idx, value: optionName }) => (
+          <List.Item key={idx} className={cx('option-item', { disabled: handleIsDisabled(idx) })}>
+            <input {...rest} type="checkbox" id={id + `-${idx}`} value={idx} disabled={handleIsDisabled(idx)} />
             <label htmlFor={id + `-${idx}`}>{optionName}</label>
           </List.Item>
         ))}
@@ -223,16 +226,26 @@ const Copyright = () => {
 }
 
 const ActionButtons = () => {
+  const { isLoading, data, handleSubmitForm } = usePostUploadForm()
   const { control, reset, getValues } = useUploadForm()
-
   const { isValid } = useFormState({ control })
 
   const handleDiscard = () => {
     reset()
   }
 
-  const handleSubmitForm = () => {
-    console.log(getValues())
+  const handleSubmit = () => {
+    const formData = new FormData()
+    formData.append('uploadVideo', getValues('uploadVideo')![0])
+
+    const bodyParams: UploadBodyParams = {
+      caption: getValues('caption'),
+      allowUserMode: getValues('allowUserMode'),
+      watchMode: getValues('watchMode'),
+      uploadVideo: formData,
+    }
+
+    handleSubmitForm(bodyParams)
   }
 
   return (
@@ -240,7 +253,7 @@ const ActionButtons = () => {
       <Button outlineGray large className={cx('btn')} onClick={handleDiscard}>
         Discard
       </Button>
-      <Button primary large className={cx('btn')} onClick={handleSubmitForm} disabled={!isValid}>
+      <Button primary large className={cx('btn')} onClick={handleSubmit} disabled={!isValid || isLoading}>
         Post
       </Button>
     </div>

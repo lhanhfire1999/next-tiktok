@@ -2,7 +2,7 @@
 import classNames from 'classnames/bind'
 import { UploadChangeVideoModal } from '~/containers/Upload/contexts/UploadChangeVideoModal'
 import { FormContainer, ModalChangeVideo, UploadVideoContainer } from './component'
-import { UploadFormProvider } from './contexts/UploadFormContext'
+import { UploadFormProvider } from './contexts'
 import styles from './Upload.module.scss'
 
 const cx = classNames.bind(styles)
