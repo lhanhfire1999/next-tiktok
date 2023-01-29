@@ -246,8 +246,7 @@ const ActionButtons = () => {
       watchMode: getValues('watchMode'),
       uploadVideo: formData,
     }
-    handleSubmitForm(bodyParams)
-    handleShowModal({ strategy: 'post' })
+    handleSubmitForm(bodyParams, handleShowModal.bind(null, { strategy: 'post' }))
   }
 
   return (

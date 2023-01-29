@@ -6,11 +6,15 @@ export const usePostUploadForm = () => {
   const [data, setData] = useState<null | UploadResponse>(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmitForm = async (bodyParams: UploadBodyParams) => {
+  const handleSubmitForm = async (bodyParams: UploadBodyParams, callback?: () => void) => {
     setIsLoading(true)
     const res = await postUploadForm(bodyParams)
     setData(res)
     setIsLoading(false)
+
+    if (callback) {
+      callback()
+    }
   }
 
   return { data, isLoading, handleSubmitForm }

@@ -5,8 +5,6 @@ import CompoundUploadModal from './CompoundUploadModal'
 const UploadModal = () => {
   const { isOpenModal, strategy } = useUploadModal()
 
-  console.log({ strategy })
-
   if (isOpenModal && strategy) {
     return (
       <CompoundUploadModal>
