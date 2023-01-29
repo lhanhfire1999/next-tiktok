@@ -1,6 +1,6 @@
 import { CloudIcon } from '~/components'
 
-export const UploadPageFormContainer = {
+export const UPLOAD_PAGE_FORM_CONTAINER = {
   caption: {
     title: 'Caption',
   },
@@ -11,12 +11,40 @@ export const UploadPageFormContainer = {
   },
   whoCanWatch: {
     title: 'Who can watch this video',
-    data: ['Public', 'Friends', 'Private'],
+    data: [
+      {
+        key: '0',
+        value: 'Public',
+      },
+      {
+        key: '1',
+        value: 'Friends',
+      },
+      {
+        key: '2',
+        value: 'Private',
+      },
+    ] as const,
   },
 
   allowUser: {
     title: 'Allow users to',
-    data: ['Comment', 'Duet', 'Stitch'],
+    data: [
+      {
+        key: '0',
+        value: 'Comment',
+      },
+      {
+        key: '1',
+        value: 'Duet',
+      },
+      {
+        key: '2',
+        value: 'Stitch',
+      },
+    ] as const,
+
+    overVideoDuration: 'Duet and Stitch not available for videos over 60s',
   },
   copyright: {
     title: 'Run a copyright check',

@@ -1,3 +1,4 @@
+'use client'
 import React, { useRef } from 'react'
 
 import classNames from 'classnames/bind'
@@ -51,8 +52,8 @@ const Content: React.FC<ContentProp> = ({ children, onClickOutside, className })
   )
 }
 
-const Title: React.FC<TitleProp> = ({ children, as = 'h3', className, ...restProp }) => {
-  return React.createElement(as, { ...restProp, className: cx('title', className) }, children)
+const Title: React.FC<TitleProp> = ({ children, as = 'h3', ...restProp }) => {
+  return React.createElement(as, { ...restProp }, children)
 }
 
 const Footer: React.FC<GeneralProp> = ({ children, className }) => {

@@ -1,0 +1,81 @@
+@use '~/styles/abstracts/' as *;
+
+.change-video-modal-content {
+  width: 310px;
+  height: fit-content;
+  border-radius: 9px;
+  @include flex(flex, center, null);
+  flex-direction: column;
+  padding-top: 0px;
+  color: var(--colorTextTertiary);
+
+  header {
+    padding: 32px 32px 24px;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    color: var(--colorTextPrimary);
+    word-break: break-word;
+    text-align: center;
+  }
+
+  .paragraph {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    word-break: break-word;
+    text-align: center;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 16.5px 16px 17px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    border-top: 1px solid var(--colorLineSecondary);
+    word-break: break-word;
+    cursor: pointer;
+  }
+
+  .btn.primary {
+    font-weight: 600 !important;
+    color: var(--colorPrimary) !important;
+  }
+}
+
+.post-modal-content {
+  @include flex(flex, center, null);
+  flex-direction: column;
+
+  padding: 32px;
+  width: 400px;
+  height: fit-content;
+  border-radius: 9px;
+  color: var(--colorTextTertiary);
+
+  .title {
+    box-sizing: border-box;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var((--colorTextPrimary));
+    flex: 0 0 auto;
+    word-break: break-word;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .btn + .btn {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+}

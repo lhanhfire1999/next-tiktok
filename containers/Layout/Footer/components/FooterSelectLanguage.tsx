@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import className from 'classnames/bind'
+import { useState } from 'react'
+
 import { SelectMenu } from '~/components'
 import { LANGUAGE } from '~/constants'
-import className from 'classnames/bind'
 import styles from './FooterSelectLanguage.module.scss'
 
 const cx = className.bind(styles)
@@ -27,17 +28,19 @@ const SelectLanguage = () => {
   return (
     <div className={cx('wrapper-footer-bottom')}>
       <SelectMenu
-        wrapperClassName={cx('wrapper-language')}
-        onClickOutSide={handleClosedSelectPopper}
+        isActive={isShowLanguage}
         selectedValue={selectedLanguage}
+        onClickOutSide={handleClosedSelectPopper}
         onClick={handleClickSelectLanguage}
+        wrapperClassName={cx('wrapper-language')}
       >
-        <SelectMenu.OptionList
-          isActive={isShowLanguage}
-          listClassName={cx('language-list')}
-          data={LANGUAGE.data.map((item) => item.title)}
-          onClick={handleChangeLanguage}
-        />
+        <SelectMenu.List className={cx('language-list')}>
+          {LANGUAGE.data.map(({ title }) => (
+            <SelectMenu.Item onClick={handleChangeLanguage.bind(null, title)} key={title}>
+              {title}
+            </SelectMenu.Item>
+          ))}
+        </SelectMenu.List>
       </SelectMenu>
       <div className={cx('copyright')}>© 2023 TikTok</div>
     </div>

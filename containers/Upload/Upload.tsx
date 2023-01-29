@@ -1,10 +1,25 @@
+'use client'
 import classNames from 'classnames/bind'
-import { FormContainer, UploadVideoContainer } from './component'
+import { UploadModalProvider } from '~/containers/Upload/contexts/UploadModalContext'
+import { FormContainer, UploadModal, UploadVideoContainer } from './component'
+import { UploadFormProvider } from './contexts'
 import styles from './Upload.module.scss'
 
 const cx = classNames.bind(styles)
 
-const Upload = () => {
+interface UploadProp {
+  children: React.ReactNode
+}
+
+const Upload: React.FC<UploadProp> = ({ children }) => {
+  return (
+    <UploadFormProvider>
+      <UploadModalProvider>{children}</UploadModalProvider>
+    </UploadFormProvider>
+  )
+}
+
+const Content = () => {
   return (
     <div className={cx('wrapper')}>
       <h2 className={cx('title')}>Upload video</h2>
@@ -18,4 +33,6 @@ const Upload = () => {
   )
 }
 
-export default Upload
+const CompoundUpload = Object.assign(Upload, { Content, UploadModal })
+
+export default CompoundUpload

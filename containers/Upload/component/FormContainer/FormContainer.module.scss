@@ -219,6 +219,23 @@
       border-color: var(--colorPrimary);
     }
   }
+
+  .option-item.disabled > label::before {
+    cursor: not-allowed;
+    border-color: rgba(118, 118, 118, 0.3);
+
+    &:hover::before {
+      border-color: rgba(118, 118, 118, 0.3);
+    }
+  }
+
+  .warning {
+    margin-top: 21px;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--colorTextTertiary);
+  }
 }
 
 .wrapper-copyright {
@@ -250,5 +267,11 @@
 .wrapper-action-buttons {
   .btn {
     font-size: 1.6rem;
+  }
+  .btn.disabled {
+    cursor: not-allowed;
+    color: var(--tux-colorTextQuaternary);
+    background-color: var(--tux-colorBGSecondary-tint-8);
+    border-color: var(--tux-colorBGSecondary-tint-8);
   }
 }

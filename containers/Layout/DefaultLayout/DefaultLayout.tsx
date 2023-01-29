@@ -24,11 +24,9 @@ const DefaultLayout: React.FC<Prop> = ({ children }) => {
       <div className={cx('wrapper-content', { upload: pathname === '/upload' })}>
         <div className={cx('content')}>
           {pathname !== '/upload' && (
-            <>
-              <div className={cx('wrapper-sidebar')}>
-                <Sidebar />
-              </div>
-            </>
+            <div className={cx('wrapper-sidebar')}>
+              <Sidebar />
+            </div>
           )}
 
           <div className={cx('main-content')}>{children}</div>
