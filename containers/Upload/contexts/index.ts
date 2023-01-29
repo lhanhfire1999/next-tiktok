@@ -1,2 +1,2 @@
-export * from './UploadChangeVideoModal'
+export * from './UploadModalContext'
 export * from './UploadFormContext'

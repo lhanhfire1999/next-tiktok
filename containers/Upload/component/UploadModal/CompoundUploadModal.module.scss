@@ -1,6 +1,6 @@
 @use '~/styles/abstracts/' as *;
 
-.wrapper-modal {
+.change-video-modal-content {
   width: 310px;
   height: fit-content;
   border-radius: 9px;
@@ -46,5 +46,36 @@
   .btn.primary {
     font-weight: 600 !important;
     color: var(--colorPrimary) !important;
+  }
+}
+
+.post-modal-content {
+  @include flex(flex, center, null);
+  flex-direction: column;
+
+  padding: 32px;
+  width: 400px;
+  height: fit-content;
+  border-radius: 9px;
+  color: var(--colorTextTertiary);
+
+  .title {
+    box-sizing: border-box;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var((--colorTextPrimary));
+    flex: 0 0 auto;
+    word-break: break-word;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .btn + .btn {
+    margin-left: 0;
+    margin-top: 12px;
   }
 }

@@ -5,7 +5,7 @@ const UploadPage = () => {
   return (
     <Upload>
       <Upload.Content />
-      <Upload.ModalChangeVideo />
+      <Upload.UploadModal />
     </Upload>
   )
 }

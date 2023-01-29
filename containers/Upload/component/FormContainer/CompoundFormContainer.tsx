@@ -7,6 +7,7 @@ import { Button, EditIcon, HashtagIcon, List, SelectMenu, TagPersonIcon, ToggleB
 import { UPLOAD_PAGE_FORM_CONTAINER } from '~/constants'
 import { AllowUserMode, UploadBodyParams, WatchMode } from '~/services/upload'
 import { getVideoDuration } from '~/utils'
+import { useUploadModal } from '../../contexts'
 import { useUploadForm } from '../../contexts/UploadFormContext'
 import { usePostUploadForm } from '../../hooks/usePostUploadForm'
 
@@ -226,9 +227,10 @@ const Copyright = () => {
 }
 
 const ActionButtons = () => {
-  const { isLoading, data, handleSubmitForm } = usePostUploadForm()
+  const { isLoading, handleSubmitForm } = usePostUploadForm()
   const { control, reset, getValues } = useUploadForm()
   const { isValid } = useFormState({ control })
+  const { handleShowModal } = useUploadModal()
 
   const handleDiscard = () => {
     reset()
@@ -244,8 +246,8 @@ const ActionButtons = () => {
       watchMode: getValues('watchMode'),
       uploadVideo: formData,
     }
-
     handleSubmitForm(bodyParams)
+    handleShowModal({ strategy: 'post' })
   }
 
   return (

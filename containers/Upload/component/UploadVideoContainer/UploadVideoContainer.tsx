@@ -5,7 +5,7 @@ import { useWatch } from 'react-hook-form'
 
 import { Button, List } from '~/components'
 import { UploadPageUploadVideoContainer } from '~/constants'
-import { useUploadChangeVideoModal } from '../../contexts/UploadChangeVideoModal'
+import { useUploadModal } from '../../contexts'
 import { useUploadForm } from '../../contexts/UploadFormContext'
 
 import styles from './UploadVideoContainer.module.scss'
@@ -18,6 +18,8 @@ const UploadVideoContainer = () => {
   const { control, setValue, getValues, register, resetField } = useUploadForm()
   const { ref, ...rest } = register('uploadVideo', { required: true })
   const uploadVideo = useWatch({ control, name: 'uploadVideo' })
+
+  const { handleShowModal } = useUploadModal()
 
   useEffect(() => {
     // Caption field
@@ -32,14 +34,12 @@ const UploadVideoContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uploadVideo])
 
-  const { handleToggleModal } = useUploadChangeVideoModal()
-
   const handleClickUpload = () => {
     inputRef.current!.click()
   }
 
   const handleClickChangeVideo = () => {
-    handleToggleModal(true)
+    handleShowModal({ strategy: 'change-video' })
   }
 
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
