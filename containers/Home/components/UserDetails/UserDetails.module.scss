@@ -1,0 +1,46 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  @include flex(flex, center, null);
+  margin-bottom: 12px;
+}
+
+.wrapper-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: block;
+  margin-right: 12px;
+
+  & > .user-avatar {
+    border-radius: 50%;
+  }
+
+  @include responsive('tablet') {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.wrapper-names {
+  flex: 1 1 auto;
+  margin-right: 24px;
+
+  .name {
+    @include text-shorten;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+  }
+  .user-name {
+    @include text-shorten;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+}
+
+.follow-btn {
+  height: fit-content;
+}
