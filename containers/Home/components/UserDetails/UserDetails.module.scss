@@ -12,6 +12,7 @@
   flex-shrink: 0;
   display: block;
   margin-right: 12px;
+  cursor: pointer;
 
   & > .user-avatar {
     border-radius: 50%;
@@ -23,8 +24,11 @@
   }
 }
 
+.wrapper-avatar:hover ~ .wrapper-names > .name {
+  text-decoration: underline;
+}
+
 .wrapper-names {
-  flex: 1 1 auto;
   margin-right: 24px;
 
   .name {
@@ -32,15 +36,27 @@
     font-weight: 700;
     font-size: 1.8rem;
     line-height: 2.5rem;
+    cursor: pointer;
   }
   .user-name {
     @include text-shorten;
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 2rem;
+
+    cursor: pointer;
+  }
+
+  &:hover > .name {
+    text-decoration: underline;
   }
 }
 
-.follow-btn {
-  height: fit-content;
+.wrapper-btn {
+  flex: 1 1 auto;
+  @include flex(flex, null, flex-end);
+
+  & > .follow-btn {
+    text-align: right;
+  }
 }

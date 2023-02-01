@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind'
+import Link from 'next/link'
 import React from 'react'
 import { CommentIcon, HeartIcon, List, MusicIcon, ShareIcon } from '~/components'
 import styles from './VideoContainer.module.scss'
@@ -22,7 +23,7 @@ const VideoMusic = () => {
   return (
     <div className={cx('wrapper-video-music')}>
       <MusicIcon className={cx('music-icon')} />
-      <p>I Dont Talk Anymore</p>
+      <Link href="/">I Dont Talk Anymore</Link>
     </div>
   )
 }
@@ -30,8 +31,8 @@ const VideoMusic = () => {
 const Video = () => {
   return (
     <div className={cx('wrapper-video')}>
-      <video className={cx('video')}>
-        <source type="video/mp4" />
+      <video className={cx('video')} controls>
+        <source type="video/mp4" src="https://i.imgur.com/Kzvbeup.mp4" />
       </video>
     </div>
   )

@@ -19,10 +19,15 @@
   .music-icon {
     margin-right: 4px;
     flex-shrink: 0;
+    cursor: pointer;
   }
 
-  p {
+  a {
     @include text-shorten;
+  }
+
+  &:hover > a {
+    text-decoration: underline;
   }
 }
 
@@ -31,7 +36,9 @@
   width: 100%;
   padding-top: 50%;
   margin-right: 20px;
-  background-color: red;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--colorBlack);
 
   .video {
     @include position(absolute, 0, 0, null, null, 1);
@@ -42,6 +49,8 @@
 
 .action-list {
   flex-shrink: 0;
+  @include flex(flex, null, flex-end);
+  flex-direction: column;
 
   .btn {
     cursor: pointer;
