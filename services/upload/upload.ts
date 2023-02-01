@@ -1,7 +1,7 @@
 import { UploadResponse } from '~/pages/api/upload'
-import { UploadBodyParams } from './type'
+import { UploadRequestBody } from './type'
 
-export const postUploadForm = async (bodyParams: UploadBodyParams) => {
+export const postUploadForm = async (bodyParams: UploadRequestBody) => {
   try {
     const response = await fetch('/api/upload', {
       method: 'POST',

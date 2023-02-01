@@ -11,7 +11,7 @@ interface ChildrenProp {
 }
 
 interface CardItemProp extends ChildrenProp {
-  className: string
+  className?: string
 }
 
 const MainContainer: React.FC<ChildrenProp> = ({ children }) => {

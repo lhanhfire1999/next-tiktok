@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { UploadBodyParams } from '~/services/upload'
+import { UploadRequestBody } from '~/services/upload'
 
 interface UploadNextApiRequest extends NextApiRequest {
-  body: UploadBodyParams
+  body: UploadRequestBody
 }
 
 export interface UploadResponse {

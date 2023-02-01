@@ -1,112 +1,12 @@
 'use client'
-import classNames from 'classnames/bind'
-import { UserDetails, VideoContainer } from './components'
-import MainContainer from './components/MainContainer'
-import style from './Home.module.scss'
-
-const MOCKUP_DATA = [
-  {
-    id: 0,
-    name: 'Mo Farooq',
-    username: 'mofarooq32',
-    avatar: 'https://i.imgur.com/9KYq7VG.png',
-    is_followed: true,
-    video: 'https://i.imgur.com/FTBP02Y.mp4',
-    caption: 'These ducks are MEGA cute',
-    likes: 10,
-    comments: 2,
-    timestamp: '2019-03-10T09:08:31.020Z',
-    button_visible: true,
-  },
-  {
-    id: 1,
-    name: 'Tim Salowski',
-    username: 'timmytam',
-    avatar: 'https://i.imgur.com/rWYtZa6.png',
-    is_followed: false,
-    video: 'https://i.imgur.com/1A7AKoF.mp4',
-    caption: 'When your fries give you attitude #getInMyBelly',
-    likes: 12,
-    comments: 2,
-    timestamp: '2020-03-10T09:08:31.020Z',
-    button_visible: true,
-  },
-  {
-    id: 2,
-    name: 'Angela Lee',
-    username: 'angiecakes',
-    avatar: 'https://i.imgur.com/eX3hkoc.png',
-    is_followed: true,
-    video: 'https://i.imgur.com/al6MLay.mp4',
-    caption: 'Happiest of Birthdays my Angel',
-    likes: 2,
-    comments: 4,
-    timestamp: '2020-04-10T09:08:31.020Z',
-    button_visible: true,
-  },
-  {
-    id: 3,
-    name: 'Nina Xen',
-    username: 'nina_lina',
-    avatar: 'https://i.imgur.com/IigY4Hm.png',
-    is_followed: false,
-    video: 'https://i.imgur.com/Kzvbeup.mp4',
-    caption: 'The new normal',
-    likes: 10,
-    comments: 2,
-    timestamp: '2020-05-10T09:08:31.020Z',
-    button_visible: true,
-  },
-  {
-    id: 0,
-    name: 'Lana Del Mont',
-    username: 'lana_del_away',
-    avatar: 'https://i.imgur.com/jONHmE5.png',
-    is_followed: true,
-    video: 'https://i.imgur.com/H9UX0Jm.mp4',
-    caption: 'Art is for everyone',
-    likes: 231,
-    comments: 20,
-    timestamp: '2020-09-10T09:08:31.020Z',
-    button_visible: true,
-  },
-]
-
-const cx = classNames.bind(style)
+import React from 'react'
+import CompoundHome from './CompoundHome'
 
 const Home = () => {
   return (
-    <MainContainer>
-      <MainContainer.List>
-        <MainContainer.CardItem className={cx('card-item')}>
-          <UserDetails />
-
-          <VideoContainer>
-            <VideoContainer.VideoDescription />
-            <VideoContainer.VideoMusic />
-          </VideoContainer>
-
-          <VideoContainer className={cx('wrapper-video')}>
-            <VideoContainer.Video />
-            <VideoContainer.ActionList />
-          </VideoContainer>
-        </MainContainer.CardItem>
-
-        <MainContainer.CardItem className={cx('card-item')}>
-          <UserDetails />
-
-          <VideoContainer>
-            <VideoContainer.VideoDescription />
-            <VideoContainer.VideoMusic />
-          </VideoContainer>
-
-          <VideoContainer className={cx('wrapper-video')}>
-            <VideoContainer.Video />
-            <VideoContainer.ActionList />
-          </VideoContainer>
-        </MainContainer.CardItem>
-      </MainContainer.List>
-    </MainContainer>
+    <CompoundHome>
+      <CompoundHome.Content />
+    </CompoundHome>
   )
 }
 

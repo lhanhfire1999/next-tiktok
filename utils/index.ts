@@ -8,3 +8,7 @@ export const getVideoDuration = (file: File) =>
     reader.readAsDataURL(file)
     reader.onerror = (error) => reject(error)
   })
+
+export const paginate = <T>(data: T[], page: number, offset: number): T[] => {
+  return data.slice((page - 1) * offset, page * offset)
+}

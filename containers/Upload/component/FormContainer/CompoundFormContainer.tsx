@@ -5,7 +5,7 @@ import { useFormState, useWatch } from 'react-hook-form'
 
 import { Button, EditIcon, HashtagIcon, List, SelectMenu, TagPersonIcon, ToggleButton } from '~/components'
 import { UPLOAD_PAGE_FORM_CONTAINER } from '~/constants'
-import { AllowUserMode, UploadBodyParams, WatchMode } from '~/services/upload'
+import { AllowUserMode, UploadRequestBody, WatchMode } from '~/services/upload'
 import { getVideoDuration } from '~/utils'
 import { useUploadModal } from '../../contexts'
 import { useUploadForm } from '../../contexts/UploadFormContext'
@@ -240,7 +240,7 @@ const ActionButtons = () => {
     const formData = new FormData()
     formData.append('uploadVideo', getValues('uploadVideo')![0])
 
-    const bodyParams: UploadBodyParams = {
+    const bodyParams: UploadRequestBody = {
       caption: getValues('caption'),
       allowUserMode: getValues('allowUserMode'),
       watchMode: getValues('watchMode'),

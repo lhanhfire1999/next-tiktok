@@ -11,12 +11,26 @@ interface VideoContainerProp {
   className?: string
 }
 
+interface VideoDescriptionProp {
+  videoDescription: string
+}
+
+interface VideoProp {
+  videoSrc: string
+}
+
+interface ActionListProp {
+  likes: number
+  comments: number
+  shares: number
+}
+
 const VideoContainer: React.FC<VideoContainerProp> = ({ children, className }) => {
   return <div className={cx('wrapper', className)}>{children}</div>
 }
 
-const VideoDescription = () => {
-  return <p className={cx('video-description')}>These ducks are MEGA cute</p>
+const VideoDescription: React.FC<VideoDescriptionProp> = ({ videoDescription }) => {
+  return <p className={cx('video-description')}>{videoDescription}</p>
 }
 
 const VideoMusic = () => {
@@ -28,36 +42,36 @@ const VideoMusic = () => {
   )
 }
 
-const Video = () => {
+const Video: React.FC<VideoProp> = ({ videoSrc }) => {
   return (
     <div className={cx('wrapper-video')}>
       <video className={cx('video')} controls>
-        <source type="video/mp4" src="https://i.imgur.com/Kzvbeup.mp4" />
+        <source type="video/mp4" src={videoSrc} />
       </video>
     </div>
   )
 }
 
-const ActionList = () => {
+const ActionList: React.FC<ActionListProp> = ({ likes, comments, shares }) => {
   return (
     <List className={cx('action-list')}>
       <List.Item className={cx('btn')}>
         <i className={cx('wrapper-icon')}>
           <HeartIcon className={cx('icon')} />
         </i>
-        <span className={cx('count')}>0</span>
+        <span className={cx('count')}>{likes}</span>
       </List.Item>
       <List.Item className={cx('btn')}>
         <i className={cx('wrapper-icon')}>
           <CommentIcon className={cx('icon')} />
         </i>
-        <span className={cx('count')}>0</span>
+        <span className={cx('count')}>{comments}</span>
       </List.Item>
       <List.Item className={cx('btn')}>
         <i className={cx('wrapper-icon')}>
           <ShareIcon className={cx('icon')} />
         </i>
-        <span className={cx('count')}>0</span>
+        <span className={cx('count')}>{shares}</span>
       </List.Item>
     </List>
   )
