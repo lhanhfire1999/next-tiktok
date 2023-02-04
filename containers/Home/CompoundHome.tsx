@@ -1,8 +1,8 @@
 'use client'
 import classNames from 'classnames/bind'
 
-import { UserDetails, VideoContainer } from './components'
-import MainContainer from './components/MainContainer'
+import { Loading } from '~/components'
+import { MainContainer, UserDetails, VideoContainer } from './components'
 import { HomeDiscoverProvider, useHomeDiscover } from './contexts'
 
 import style from './Home.module.scss'
@@ -21,36 +21,35 @@ const Home: React.FC<HomeProps> = ({ children }) => {
 }
 
 const Content = () => {
-  const { data, isLoading, isError } = useHomeDiscover()
-
-  if (isLoading || isError) {
-    return null
-  }
+  const { data, isLoading } = useHomeDiscover()
 
   return (
-    <MainContainer.List>
-      {data?.map((info) => (
-        <MainContainer.CardItem key={info.id}>
-          <UserDetails
-            imgSrc={info.avatar}
-            imgAlt={info.caption}
-            userName={info.username}
-            name={info.name}
-            isFollowing={info.is_followed}
-          />
+    <>
+      <MainContainer.List>
+        {data?.map((info, index) => (
+          <MainContainer.CardItem key={info.id} isLastCard={index === data.length - 1}>
+            <UserDetails
+              imgSrc={info.avatar}
+              imgAlt={info.caption}
+              userName={info.username}
+              name={info.name}
+              isFollowing={info.is_followed}
+            />
 
-          <VideoContainer>
-            <VideoContainer.VideoDescription videoDescription={info.caption} />
-            <VideoContainer.VideoMusic />
-          </VideoContainer>
+            <VideoContainer>
+              <VideoContainer.VideoDescription videoDescription={info.caption} />
+              <VideoContainer.VideoMusic />
+            </VideoContainer>
 
-          <VideoContainer className={cx('wrapper-video')}>
-            <VideoContainer.Video videoSrc={info.video} />
-            <VideoContainer.ActionList likes={info.likes} shares={info.shares} comments={info.comments} />
-          </VideoContainer>
-        </MainContainer.CardItem>
-      ))}
-    </MainContainer.List>
+            <VideoContainer className={cx('wrapper-video')}>
+              <VideoContainer.Video videoSrc={info.video} />
+              <VideoContainer.ActionList likes={info.likes} shares={info.shares} comments={info.comments} />
+            </VideoContainer>
+          </MainContainer.CardItem>
+        ))}
+      </MainContainer.List>
+      {isLoading && <Loading />}
+    </>
   )
 }
 

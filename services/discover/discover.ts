@@ -14,7 +14,7 @@ export const getDiscoverList = async ({ page, offset = '5' }: DiscoverRequestQue
     })
     if (response.ok) {
       const res: DiscoverResponse = await response.json()
-      return res.data
+      return res
     } else {
       throw response
     }

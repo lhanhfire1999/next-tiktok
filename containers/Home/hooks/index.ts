@@ -1,1 +1,1 @@
-export { default as useFetchDiscover } from './useFetchDiscover'
+export { default as useInfinityScroll } from './useInfinityScroll'
