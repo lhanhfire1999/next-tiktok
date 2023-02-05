@@ -1,9 +1,15 @@
+export enum UpdateStrategy {
+  Follow = 'follow',
+  Like = 'like',
+}
+
 export interface Discover {
   id: number
   name: string
   username: string
   avatar: string
   is_followed: boolean
+  is_liked: boolean
   video: string
   caption: string
   likes: number
@@ -13,9 +19,13 @@ export interface Discover {
   button_visible: boolean
 }
 
+export type DiscoverStrategyParam = UpdateStrategy.Follow | UpdateStrategy.Like
+
 export interface DiscoverRequestQuery {
   page?: string | number
   offset?: string | number
+  param?: DiscoverStrategyParam
+  id?: string | number
 }
 
 export interface DiscoverResponse {

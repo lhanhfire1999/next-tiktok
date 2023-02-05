@@ -1,4 +1,4 @@
-import { DiscoverRequestQuery, DiscoverResponse } from './type'
+import { DiscoverRequestQuery, DiscoverResponse, DiscoverStrategyParam } from './type'
 
 import queryString from 'query-string'
 
@@ -7,6 +7,28 @@ export const getDiscoverList = async ({ page, offset = '5' }: DiscoverRequestQue
 
   try {
     const response = await fetch(`/api/discover?${queryParams}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    if (response.ok) {
+      const res: DiscoverResponse = await response.json()
+      return res
+    } else {
+      throw response
+    }
+  } catch (error) {
+    throw error
+  }
+}
+
+export const updateDiscover = async ({ id, param }: { id: number; param: DiscoverStrategyParam }) => {
+  const queryParams = queryString.stringify({ id })
+
+  try {
+    const response = await fetch(`/api/discover/${param}?${queryParams}`, {
+      method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

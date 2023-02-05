@@ -1,7 +1,9 @@
 import classNames from 'classnames/bind'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 import { CommentIcon, HeartIcon, List, MusicIcon, ShareIcon } from '~/components'
+import { useAuthModal } from '~/contexts/AuthModalContext'
 import styles from './VideoContainer.module.scss'
 
 const cx = classNames.bind(styles)
@@ -53,9 +55,19 @@ const Video: React.FC<VideoProp> = ({ videoSrc }) => {
 }
 
 const ActionList: React.FC<ActionListProp> = ({ likes, comments, shares }) => {
+  const { data: session } = useSession()
+  const { handleToggleModal } = useAuthModal()
+
+  const handlePressLikeButton = () => {
+    if (!session) {
+      handleToggleModal(true)
+      return
+    }
+  }
+
   return (
     <List className={cx('action-list')}>
-      <List.Item className={cx('btn')}>
+      <List.Item className={cx('btn')} onClick={handlePressLikeButton}>
         <i className={cx('wrapper-icon')}>
           <HeartIcon className={cx('icon')} />
         </i>

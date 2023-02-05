@@ -28,13 +28,7 @@ const Content = () => {
       <MainContainer.List>
         {data?.map((info, index) => (
           <MainContainer.CardItem key={info.id} isLastCard={index === data.length - 1}>
-            <UserDetails
-              imgSrc={info.avatar}
-              imgAlt={info.caption}
-              userName={info.username}
-              name={info.name}
-              isFollowing={info.is_followed}
-            />
+            <UserDetails data={info} />
 
             <VideoContainer>
               <VideoContainer.VideoDescription videoDescription={info.caption} />

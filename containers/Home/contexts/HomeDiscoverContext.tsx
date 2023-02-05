@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Discover, getDiscoverList } from '~/services/discover'
+import { Discover, getDiscoverList, updateDiscover, UpdateStrategy } from '~/services/discover'
 
 interface ContextProps {
   data: Discover[] | undefined
   isLoading: boolean
   handleUpPage: () => void
+  handleUpdateFollow: (id: number) => void
 }
 
 interface ProviderProps {
@@ -22,6 +23,18 @@ export const HomeDiscoverProvider: React.FC<ProviderProps> = ({ children }) => {
     setPage((prev) => prev + 1)
   }
 
+  const handleUpdateFollow = (id: number) => {
+    setData((prev) => {
+      const newData = [...prev]
+      const index = newData.findIndex((item) => item.id.toString() === id.toString())
+      newData[index].is_followed = !newData[index].is_followed
+
+      return newData
+    })
+
+    updateDiscover({ id, param: UpdateStrategy.Follow })
+  }
+
   useEffect(() => {
     setIsLoading(true)
     ;(async () => {
@@ -37,7 +50,9 @@ export const HomeDiscoverProvider: React.FC<ProviderProps> = ({ children }) => {
     })()
   }, [page])
 
-  return <Context.Provider value={{ data: data, isLoading, handleUpPage }}>{children}</Context.Provider>
+  return (
+    <Context.Provider value={{ data: data, isLoading, handleUpPage, handleUpdateFollow }}>{children}</Context.Provider>
+  )
 }
 
 export const useHomeDiscover = () => useContext(Context) as ContextProps
