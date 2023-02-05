@@ -32,12 +32,12 @@ const Content = () => {
 
             <VideoContainer>
               <VideoContainer.VideoDescription videoDescription={info.caption} />
-              <VideoContainer.VideoMusic />
+              <VideoContainer.VideoMusic name={info.music_name} />
             </VideoContainer>
 
             <VideoContainer className={cx('wrapper-video')}>
               <VideoContainer.Video videoSrc={info.video} />
-              <VideoContainer.ActionList likes={info.likes} shares={info.shares} comments={info.comments} />
+              <VideoContainer.ActionList data={info} />
             </VideoContainer>
           </MainContainer.CardItem>
         ))}

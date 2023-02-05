@@ -66,6 +66,10 @@
     background-color: var(--colorBGInput);
   }
 
+  .wrapper-icon.active .like-icon {
+    color: var(--colorPrimary);
+  }
+
   .icon {
     width: 20px;
     height: 20px;

@@ -23,7 +23,7 @@ export const getDiscoverList = async ({ page, offset = '5' }: DiscoverRequestQue
   }
 }
 
-export const updateDiscover = async ({ id, param }: { id: number; param: DiscoverStrategyParam }) => {
+export const updateFollowOrLikeDiscover = async ({ id, param }: { id: number; param: DiscoverStrategyParam }) => {
   const queryParams = queryString.stringify({ id })
 
   try {

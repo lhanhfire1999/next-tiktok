@@ -17,6 +17,7 @@ export interface Discover {
   comments: number
   timestamp: string
   button_visible: boolean
+  music_name: string
 }
 
 export type DiscoverStrategyParam = UpdateStrategy.Follow | UpdateStrategy.Like
