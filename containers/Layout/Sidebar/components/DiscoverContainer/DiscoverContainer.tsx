@@ -13,7 +13,9 @@ const DiscoverContainer = () => {
         {DISCOVER_CONTAINER_SIDEBAR.map(({ title, Icon, href }) => (
           <List.Item className={cx('item')} key={title} href={href}>
             <Icon className={cx('icon')} />
-            <p className={cx('title')}>{title}</p>
+            <p className={cx('title')} title={title}>
+              {title}
+            </p>
           </List.Item>
         ))}
       </List>

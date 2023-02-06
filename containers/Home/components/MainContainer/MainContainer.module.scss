@@ -3,15 +3,21 @@
 .wrapper {
   margin-right: 16px;
   margin-left: 16px;
-  width: 692px;
-  max-width: 692px;
   padding: 24px 0;
   position: relative;
 }
 
-.container-item {
-  @include flex(flex, null, null);
+.card-item {
+  position: relative;
   padding: 20px 0;
-  width: 592px;
-  max-width: 592px;
+
+  &::after {
+    @include pseudo;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: 1px;
+    transform: scaleY(0.5);
+    background: var(--colorLinePrimary2);
+  }
 }

@@ -1,5 +1,5 @@
 const Following = () => {
-  return <div>Following page</div>
+  return <h3 style={{ textAlign: 'center' }}>This page is building</h3>
 }
 
 export default Following

@@ -38,7 +38,11 @@ export const ThemeProvider: React.FC<ThemeProvider> = ({ children }) => {
         document.documentElement.setAttribute('data-theme', defaultTheme)
         localStorage.setItem('theme', defaultTheme)
         setTheme(defaultTheme)
+      } else {
+        localStorage.setItem('theme', theme)
+        document.documentElement.setAttribute('data-theme', theme)
       }
+
       isFirstRenderRef.current = false
       return
     }

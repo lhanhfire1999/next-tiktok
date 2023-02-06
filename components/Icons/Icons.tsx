@@ -799,3 +799,62 @@ export const CloudIcon = ({ width = '4rem', height = '2.9rem', className = '' })
     </svg>
   )
 }
+
+export const HeartIcon = ({ width = '2.4rem', height = '2.4rem', className = '' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path
+        d="M12 5.881C12.981 4.729 14.484 4 16.05 4C18.822 4 21 6.178 21 8.95C21 12.3492 17.945 15.1195 13.3164 19.3167L13.305 19.327L12 20.515L10.695 19.336L10.6595 19.3037C6.04437 15.1098 3 12.3433 3 8.95C3 6.178 5.178 4 7.95 4C9.516 4 11.019 4.729 12 5.881Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+export const CommentIcon = ({ width = '2.4rem', height = '2.4rem', className = '' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      width={width}
+      height={height}
+      viewBox="0 0 30 30"
+      className={className}
+    >
+      <g>
+        <g>
+          <path d="M26.574,21.678c2.141-2,3.426-4.562,3.426-7.358c0-6.39-6.717-11.569-15-11.569c-8.284,0-15,5.18-15,11.569    c0,6.389,6.716,11.57,15,11.57c2.615,0,5.076-0.519,7.218-1.427l5.461,2.786L26.574,21.678z M5.704,20.575    c-2.238-1.727-3.471-3.948-3.471-6.256c0-2.309,1.232-4.53,3.471-6.256c2.455-1.894,5.756-2.937,9.295-2.937    s6.841,1.043,9.296,2.937c2.236,1.726,3.47,3.947,3.47,6.256c0,2.308-1.231,4.53-3.47,6.256c-2.455,1.894-5.757,2.936-9.296,2.936    S8.159,22.469,5.704,20.575z" />
+          <g>
+            <circle cx="9.679" cy="14.354" r="1.642" />
+            <circle cx="15" cy="14.354" r="1.642" />
+            <circle cx="20.32" cy="14.354" r="1.641" />
+          </g>
+        </g>
+      </g>
+    </svg>
+  )
+}
+
+export const ShareIcon = ({ width = '2.4rem', height = '2.4rem', className = '' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      fill="currentColor"
+      width={width}
+      height={height}
+      className={className}
+    >
+      <g>
+        <path d="M512,255.995L277.045,65.394v103.574c-17.255,0-36.408,0-57.542,0c-208.59,0-249.35,153.44-201.394,266.128   c9.586-103.098,142.053-100.701,237.358-100.701c7.247,0,14.446,0,21.578,0v112.211L512,255.995z" />
+      </g>
+    </svg>
+  )
+}

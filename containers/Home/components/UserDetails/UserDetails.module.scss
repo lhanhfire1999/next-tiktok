@@ -1,0 +1,64 @@
+@use '~/styles/abstracts/' as *;
+
+.wrapper {
+  @include flex(flex, center, null);
+  margin-bottom: 12px;
+}
+
+.wrapper-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: block;
+  margin-right: 12px;
+  cursor: pointer;
+
+  & > .user-avatar {
+    border-radius: 50%;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  @include responsive('tablet') {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.wrapper-avatar:hover ~ .wrapper-names > .name {
+  text-decoration: underline;
+}
+
+.wrapper-names {
+  margin-right: 24px;
+
+  .name {
+    @include text-shorten;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    cursor: pointer;
+  }
+  .user-name {
+    @include text-shorten;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2rem;
+
+    cursor: pointer;
+  }
+
+  &:hover > .name {
+    text-decoration: underline;
+  }
+}
+
+.wrapper-btn {
+  flex: 1 1 auto;
+  @include flex(flex, null, flex-end);
+
+  & > .follow-btn {
+    text-align: right;
+  }
+}

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { UploadResponse } from '~/pages/api/upload'
-import { postUploadForm, UploadBodyParams } from '~/services/upload'
+import { postUploadForm, UploadRequestBody } from '~/services/upload'
 
 export const usePostUploadForm = () => {
   const [data, setData] = useState<null | UploadResponse>(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmitForm = async (bodyParams: UploadBodyParams, callback?: () => void) => {
+  const handleSubmitForm = async (bodyParams: UploadRequestBody, callback?: () => void) => {
     setIsLoading(true)
     const res = await postUploadForm(bodyParams)
     setData(res)
