@@ -4,10 +4,11 @@
   display: flex;
   max-width: $header-width;
   margin: 0 auto;
-  justify-content: space-between;
 }
 
 .content.home {
+  justify-content: space-between;
+
   .main-content {
     width: 692px;
     max-width: 692px;
@@ -22,10 +23,17 @@
 }
 
 .content.following {
+  justify-content: space-between;
+
   .main-content {
     width: 720px;
     max-width: 720px;
   }
+}
+
+.main-content {
+  width: 100%;
+  max-width: 100%;
 }
 
 .wrapper-sidebar {

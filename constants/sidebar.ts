@@ -35,14 +35,13 @@ export const FOOTER_SIDEBAR = {
 }
 
 export const DISCOVER_CONTAINER_SIDEBAR = [
-  { title: 'Suthatla', Icon: HashtagIcon, href: '/' },
-  { title: 'Mackedoi1', Icon: HashtagIcon, href: '/' },
-  { title: 'We dont talk anymoreaaaaaaaaaaaa aaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa', Icon: MusicIcon, href: '/' },
-  { title: 'I like you2', Icon: MusicIcon, href: '/' },
-  { title: 'Suthatla1', Icon: HashtagIcon, href: '/' },
+  { title: 'STAY - The Kid LAROI, Justin Bieber', Icon: HashtagIcon, href: '/' },
+  { title: 'Industry Baby - Lil Nas X, Jack Harlow', Icon: HashtagIcon, href: '/' },
+  { title: 'Ckay - Love Nwantiti', Icon: MusicIcon, href: '/' },
+  { title: 'Build a Bitch - Bella Poarch', Icon: MusicIcon, href: '/' },
+  { title: 'Doja Cat - Need to Know', Icon: HashtagIcon, href: '/' },
   { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
-  { title: 'We dont talk anymore', Icon: MusicIcon, href: '/' },
-  { title: 'I like you3', Icon: MusicIcon, href: '/' },
-  { title: 'Suthatla2', Icon: HashtagIcon, href: '/' },
-  { title: 'Mackedoi2', Icon: HashtagIcon, href: '/' },
+  { title: 'Bad Together - Lucas Estrada, Bhaskar, Pawl', Icon: MusicIcon, href: '/' },
+  { title: 'Whiskey Song - NSH', Icon: HashtagIcon, href: '/' },
+  { title: 'Toxic - BoyWithUke', Icon: HashtagIcon, href: '/' },
 ]

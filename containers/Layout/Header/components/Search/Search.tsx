@@ -1,5 +1,7 @@
 'use client'
 import classNames from 'classnames/bind'
+import { useRouter } from 'next/navigation'
+import queryString from 'query-string'
 import React, { useRef, useState } from 'react'
 
 import { CircleXIcon, SearchIcon, SpinnerIcon } from '~/components/Icons'
@@ -43,6 +45,7 @@ const SearchBar = () => {
   const { searchText, handleChangeSearchText } = useSearchBar()
   const { isLoading, handleChangeShowPopper, mutate } = useSearchPopper()
   const searchRef = useRef<HTMLInputElement>(null)
+  const router = useRouter()
 
   const handleOnChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChangeSearchText(e.currentTarget.value.trimStart())
@@ -56,9 +59,23 @@ const SearchBar = () => {
     searchRef.current?.focus()
   }
 
-  const handleBlockSpaceAtFirst: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    const { selectionStart } = e.currentTarget
+  const handleClickSearchButton = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e && e.preventDefault()
+
+    if (searchText) {
+      const url = queryString.stringifyUrl({ url: '/search', query: { q: searchText } })
+      router.push(url)
+      handleChangeShowPopper(false)
+    }
+  }
+
+  const handleOnKeydown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    const { selectionStart, value } = e.currentTarget
     const { key } = e.nativeEvent
+
+    if (e.key === 'Enter' && value.trim()) {
+      handleClickSearchButton()
+    }
 
     if (selectionStart === 0 && key === ' ') {
       e.preventDefault()
@@ -76,7 +93,7 @@ const SearchBar = () => {
         type="text"
         value={searchText}
         onChange={handleOnChangeSearch}
-        onKeyDown={handleBlockSpaceAtFirst}
+        onKeyDown={handleOnKeydown}
         onFocus={handleOnFocus}
         placeholder="Search accounts"
       />
@@ -86,7 +103,7 @@ const SearchBar = () => {
         </button>
       )}
 
-      <button className={cx('btn', 'search-btn')} onMouseDown={(e) => e.preventDefault()}>
+      <button className={cx('btn', 'search-btn')} onMouseDown={handleClickSearchButton}>
         <SearchIcon className={cx('search-icon')} />
       </button>
     </>
