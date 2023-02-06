@@ -59,7 +59,7 @@ export const NON_USER_ITEMS: Item[] = [
 export const USER_ITEMS: Item[] = [
   { Icon: ProfileIcon, title: 'View Profile', to: '/@tess' },
   { Icon: CoinIcon, title: 'Get Coins', to: '/coin' },
-  { Icon: LiveIcon, title: 'Live Studio', to: '/studio/download' },
+  { Icon: LiveIcon, title: 'Live Studio', to: '/studio' },
   { Icon: SettingIcon, title: 'Settings', to: '/settings' },
   ...NON_USER_ITEMS,
   {

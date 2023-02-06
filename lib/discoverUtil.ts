@@ -14,6 +14,13 @@ export const getDiscoverData = () => {
   return MOCKUP_DATA
 }
 
+export const getFollowAccountData = () => {
+  const MOCKUP_DATA = getDiscoverData()
+  const followAccounts = MOCKUP_DATA.filter((item) => item.is_followed)
+
+  return followAccounts
+}
+
 export const updateDiscover = ({ id, strategy }: { id: string | number; strategy: DiscoverStrategyParam }) => {
   const MOCKUP_DATA = getDiscoverData()
   const newData = [...MOCKUP_DATA]

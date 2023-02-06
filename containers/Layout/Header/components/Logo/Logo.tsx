@@ -1,12 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSWRConfig } from 'swr'
 
 import { useTheme } from '~/contexts/ThemeContext'
 
 const Logo = () => {
   const { isDarkTheme } = useTheme()
+  const { mutate } = useSWRConfig()
+
+  const handleClickLogo = () => {
+    mutate('follow-account')
+  }
+
   return (
-    <Link href="/">
+    <Link href="/" onClick={handleClickLogo}>
       <Image
         src={isDarkTheme ? '/images/logo-theme-dark.svg' : '/images/logo-theme-light.svg'}
         alt="TikTok"

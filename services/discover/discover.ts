@@ -23,6 +23,26 @@ export const getDiscoverList = async ({ page, offset = '5' }: DiscoverRequestQue
   }
 }
 
+export const getFollowAccountList = async () => {
+  try {
+    const response = await fetch(`/api/follow-account`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    if (response.ok) {
+      const res: DiscoverResponse = await response.json()
+
+      return res.data
+    } else {
+      throw response
+    }
+  } catch (error) {
+    throw error
+  }
+}
+
 export const updateFollowOrLikeDiscover = async ({ id, param }: { id: number; param: DiscoverStrategyParam }) => {
   const queryParams = queryString.stringify({ id })
 

@@ -13,6 +13,7 @@
     "shares": 235,
     "timestamp": "2019-03-10T09:08:31.020Z",
     "music_name": "Left and Right",
+    "has_tick": true,
     "button_visible": true
   },
   {
@@ -21,7 +22,7 @@
     "username": "timmytam",
     "avatar": "https://i.imgur.com/rWYtZa6.png",
     "is_liked": false,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/1A7AKoF.mp4",
     "caption": "When your fries give you attitude #getInMyBelly",
     "likes": 521,
@@ -29,6 +30,7 @@
     "shares": 242,
     "timestamp": "2020-03-10T09:08:31.020Z",
     "music_name": "Cool Kids",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -37,7 +39,7 @@
     "username": "angiecakes",
     "avatar": "https://i.imgur.com/eX3hkoc.png",
     "is_liked": false,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/al6MLay.mp4",
     "caption": "Happiest of Birthdays my Angel",
     "likes": 151,
@@ -45,6 +47,7 @@
     "shares": 101,
     "timestamp": "2020-04-10T09:08:31.020Z",
     "music_name": "Sunroof",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -61,6 +64,7 @@
     "shares": 20,
     "timestamp": "2020-05-10T09:08:31.020Z",
     "music_name": "Betty (Get Money)",
+    "has_tick": true,
     "button_visible": true
   },
   {
@@ -69,7 +73,7 @@
     "username": "lana_del_away",
     "avatar": "https://i.imgur.com/jONHmE5.png",
     "is_liked": false,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/H9UX0Jm.mp4",
     "caption": "Art is for everyone",
     "likes": 216,
@@ -77,6 +81,7 @@
     "shares": 251,
     "timestamp": "2020-09-10T09:08:31.020Z",
     "music_name": "Jiggle Jiggle",
+    "has_tick": true,
     "button_visible": true
   },
   {
@@ -93,6 +98,7 @@
     "shares": 567,
     "timestamp": "2019-03-10T09:08:31.020Z",
     "music_name": "Cruel Summer",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -101,7 +107,7 @@
     "username": "timmytam",
     "avatar": "https://i.imgur.com/HmrMAcT.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/65Z9Dua.mp4",
     "caption": "When your fries give you attitude #getInMyBelly",
     "likes": 121,
@@ -109,6 +115,7 @@
     "shares": 61,
     "timestamp": "2020-03-10T09:08:31.020Z",
     "music_name": "About Damn Time",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -117,7 +124,7 @@
     "username": "kimtheproduct",
     "avatar": "https://i.imgur.com/AbE3RPR.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/al6MLay.mp4",
     "caption": "Happiest of Birthdays my Angel",
     "likes": 87,
@@ -125,6 +132,7 @@
     "shares": 23,
     "timestamp": "2020-04-10T09:08:31.020Z",
     "music_name": "Cool for the Summer",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -133,7 +141,7 @@
     "username": "nina_lina",
     "avatar": "https://i.imgur.com/IigY4Hm.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/VyZ34Go.mp4",
     "caption": "The new normal",
     "likes": 120,
@@ -141,6 +149,7 @@
     "shares": 78,
     "timestamp": "2020-05-10T09:08:31.020Z",
     "music_name": "Memories",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -149,7 +158,7 @@
     "username": "lana_del_away",
     "avatar": "https://i.imgur.com/jONHmE5.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/7DMCgvT.mp4",
     "caption": "Art is for everyone",
     "likes": 423,
@@ -157,6 +166,7 @@
     "shares": 572,
     "timestamp": "2020-09-10T09:08:31.020Z",
     "music_name": "10 Things I Hate About You",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -165,7 +175,7 @@
     "username": "mofarooq32",
     "avatar": "https://i.imgur.com/9KYq7VG.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/FTBP02Y.mp4",
     "caption": "These ducks are MEGA cute",
     "likes": 120,
@@ -173,6 +183,7 @@
     "shares": 158,
     "timestamp": "2019-03-10T09:08:31.020Z",
     "music_name": "Overflow",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -181,7 +192,7 @@
     "username": "timmytam",
     "avatar": "https://i.imgur.com/rWYtZa6.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/1A7AKoF.mp4",
     "caption": "When your fries give you attitude #getInMyBelly",
     "likes": 177,
@@ -189,6 +200,7 @@
     "shares": 591,
     "timestamp": "2020-03-10T09:08:31.020Z",
     "music_name": "1, 2, 3 (feat. Jason Derulo & De La Ghetto)",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -197,7 +209,7 @@
     "username": "angiecakes",
     "avatar": "https://i.imgur.com/eX3hkoc.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/al6MLay.mp4",
     "caption": "Happiest of Birthdays my Angel",
     "likes": 7,
@@ -205,6 +217,7 @@
     "shares": 2,
     "timestamp": "2020-04-10T09:08:31.020Z",
     "music_name": "Perfect",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -213,7 +226,7 @@
     "username": "nina_lina",
     "avatar": "https://i.imgur.com/IigY4Hm.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/Kzvbeup.mp4",
     "caption": "The new normal",
     "likes": 88,
@@ -221,6 +234,7 @@
     "shares": 9,
     "timestamp": "2020-05-10T09:08:31.020Z",
     "music_name": "Something just like this",
+    "has_tick": false,
     "button_visible": true
   },
   {
@@ -229,7 +243,7 @@
     "username": "lana_del_away",
     "avatar": "https://i.imgur.com/jONHmE5.png",
     "is_liked": true,
-    "is_followed": true,
+    "is_followed": false,
     "video": "https://i.imgur.com/H9UX0Jm.mp4",
     "caption": "Art is for everyone",
     "likes": 890,
@@ -237,6 +251,7 @@
     "shares": 123,
     "timestamp": "2020-09-10T09:08:31.020Z",
     "music_name": "Don't wanna know",
+    "has_tick": false,
     "button_visible": true
   }
 ]

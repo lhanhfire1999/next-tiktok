@@ -23,7 +23,7 @@ interface ItemProp {
   imageAlt: string
   name: string
   userName: string
-  id: string
+  id: string | number
   hasTick: boolean
 }
 
@@ -68,6 +68,10 @@ const MoreOrLessButton: React.FC<MoreOrLessButtonProp> = ({ isShowMore = true, o
   )
 }
 
-const CompoundAccount = Object.assign(Account, { Title, List: ListItems, Item, MoreOrLessButton })
+const Announce: React.FC<Children> = ({ children }) => {
+  return <p className={cx('announce')}>{children}</p>
+}
+
+const CompoundAccount = Object.assign(Account, { Title, List: ListItems, Item, MoreOrLessButton, Announce })
 
 export default CompoundAccount

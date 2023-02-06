@@ -18,6 +18,7 @@ export interface Discover {
   timestamp: string
   button_visible: boolean
   music_name: string
+  has_tick: boolean
 }
 
 export type DiscoverStrategyParam = UpdateStrategy.Follow | UpdateStrategy.Like
