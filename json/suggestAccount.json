@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "id": "15",
+      "user_name": "emilie__nereng",
+      "name": "Emilie Nereng",
+      "image_url": "https://i.imgur.com/pXsm02b.png",
+      "has_tick": true
+    },
+    {
+      "id": "16",
+      "user_name": "laura__pol",
+      "name": "Laura Pol",
+      "image_url": "https://i.imgur.com/NbKcpR9.png",
+      "has_tick": true
+    },
+    {
+      "id": "17",
+      "user_name": "pavel__kiselev",
+      "name": "Pavel Kiselev",
+      "image_url": "https://i.imgur.com/zEla0Om.png",
+      "has_tick": false
+    },
+    {
+      "id": "18",
+      "user_name": "xiomara",
+      "name": "Xiomara",
+      "image_url": "https://i.imgur.com/zHQAbiv.png",
+      "has_tick": true
+    },
+    {
+      "id": "19",
+      "user_name": "manon_27",
+      "name": "Manon",
+      "image_url": "https://i.imgur.com/NfdJFht.png",
+      "has_tick": true
+    },
+    {
+      "id": "20",
+      "user_name": "irina",
+      "name": "Irina",
+      "image_url": "https://i.imgur.com/iEV6VDE.png",
+      "has_tick": true
+    },
+    {
+      "id": "21",
+      "user_name": "valeria",
+      "name": "Valeria",
+      "image_url": "https://i.imgur.com/1L6hkPc.png",
+      "has_tick": false
+    },
+    {
+      "id": "22",
+      "user_name": "sigrid",
+      "name": "Sigrid",
+      "image_url": "https://i.imgur.com/haxpQL0.png",
+      "has_tick": true
+    },
+    {
+      "id": "23",
+      "user_name": "solana__12",
+      "name": "Solana",
+      "image_url": "https://i.imgur.com/7ZTJrKs.png",
+      "has_tick": false
+    }
+  ]
+}

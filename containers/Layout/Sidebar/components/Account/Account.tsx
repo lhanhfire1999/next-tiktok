@@ -19,8 +19,12 @@ interface MoreOrLessButtonProp {
   onClick?: () => void
 }
 interface ItemProp {
-  src?: string
-  alt?: string
+  imageSrc: string
+  imageAlt: string
+  name: string
+  userName: string
+  id: string
+  hasTick: boolean
 }
 
 const Account: React.FC<AccountProp> = ({ children, className }) => {
@@ -35,16 +39,22 @@ const ListItems: React.FC<Children> = ({ children }) => {
   return <List className={cx('list')}>{children}</List>
 }
 
-const Item: React.FC<ItemProp> = ({ src = '/images/no-image.webp', alt = 'avatar' }) => {
+const Item: React.FC<ItemProp> = ({
+  name,
+  userName,
+  imageSrc = '/images/no-image.webp',
+  imageAlt = 'avatar',
+  hasTick,
+}) => {
   return (
     <List.Item className={cx('item')} href="/">
-      <Image className={cx('avatar')} src={src} alt={alt} width={32} height={32} />
+      <Image className={cx('avatar')} src={imageSrc} alt={imageAlt} width={32} height={32} />
       <div className={cx('wrapper-info')}>
         <div className={cx('nickname')}>
-          <p>quynhalee</p>
-          <TickIcon className={cx('tick-icon')} />
+          <p>{userName}</p>
+          {hasTick && <TickIcon className={cx('tick-icon')} />}
         </div>
-        <p className={cx('name')}>Quỳnh Alee</p>
+        <p className={cx('name')}>{name}</p>
       </div>
     </List.Item>
   )
@@ -53,7 +63,7 @@ const Item: React.FC<ItemProp> = ({ src = '/images/no-image.webp', alt = 'avatar
 const MoreOrLessButton: React.FC<MoreOrLessButtonProp> = ({ isShowMore = true, onClick }) => {
   return (
     <p className={cx('btn')} onClick={onClick}>
-      {isShowMore ? 'See more' : 'See less'}
+      {isShowMore ? 'See less' : 'See more'}
     </p>
   )
 }

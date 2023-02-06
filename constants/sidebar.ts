@@ -40,7 +40,6 @@ export const DISCOVER_CONTAINER_SIDEBAR = [
   { title: 'Ckay - Love Nwantiti', Icon: MusicIcon, href: '/' },
   { title: 'Build a Bitch - Bella Poarch', Icon: MusicIcon, href: '/' },
   { title: 'Doja Cat - Need to Know', Icon: HashtagIcon, href: '/' },
-  { title: 'Mackedoi', Icon: HashtagIcon, href: '/' },
   { title: 'Bad Together - Lucas Estrada, Bhaskar, Pawl', Icon: MusicIcon, href: '/' },
   { title: 'Whiskey Song - NSH', Icon: HashtagIcon, href: '/' },
   { title: 'Toxic - BoyWithUke', Icon: HashtagIcon, href: '/' },
