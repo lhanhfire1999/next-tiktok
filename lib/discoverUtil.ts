@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { Discover, DiscoverStrategyParam, UpdateStrategy } from '~/services/discover'
 
-const jsonDirectory = path.join(process.cwd(), 'json')
+const jsonDirectory = path.join(process.cwd(), 'tmp')
 
 const saveData = (data: Discover[]) => {
   fs.writeFileSync(jsonDirectory + '/discover.json', JSON.stringify(data, null, 2))

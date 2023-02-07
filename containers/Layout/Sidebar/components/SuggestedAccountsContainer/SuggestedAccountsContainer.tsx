@@ -22,7 +22,7 @@ const SuggestedAccountsContainer = () => {
           />
         ))}
       </Account.List>
-      <Account.MoreOrLessButton isShowMore={isShowMore} onClick={handleShowMore} />
+      {data.length > 0 && <Account.MoreOrLessButton isShowMore={isShowMore} onClick={handleShowMore} />}
       {isLoading && <Loading />}
     </Account>
   )
