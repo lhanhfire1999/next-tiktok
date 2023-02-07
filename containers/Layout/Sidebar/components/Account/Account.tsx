@@ -51,10 +51,10 @@ const Item: React.FC<ItemProp> = ({
       <Image className={cx('avatar')} src={imageSrc} alt={imageAlt} width={32} height={32} />
       <div className={cx('wrapper-info')}>
         <div className={cx('nickname')}>
-          <p>{userName}</p>
+          <p>{name}</p>
           {hasTick && <TickIcon className={cx('tick-icon')} />}
         </div>
-        <p className={cx('name')}>{name}</p>
+        <p className={cx('name')}>{userName}</p>
       </div>
     </List.Item>
   )

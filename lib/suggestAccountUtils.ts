@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { SuggestAccount } from '~/services/suggestAccount'
 
-const jsonDirectory = path.join(process.cwd(), '/tmp')
+const jsonDirectory = path.join(process.cwd(), 'tmp')
 
 export const getSuggestAccountData = () => {
   const fileContents = fs.readFileSync(jsonDirectory + '/suggestAccount.json', 'utf8')
