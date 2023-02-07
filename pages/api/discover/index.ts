@@ -11,8 +11,9 @@ const handler = (req: NextApiRequest, res: NextApiResponse<DiscoverResponse>) =>
     const data = paginate(MOCKUP_DATA, parseInt(page as string), parseInt(offset as string))
 
     const cookies = req.cookies
+    console.log(!cookies['next-auth.session-token'] || !cookies['__Secure-next-auth.session-token'])
 
-    if (!cookies['next-auth.session-token'] || !cookies['__Secure-next-auth.session-token']) {
+    if (!cookies['next-auth.session-token'] && !cookies['__Secure-next-auth.session-token']) {
       const dataNotLogin = data.map((item) => ({ ...item, is_followed: false, is_liked: false }))
       return res.status(201).send({ message: 'Success', data: dataNotLogin })
     }
