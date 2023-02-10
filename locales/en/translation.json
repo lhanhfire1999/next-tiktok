@@ -1,0 +1,28 @@
+{
+  "Auth": {
+    "signIn": "Log in",
+    "signOut": "Log out",
+    "signUp": "Sign up"
+  },
+
+  "ModalAuth": {
+    "signIn": "Log in to TikTok",
+    "signUp": "Sign up for TikTok",
+    "qr": "Use QR code",
+    "private": "Use phone / email / username",
+    "facebook": "Continue with Facebook",
+    "google": "Continue with Google",
+    "twitter": "Continue with Twitter",
+    "line": "Continue with LINE",
+    "kakaoTalk": "Continue with KakaoTalk",
+    "apple": "Continue with Apple",
+    "instagram": "Continue with Instagram",
+    "inBottomText": "Don't have an account?  ",
+    "upBottomText": "Already have an account?  ",
+    "terms": "Terms of Service",
+    "policy": "Privacy Policy",
+    "policyConfirm1": "By continuing, you agree to ",
+    "policyConfirm2": " of TikTok and confirm that you have read ",
+    "policyConfirm3": " of TikTok."
+  }
+}

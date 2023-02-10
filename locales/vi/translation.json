@@ -1,0 +1,27 @@
+{
+  "Auth": {
+    "signIn": "Đăng nhập",
+    "signOut": "Đăng xuất",
+    "signUp": "Đăng ký"
+  },
+  "ModalAuth": {
+    "signIn": "Đăng nhập vào TikTok",
+    "signUp": "Đăng ký TikTok",
+    "qr": "Sử dụng mã QR",
+    "private": "Số điện thoại / Email / TikTok ID",
+    "facebook": "Tiếp tục với Facebook",
+    "google": "Tiếp tục với Google",
+    "twitter": "Tiếp tục với Twitter",
+    "line": "Tiếp tục với LINE",
+    "kakaoTalk": "Tiếp tục với KakaoTalk",
+    "apple": "Tiếp tục với Apple",
+    "instagram": "Tiếp tục với Instagram",
+    "inBottomText": "Bạn không có tài khoản?  ",
+    "upBottomText": "Bạn đã có tài khoản??  ",
+    "terms": "Điều khoản Sử dụng",
+    "policy": "Chính sách Quyền riêng tư",
+    "policyConfirm1": "Bằng cách tiếp tục, bạn đồng ý với ",
+    "policyConfirm2": " của TikTok và xác nhận rằng bạn đã đọc hiểu ",
+    "policyConfirm3": " của TikTok."
+  }
+}

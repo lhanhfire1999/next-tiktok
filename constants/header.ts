@@ -11,9 +11,10 @@ import {
 } from '~/components'
 
 interface Item {
+  id: string
   Icon: typeof LanguageIcon
   title: string
-  to?: string
+  to?: (value?: string) => string
   isTheme?: boolean
   isSeparate?: boolean
   children?: Language
@@ -45,24 +46,21 @@ export const LANGUAGE: Language = {
 }
 
 export const NON_USER_ITEMS: Item[] = [
-  {
-    Icon: LanguageIcon,
-    title: 'English',
-    children: LANGUAGE,
-  },
+  { id: 'language', Icon: LanguageIcon, title: 'English', children: LANGUAGE },
 
-  { Icon: QuestionIcon, title: 'Feedback and help', to: '/feedback' },
-  { Icon: KeyboardIcon, title: 'Keyboard shortcuts' },
-  { Icon: ThemeIcon, title: 'Dark mode', isTheme: true },
+  { id: 'feedback', Icon: QuestionIcon, title: 'Feedback and help', to: () => '/feedback' },
+  { id: 'keyboard', Icon: KeyboardIcon, title: 'Keyboard shortcuts' },
+  { id: 'theme', Icon: ThemeIcon, title: 'Dark mode', isTheme: true },
 ]
 
 export const USER_ITEMS: Item[] = [
-  { Icon: ProfileIcon, title: 'View Profile', to: '/@tess' },
-  { Icon: CoinIcon, title: 'Get Coins', to: '/coin' },
-  { Icon: LiveIcon, title: 'Live Studio', to: '/studio' },
-  { Icon: SettingIcon, title: 'Settings', to: '/settings' },
+  { id: 'profile', Icon: ProfileIcon, title: 'View Profile', to: (value) => `/profile/${value}` },
+  { id: 'coin', Icon: CoinIcon, title: 'Get Coins', to: () => '/coin' },
+  { id: 'live', Icon: LiveIcon, title: 'Live Studio', to: () => '/studio' },
+  { id: 'setting', Icon: SettingIcon, title: 'Settings', to: () => '/settings' },
   ...NON_USER_ITEMS,
   {
+    id: 'auth',
     Icon: LogoutIcon,
     title: 'Log out',
     // to: '/logout',

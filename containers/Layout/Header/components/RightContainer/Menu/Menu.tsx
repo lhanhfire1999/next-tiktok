@@ -105,13 +105,13 @@ const MainListPopper = () => {
 
   return (
     <Popper.MenuList>
-      {LIST.map(({ Icon, title, to, isTheme, isSeparate, children }, index) => {
+      {LIST.map(({ Icon, title, to, isTheme, isSeparate, children, id }) => {
         const isLanguages = !!children
 
         return (
-          <Popper.MenuItem key={index} className={cx('wrapper-item', { separate: isSeparate })}>
+          <Popper.MenuItem key={id} className={cx('wrapper-item', { separate: isSeparate })}>
             <Button
-              href={to}
+              href={to ? to(session?.user?.name || '') : null}
               className={cx('item')}
               LeftIcon={<Icon />}
               onClick={

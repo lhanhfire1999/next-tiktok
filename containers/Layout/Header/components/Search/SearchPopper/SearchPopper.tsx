@@ -19,7 +19,7 @@ const SearchPopper = () => {
       <Popper.MenuList>
         {accountList &&
           accountList.map((item) => (
-            <Popper.MenuItem className={cx('menu-item')} key={item.id} href={`/@${item.nickname}`}>
+            <Popper.MenuItem className={cx('menu-item')} key={item.id} href={`/profile/@${item.nickname}`}>
               <ImageWithFallback
                 src={item.avatar}
                 alt={item.nickname}
