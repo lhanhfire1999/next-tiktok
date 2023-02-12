@@ -28,7 +28,6 @@ export default async function RootLayout({
   try {
     messages = (await import(`~/locales/${lang}/translation.json`)).default
   } catch (error) {
-    console.log(error)
     notFound()
   }
 
@@ -36,7 +35,7 @@ export default async function RootLayout({
     <html lang={lang} className={`${roboto.className} mdl-js`}>
       <body>
         <Provider locale={lang} messages={messages}>
-          <DefaultLayout>{children}</DefaultLayout>
+          <DefaultLayout locale={lang}>{children}</DefaultLayout>
         </Provider>
       </body>
     </html>

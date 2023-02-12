@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import className from 'classnames/bind'
 import { useSession } from 'next-auth/react'
-import { Button, InboxIcon, MessageIcon } from '~/components'
+import { Button, InboxIcon, LocalizedLink, MessageIcon } from '~/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import styles from './ActionButtons.module.scss'
 
@@ -24,9 +24,9 @@ const ActionButtons = () => {
     return (
       <>
         <Tippy delay={[0, 50]} content="Message" placement="bottom">
-          <Link href="messages" className={cx('wrapper-icon', 'wrapper-message-icon')}>
+          <LocalizedLink href="/" className={cx('wrapper-icon', 'wrapper-message-icon')}>
             <MessageIcon className={cx('icon')} />
-          </Link>
+          </LocalizedLink>
         </Tippy>
 
         <Tippy delay={[0, 50]} content="Inbox" placement="bottom">

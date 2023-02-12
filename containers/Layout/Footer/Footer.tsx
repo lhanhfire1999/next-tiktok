@@ -1,7 +1,6 @@
 'use client'
 import className from 'classnames/bind'
-import Link from 'next/link'
-import { ImageWithFallback, List } from '~/components'
+import { ImageWithFallback, List, LocalizedLink } from '~/components'
 import { FOOTER_STATIC_DATA, FOOTER_STATIC_DATA_KEYS } from '~/constants'
 import SelectLanguage from './components/FooterSelectLanguage'
 import styles from './Footer.module.scss'
@@ -12,9 +11,9 @@ const Footer = () => {
     <footer className={cx('footer')}>
       <div className={cx('wrapper-footer-content')}>
         <div className={cx('wrapper-column', 'logo')}>
-          <Link href="/">
+          <LocalizedLink href="/">
             <ImageWithFallback src="/images/logo-theme-dark.svg" alt="TikTok" width={118} height={42} />
-          </Link>
+          </LocalizedLink>
         </div>
 
         {FOOTER_STATIC_DATA_KEYS.map((titleName) => (

@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind'
 import { useSession } from 'next-auth/react'
-import Link from 'next/link'
+
 import React from 'react'
 
-import { CommentIcon, HeartIcon, List, MusicIcon, ShareIcon } from '~/components'
+import { CommentIcon, HeartIcon, List, LocalizedLink, MusicIcon, ShareIcon } from '~/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { Discover } from '~/services/discover'
 import { useHomeDiscover } from '../../contexts'
@@ -45,7 +45,7 @@ const VideoMusic: React.FC<VideoMusic> = ({ name }) => {
   return (
     <div className={cx('wrapper-video-music')}>
       <MusicIcon className={cx('music-icon')} />
-      <Link href="/">{name}</Link>
+      <LocalizedLink href="/">{name}</LocalizedLink>
     </div>
   )
 }

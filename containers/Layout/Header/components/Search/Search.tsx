@@ -1,5 +1,6 @@
 'use client'
 import classNames from 'classnames/bind'
+import { useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import queryString from 'query-string'
 import React, { useRef, useState } from 'react'
@@ -42,10 +43,12 @@ const Search: React.FC<ChildrenProp> = ({ children }) => {
 }
 
 const SearchBar = () => {
+  const router = useRouter()
+  const locale = useLocale()
+
   const { searchText, handleChangeSearchText } = useSearchBar()
   const { isLoading, handleChangeShowPopper, mutate } = useSearchPopper()
   const searchRef = useRef<HTMLInputElement>(null)
-  const router = useRouter()
 
   const handleOnChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChangeSearchText(e.currentTarget.value.trimStart())
@@ -63,7 +66,7 @@ const SearchBar = () => {
     e && e.preventDefault()
 
     if (searchText) {
-      const url = queryString.stringifyUrl({ url: '/search', query: { q: searchText } })
+      const url = queryString.stringifyUrl({ url: `/${locale}/search`, query: { q: searchText } })
       router.push(url)
       handleChangeShowPopper(false)
     }

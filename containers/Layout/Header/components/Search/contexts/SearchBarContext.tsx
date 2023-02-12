@@ -1,3 +1,4 @@
+import { useLocale } from 'next-intl'
 import { usePathname, useSearchParams } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
 
@@ -16,18 +17,19 @@ export const SearchBarProvider: React.FC<SearchBarContextProp> = ({ children }) 
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [searchText, setSearchText] = useState('')
+  const locale = useLocale()
 
   useEffect(() => {
     setSearchText(() => {
       const querySearch = searchParams.get('q')
-      if (pathname === '/search' && querySearch) {
+      if (pathname === `/${locale}/search` && querySearch) {
         return querySearch
       }
 
       // clear searchText when click logo
       return ''
     })
-  }, [pathname, searchParams])
+  }, [locale, pathname, searchParams])
 
   const handleChangeSearchText = (text: string) => {
     setSearchText(text)

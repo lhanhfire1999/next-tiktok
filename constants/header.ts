@@ -54,10 +54,18 @@ export const NON_USER_ITEMS: Item[] = [
 ]
 
 export const USER_ITEMS: Item[] = [
-  { id: 'profile', Icon: ProfileIcon, title: 'View Profile', to: (value) => `/profile/${value}` },
-  { id: 'coin', Icon: CoinIcon, title: 'Get Coins', to: () => '/coin' },
-  { id: 'live', Icon: LiveIcon, title: 'Live Studio', to: () => '/studio' },
-  { id: 'setting', Icon: SettingIcon, title: 'Settings', to: () => '/settings' },
+  {
+    id: 'profile',
+    Icon: ProfileIcon,
+    title: 'View Profile',
+    to: (value) => {
+      return `/`
+      // return `/profile/${value}`
+    },
+  },
+  { id: 'coin', Icon: CoinIcon, title: 'Get Coins', to: () => '/' },
+  { id: 'live', Icon: LiveIcon, title: 'Live Studio', to: () => '/' },
+  { id: 'setting', Icon: SettingIcon, title: 'Settings', to: () => '/' },
   ...NON_USER_ITEMS,
   {
     id: 'auth',

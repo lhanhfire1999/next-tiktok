@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import React from 'react'
+import LocalizedLink from '../LocalizedLink'
 
 interface Children {
   children: React.ReactNode
@@ -29,9 +29,9 @@ const Item = React.forwardRef<HTMLLIElement, ItemProp>(({ children, href, classN
   return (
     <li ref={ref} className={!href ? className : undefined} onClick={handleClick}>
       {href ? (
-        <Link href={href} className={className}>
+        <LocalizedLink href={href} className={className}>
           {children}
-        </Link>
+        </LocalizedLink>
       ) : (
         children
       )}

@@ -12,3 +12,11 @@ export const getVideoDuration = (file: File) =>
 export const paginate = <T>(data: T[], page: number, offset: number): T[] => {
   return data.slice((page - 1) * offset, page * offset)
 }
+
+export const removeTrailingSlash = (str: string) => {
+  return str.replace(/\/+$/, '')
+}
+
+export const getLocalizedHref = (originalHref: string, locale: string) => {
+  return removeTrailingSlash(originalHref.replace(/^\//, '/' + locale + '/'))
+}
