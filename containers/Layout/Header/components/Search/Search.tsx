@@ -1,6 +1,6 @@
 'use client'
 import classNames from 'classnames/bind'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import queryString from 'query-string'
 import React, { useRef, useState } from 'react'
@@ -43,6 +43,7 @@ const Search: React.FC<ChildrenProp> = ({ children }) => {
 }
 
 const SearchBar = () => {
+  const t = useTranslations()
   const router = useRouter()
   const locale = useLocale()
 
@@ -98,7 +99,7 @@ const SearchBar = () => {
         onChange={handleOnChangeSearch}
         onKeyDown={handleOnKeydown}
         onFocus={handleOnFocus}
-        placeholder="Search accounts"
+        placeholder={t('Common.searchAccounts')}
       />
       {!!searchText && (
         <button className={cx('btn')} onClick={handleClearSearch}>

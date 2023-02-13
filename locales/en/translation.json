@@ -24,5 +24,55 @@
     "policyConfirm1": "By continuing, you agree to ",
     "policyConfirm2": " of TikTok and confirm that you have read ",
     "policyConfirm3": " of TikTok."
+  },
+
+  "Common": {
+    "language": "Language",
+    "currentLanguage": "English",
+    "feedback": "Feedback and help",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "getCoins": "Get Coins",
+    "liveStudio": "LIVE Studio",
+    "settings": "Settings",
+    "keyboardShortcuts": "Keyboard shortcuts",
+    "viewProfile": "View Profile",
+    "upload": "Upload",
+    "account": "Account",
+    "searchAccounts": "Search accounts",
+    "viewAllResultsFor": "View on results for",
+
+    "forYou": "For You",
+    "following": "Following",
+    "live": "LIVE",
+    "suggestAccounts": "Suggest accounts",
+    "followingAccounts": "Following accounts",
+    "discover": "Discover",
+
+    "seeMore": "See more",
+    "seeLess": "See less",
+
+    "about": "About",
+    "newsroom": "Newsroom",
+    "contact": "Contact",
+    "careers": "Careers",
+    "byteDance": "ByteDance",
+    "tikTokForGood": "TikTok for Good",
+    "advertise": "Advertise",
+    "developers": "Developers",
+    "transparency": "Transparency",
+    "tikTokRewards": "TikTok Rewards",
+    "tikTokBrowse": "TikTok Browse",
+    "tikTokEmbeds": "TikTok Embeds",
+    "help": "Help",
+    "safety": "Safety",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "creatorPortal": "Creator Portal",
+    "communityGuidelines": "Community Guidelines",
+    "copyright": "© 2022 TikTok",
+
+    "inbox": "Inbox",
+    "message": "Message"
   }
 }

@@ -1,7 +1,7 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper-item {
-  @include flex(flex, center, left);
+  @include flex(flex, center, center);
   padding: 8px;
   border-radius: 4px;
   background: transparent;
@@ -31,9 +31,7 @@
   }
 
   @include responsive('desktop') {
-    .wrapper-item {
-      justify-content: flex-start;
-    }
+    justify-content: flex-start;
 
     .title {
       display: block;

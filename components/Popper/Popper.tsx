@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import styles from './Popper.module.scss'
 import List from '../List'
@@ -11,9 +11,7 @@ interface GeneralProp {
 
 interface Popper extends GeneralProp {}
 
-interface MenuItem extends GeneralProp {
-  href?: string
-}
+interface MenuItem extends ComponentProps<typeof List.Item> {}
 
 const cx = classNames.bind(styles)
 
@@ -29,9 +27,9 @@ const HeaderTitle: React.FC<GeneralProp> = ({ children, className }) => {
   return <h4 className={className}>{children}</h4>
 }
 
-const MenuItem: React.FC<MenuItem> = ({ children, href, className }) => {
+const MenuItem: React.FC<MenuItem> = ({ children, href, className, onClick }) => {
   return (
-    <List.Item className={cx('menu-item', className)} href={href}>
+    <List.Item className={cx('menu-item', className)} href={href} onClick={onClick}>
       {children}
     </List.Item>
   )

@@ -23,5 +23,55 @@
     "policyConfirm1": "Bằng cách tiếp tục, bạn đồng ý với ",
     "policyConfirm2": " của TikTok và xác nhận rằng bạn đã đọc hiểu ",
     "policyConfirm3": " của TikTok."
+  },
+
+  "Common": {
+    "language": "Ngôn Ngữ",
+    "currentLanguage": "Tiếng Việt",
+    "feedback": "Phản hồi và trợ giúp",
+    "darkMode": "Chế độ tối",
+    "lightMode": "Chế độ sáng",
+    "getCoins": "Nhận Xu",
+    "liveStudio": "LIVE Studio",
+    "settings": "Cài đặt",
+    "keyboardShortcuts": "Phím tắt bàn phím",
+    "viewProfile": "Xem hồ sơ",
+    "upload": "Tải lên",
+    "account": "Tài khoản",
+    "searchAccounts": "Tìm kiếm tài khoản",
+    "viewAllResultsFor": "Xem tất cả kết quả dành cho",
+
+    "forYou": "Dành cho bạn",
+    "following": "Đang Follow",
+    "live": "LIVE",
+    "suggestAccounts": "Tài khoản được đề xuất",
+    "followingAccounts": "Các tài khoản đang follow",
+    "discover": "Khám phá",
+
+    "seeMore": "Xem tất cả",
+    "seeLess": "Ẩn bớt",
+
+    "about": "Giới thiệu",
+    "newsroom": "Bảng tin",
+    "contact": "Liên hệ",
+    "careers": "Sự nghiệp",
+    "byteDance": "ByteDance",
+    "tikTokForGood": "TikTok for Good",
+    "advertise": "Quảng cáo",
+    "developers": "Developers",
+    "transparency": "Minh bạch",
+    "tikTokRewards": "TikTok Rewards",
+    "tikTokBrowse": "TikTok Browse",
+    "tikTokEmbeds": "TikTok Embeds",
+    "help": "Trợ giúp",
+    "safety": "An toàn",
+    "terms": "Điều khoản",
+    "privacy": "Quyền riêng tư",
+    "creatorPortal": "Cổng thông tin Tác giả",
+    "communityGuidelines": "Hướng dẫn Cộng đồng",
+    "copyright": "© 2022 TikTok",
+
+    "inbox": "Hộp thư",
+    "message": "Tin nhắn"
   }
 }

@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind'
+import { useTranslations } from 'next-intl'
 
 import { ImageWithFallback, Popper, TickIcon } from '~/components'
 import { useSearchPopper } from '../contexts/SearchPopperContext'
@@ -8,13 +9,14 @@ import styles from './SearchPopper.module.scss'
 const cx = classNames.bind(styles)
 
 const SearchPopper = () => {
+  const t = useTranslations()
   const { searchText, accountList, hasShowPopper } = useSearchPopper()
 
   if (!searchText || !accountList?.length || !hasShowPopper) return null
 
   return (
     <Popper className={cx('search-popper')}>
-      <Popper.HeaderTitle className={cx('title')}>Account</Popper.HeaderTitle>
+      <Popper.HeaderTitle className={cx('title')}>{t('Common.account')}</Popper.HeaderTitle>
 
       <Popper.MenuList>
         {accountList &&
@@ -40,7 +42,7 @@ const SearchPopper = () => {
       </Popper.MenuList>
 
       <Popper.Footer className={cx('footer')}>
-        <p>{`View all results for "${searchText}"`}</p>
+        <p>{`${t('Common.viewAllResultsFor')} "${searchText}"`}</p>
       </Popper.Footer>
     </Popper>
   )

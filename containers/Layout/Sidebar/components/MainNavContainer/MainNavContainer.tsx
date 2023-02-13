@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 
 import { List } from '~/components'
@@ -10,6 +10,7 @@ import styles from './MainNavContainer.module.scss'
 const cx = classNames.bind(styles)
 
 const MainNavContainer = () => {
+  const t = useTranslations()
   const pathname = usePathname()
   const locale = useLocale()
 
@@ -25,7 +26,7 @@ const MainNavContainer = () => {
             <i className={cx('wrapper-icon')}>
               <Icon width="3.2rem" height="3.2rem" className={cx('icon')} />
             </i>
-            <h4 className={cx('title')}>{title}</h4>
+            <h4 className={cx('title')}>{t(title as any)}</h4>
           </List.Item>
         )
       })}

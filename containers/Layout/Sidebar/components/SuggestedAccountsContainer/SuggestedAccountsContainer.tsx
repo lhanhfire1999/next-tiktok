@@ -1,14 +1,17 @@
 'use client'
+import { useTranslations } from 'next-intl'
+
 import { Loading } from '~/components'
 import useSuggestAccount from '../../hooks/useSuggestAccount'
 import Account from '../Account'
 
 const SuggestedAccountsContainer = () => {
+  const t = useTranslations('Common')
   const { data, isLoading, isShowMore, handleShowMore } = useSuggestAccount()
 
   return (
     <Account>
-      <Account.Title>Suggested Accounts</Account.Title>
+      <Account.Title>{t('suggestAccounts')}</Account.Title>
       <Account.List>
         {data?.map((item) => (
           <Account.Item

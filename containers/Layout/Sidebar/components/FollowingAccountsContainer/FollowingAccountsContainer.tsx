@@ -1,11 +1,12 @@
-import { useSession } from 'next-auth/react'
-import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
+
 import { Loading } from '~/components'
 import { useWindowSize } from '~/hooks'
 import useFollowAccounts from '../../hooks/useFollowAccount'
 import Account from '../Account'
 
 const FollowingAccountsContainer = () => {
+  const t = useTranslations('Common')
   const { data, handleShowMore, isLoading, isShowMore } = useFollowAccounts()
   const { width } = useWindowSize()
 
@@ -13,7 +14,7 @@ const FollowingAccountsContainer = () => {
 
   return (
     <Account>
-      <Account.Title>Following Accounts</Account.Title>
+      <Account.Title>{t('followingAccounts')}</Account.Title>
 
       {data.length > 0 && (
         <>
