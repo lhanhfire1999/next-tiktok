@@ -1,5 +1,6 @@
 'use client'
 import classNames from 'classnames/bind'
+import { useTranslations } from 'next-intl'
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { useFormState, useWatch } from 'react-hook-form'
 
@@ -24,18 +25,20 @@ const FormContainer: React.FC<FormContainerProp> = ({ children }) => {
 }
 
 const EditorEntrance = () => {
+  const t = useTranslations('UploadPage')
+
   return (
     <div className={cx('editor-entrance')}>
       <i className={cx('wrapper-edit-icon')}>
         <EditIcon width="2.2rem" height="1.8rem" />
       </i>
       <div className={cx('content')}>
-        <h4>{UPLOAD_PAGE_FORM_CONTAINER.editorEntrance.title}</h4>
-        <p>{UPLOAD_PAGE_FORM_CONTAINER.editorEntrance.content}</p>
+        <h4>{t(UPLOAD_PAGE_FORM_CONTAINER.editorEntrance.title as any)}</h4>
+        <p>{t(UPLOAD_PAGE_FORM_CONTAINER.editorEntrance.content as any)}</p>
       </div>
       <div className={cx('wrapper-btn')}>
         <Button onClick={() => null} primary className={cx('edit-btn')}>
-          Edit
+          {t('edit')}
         </Button>
       </div>
     </div>
@@ -43,6 +46,7 @@ const EditorEntrance = () => {
 }
 
 const Caption = () => {
+  const t = useTranslations('UploadPage')
   const { control, register, setValue } = useUploadForm()
   const { ref, ...rest } = register('caption', { required: true })
   const captionValue = useWatch({ control, name: 'caption' })
@@ -68,7 +72,7 @@ const Caption = () => {
   return (
     <div className={cx('wrapper-caption') + ' mt-6'}>
       <div className={cx('wrapper-title')}>
-        <h4>{UPLOAD_PAGE_FORM_CONTAINER.caption.title}</h4>
+        <h4>{t(UPLOAD_PAGE_FORM_CONTAINER.caption.title as any)}</h4>
         <span>{captionValue.length} / 150</span>
       </div>
 
@@ -97,6 +101,7 @@ const Caption = () => {
 }
 
 const SettingVideo = () => {
+  const t = useTranslations('UploadPage')
   const [isShowSelectMenu, setIsShowSelectMenu] = useState(false)
   const { setValue, control } = useUploadForm()
   const currentWatchMode = useWatch({ control, name: 'watchMode' })
@@ -122,18 +127,18 @@ const SettingVideo = () => {
 
   return (
     <div className={cx('wrapper-setting-video') + ' mt-6'}>
-      <h4>{UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.title}</h4>
+      <h4>{t(UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.title as any)}</h4>
 
       <SelectMenu
         onClickOutSide={handleClosedSelectMenu}
-        selectedValue={currentSelectedValue}
+        selectedValue={t(currentSelectedValue as any)}
         onClick={handleToggleSelectMenu}
         isActive={isShowSelectMenu}
       >
         <SelectMenu.List>
           {UPLOAD_PAGE_FORM_CONTAINER.whoCanWatch.data.map(({ key, value }) => (
             <List.Item key={key} className={cx('option-item')} onClick={handleChangeWatchMode.bind(null, key)}>
-              {value}
+              {t(value as any)}
             </List.Item>
           ))}
         </SelectMenu.List>
@@ -143,6 +148,7 @@ const SettingVideo = () => {
 }
 
 const AllowUser = () => {
+  const t = useTranslations('UploadPage')
   const id = useId()
 
   const { register, control, setValue, resetField } = useUploadForm()
@@ -184,25 +190,26 @@ const AllowUser = () => {
 
   return (
     <div className={cx('wrapper-allow-user') + ' mt-6'}>
-      <h4>{UPLOAD_PAGE_FORM_CONTAINER.allowUser.title}</h4>
+      <h4>{t(UPLOAD_PAGE_FORM_CONTAINER.allowUser.title as any)}</h4>
 
       <List className={cx('option-list') + ' mt-1'}>
         {UPLOAD_PAGE_FORM_CONTAINER.allowUser.data.map(({ key: idx, value: optionName }) => (
           <List.Item key={idx} className={cx('option-item', { disabled: handleIsDisabled(idx) })}>
             <input {...rest} type="checkbox" id={id + `-${idx}`} value={idx} disabled={handleIsDisabled(idx)} />
-            <label htmlFor={id + `-${idx}`}>{optionName}</label>
+            <label htmlFor={id + `-${idx}`}>{t(optionName as any)}</label>
           </List.Item>
         ))}
       </List>
 
       {isOverVideoDuration && (
-        <p className={cx('warning')}> {UPLOAD_PAGE_FORM_CONTAINER.allowUser.overVideoDuration}</p>
+        <p className={cx('warning')}> {t(UPLOAD_PAGE_FORM_CONTAINER.allowUser.overVideoDuration as any)}</p>
       )}
     </div>
   )
 }
 
 const Copyright = () => {
+  const t = useTranslations('UploadPage')
   const [isChecked, setIsChecked] = useState(false)
 
   const handleChangeChecked = () => {
@@ -212,21 +219,22 @@ const Copyright = () => {
   return (
     <div className={cx('wrapper-copyright') + ' mt-6'}>
       <div className={cx('wrapper-header')}>
-        <h4>{UPLOAD_PAGE_FORM_CONTAINER.copyright.title}</h4>
+        <h4>{t(UPLOAD_PAGE_FORM_CONTAINER.copyright.title as any)}</h4>
         <ToggleButton onChange={handleChangeChecked} />
       </div>
 
       <p className={cx('paragraph')}>
         {isChecked
-          ? UPLOAD_PAGE_FORM_CONTAINER.copyright.checkedText
-          : UPLOAD_PAGE_FORM_CONTAINER.copyright.notCheckedText}
-        <span className={cx('learn-more')}> Learn more</span>
+          ? t(UPLOAD_PAGE_FORM_CONTAINER.copyright.checkedText as any)
+          : t(UPLOAD_PAGE_FORM_CONTAINER.copyright.notCheckedText as any)}
+        <span className={cx('learn-more')}> {t('learnMore')}</span>
       </p>
     </div>
   )
 }
 
 const ActionButtons = () => {
+  const t = useTranslations('UploadPage')
   const { isLoading, handleSubmitForm } = usePostUploadForm()
   const { control, reset, getValues } = useUploadForm()
   const { isValid } = useFormState({ control })
@@ -252,10 +260,10 @@ const ActionButtons = () => {
   return (
     <div className={cx('wrapper-action-buttons') + ' mt-6'}>
       <Button outlineGray large className={cx('btn')} onClick={handleDiscard}>
-        Discard
+        {t('discard')}
       </Button>
       <Button primary large className={cx('btn')} onClick={handleSubmit} disabled={!isValid || isLoading}>
-        Post
+        {t('post')}
       </Button>
     </div>
   )

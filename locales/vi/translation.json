@@ -4,6 +4,7 @@
     "signOut": "Đăng xuất",
     "signUp": "Đăng ký"
   },
+
   "ModalAuth": {
     "signIn": "Đăng nhập vào TikTok",
     "signUp": "Đăng ký TikTok",
@@ -73,5 +74,50 @@
 
     "inbox": "Hộp thư",
     "message": "Tin nhắn"
+  },
+
+  "UploadPage": {
+    "comment": "Bình luận",
+    "edit": "Chỉnh sửa",
+    "uploadVideo": "Tải video lên",
+    "uploadVideoContent": "Đăng video vào tài khoản của bạn",
+
+    "selectVideo": "Chọn video để tải lên",
+    "selectVideoContent": "Hoặc kéo và thả tập tin",
+    "selectVideoType": "MP4 hoặc WebM",
+    "selectVideoSize": "độ phân giải 720x1280 trở lên",
+    "selectVideoTime": "Tối đa 30 phút",
+    "selectVideoCapacity": "Nhỏ hơn 2 GB",
+    "selectFile": "Chọn tập tin",
+    "changeVideo": "Thay đổi video",
+
+    "divideVideo": "Chia video và chỉnh sửa",
+    "divideVideoContent": "Bạn có thể nhanh chóng phân chia video thành nhiều phần, loại bỏ các phần thừa và chuyển video ngang thành video dọc",
+
+    "caption": "Chú tích",
+    "whoCan": "Ai có thể xem video này",
+    "allowUser": "Cho phép người dùng:",
+    "copyright": "Chạy quy trình kiểm tra bản quyền",
+    "copyrightNote": "Chúng tôi sẽ kiểm tra xem video của bạn có sử dụng âm thanh vi phạm bản quyền hay không. Nếu chúng tôi phát hiện có vi phạm, bạn có thể chỉnh sửa video trước khi đăng.",
+    "copyRightText": "Lưu ý: Kết quả kiểm tra bản quyền không phải là kết quả cuối cùng. Ví dụ: nếu về sau, sự cho phép dùng âm thanh của người nắm giữ bản quyền có thay đổi thì điều này có thể ảnh hưởng đến video của bạn.",
+    "learnMore": "Tìm hiểu thêm",
+
+    "replace": "Thay thế",
+    "replaceTitle": "Thay thế video này?",
+    "replaceContent": "Chú thích và cài đặt video vẫn sẽ được lưu.",
+    "continuesEditing": "Tiếp tục chỉnh sửa",
+
+    "uploadModalTitle": "Video của bạn đang được tải lên TikTok!",
+    "uploadModalUpload": "Tải video khác lên",
+    "uploadModalReturn": "Trở lại trang chủ",
+
+    "discard": "Huỷ bỏ",
+    "post": "Đăng",
+    "duet": "Duet",
+    "stitch": "Stitch",
+    "public": "Công khai",
+    "friend": "Bạn bè",
+    "private": "Riêng tư",
+    "overVideoDuration": "Duet và Stitch không có sẵn cho video trên 60s"
   }
 }

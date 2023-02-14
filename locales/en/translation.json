@@ -74,5 +74,50 @@
 
     "inbox": "Inbox",
     "message": "Message"
+  },
+
+  "UploadPage": {
+    "comment": "Comment",
+    "edit": "Edit",
+    "uploadVideo": "Upload video",
+    "uploadVideoContent": "Post a video to your account",
+
+    "selectVideo": "Select video to upload",
+    "selectVideoContent": "Or drag and drop a file",
+    "selectVideoType": "MP4 or WebM",
+    "selectVideoSize": "720x1280 resolution or higher",
+    "selectVideoTime": "Up tp 30 minutes",
+    "selectVideoCapacity": "Less than 2 GB",
+    "selectFile": "Select file",
+    "changeVideo": "Change video",
+
+    "divideVideo": "Divide videos and edit",
+    "divideVideoContent": "You can quickly divide videos into multiple parts, remove redundant parts and turn landscape videos into portrait videos",
+
+    "caption": "Caption",
+    "whoCan": "Who can watch this video",
+    "allowUser": "Allow users to",
+    "copyright": "Run a copyright check",
+    "copyrightNote": "We'll check your video for potential copyright infringements on used sounds. If infringements are found, you can edit the video before posting.",
+    "copyRightText": "Note: Results of copyright checks aren't final. For instance, future changes of the copyright holder's authorization to the sound may impact your video may impact your video.",
+    "learnMore": "Learn more",
+
+    "replace": "Replace",
+    "replaceTitle": "Replace this video",
+    "replaceContent": "Caption and video settings will still be saved",
+    "continuesEditing": "Continue editing",
+
+    "uploadModalTitle": "Your videos are being uploaded to TikTok!",
+    "uploadModalUpload": "Upload another video",
+    "uploadModalReturn": "Return home page",
+
+    "discard": "Discard",
+    "post": "Post",
+    "duet": "Duet",
+    "stitch": "Stitch",
+    "public": "Public",
+    "friend": "Friend",
+    "private": "Private",
+    "overVideoDuration": "Duet and Stitch not available for videos over 60s"
   }
 }

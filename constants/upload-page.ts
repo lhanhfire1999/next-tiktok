@@ -2,60 +2,59 @@ import { CloudIcon } from '~/components'
 
 export const UPLOAD_PAGE_FORM_CONTAINER = {
   caption: {
-    title: 'Caption',
+    title: 'caption',
   },
   editorEntrance: {
-    title: 'Divide videos and edit',
-    content:
-      'You can quickly divide videos into multiple parts, remove redundant parts and turn landscape videos into portrait videos',
+    title: 'divideVideo',
+    content: 'divideVideoContent',
   },
   whoCanWatch: {
-    title: 'Who can watch this video',
+    title: 'whoCan',
     data: [
       {
         key: '0',
-        value: 'Public',
+        value: 'public',
       },
       {
         key: '1',
-        value: 'Friends',
+        value: 'friend',
       },
       {
         key: '2',
-        value: 'Private',
+        value: 'private',
       },
     ] as const,
   },
 
   allowUser: {
-    title: 'Allow users to',
+    title: 'allowUser',
     data: [
       {
         key: '0',
-        value: 'Comment',
+        value: 'comment',
       },
       {
         key: '1',
-        value: 'Duet',
+        value: 'duet',
       },
       {
         key: '2',
-        value: 'Stitch',
+        value: 'stitch',
       },
     ] as const,
 
-    overVideoDuration: 'Duet and Stitch not available for videos over 60s',
+    overVideoDuration: 'overVideoDuration',
   },
   copyright: {
-    title: 'Run a copyright check',
-    notCheckedText: `We'll check your video for potential copyright infringements on used sounds. If infringements are found, you can edit the video before posting.`,
-    checkedText: `Note: Results of copyright checks aren't final. For instance, future changes of the copyright holder's authorization to the sound may impact your video may impact your video.`,
+    title: 'copyright',
+    notCheckedText: `copyrightNote`,
+    checkedText: `copyRightText`,
   },
 }
 
 export const UploadPageUploadVideoContainer = {
   Icon: CloudIcon,
-  title: 'Select video to upload',
-  content: 'Or drag and drop a file',
-  subContentList: ['MP4 or WebM', '720x1280 resolution or higher', 'Up to 30 minutes', 'Less than 2 GB'],
+  title: 'selectVideo',
+  content: 'selectVideoContent',
+  subContentList: ['selectVideoType', 'selectVideoSize', 'selectVideoTime', 'selectVideoCapacity'],
 }
