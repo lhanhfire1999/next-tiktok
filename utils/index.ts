@@ -20,3 +20,7 @@ export const removeTrailingSlash = (str: string) => {
 export const getLocalizedHref = (originalHref: string, locale: string) => {
   return removeTrailingSlash(originalHref.replace(/^\//, '/' + locale + '/'))
 }
+
+export const handleScrollTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
