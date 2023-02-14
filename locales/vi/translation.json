@@ -2,7 +2,8 @@
   "Auth": {
     "signIn": "Đăng nhập",
     "signOut": "Đăng xuất",
-    "signUp": "Đăng ký"
+    "signUp": "Đăng ký",
+    "signInContent": "Đăng nhập để follow các tác giả, thích video và xem bình luận."
   },
 
   "ModalAuth": {
@@ -52,26 +53,6 @@
     "seeMore": "Xem tất cả",
     "seeLess": "Ẩn bớt",
 
-    "about": "Giới thiệu",
-    "newsroom": "Bảng tin",
-    "contact": "Liên hệ",
-    "careers": "Sự nghiệp",
-    "byteDance": "ByteDance",
-    "tikTokForGood": "TikTok for Good",
-    "advertise": "Quảng cáo",
-    "developers": "Developers",
-    "transparency": "Minh bạch",
-    "tikTokRewards": "TikTok Rewards",
-    "tikTokBrowse": "TikTok Browse",
-    "tikTokEmbeds": "TikTok Embeds",
-    "help": "Trợ giúp",
-    "safety": "An toàn",
-    "terms": "Điều khoản",
-    "privacy": "Quyền riêng tư",
-    "creatorPortal": "Cổng thông tin Tác giả",
-    "communityGuidelines": "Hướng dẫn Cộng đồng",
-    "copyright": "© 2022 TikTok",
-
     "inbox": "Hộp thư",
     "message": "Tin nhắn"
   },
@@ -119,5 +100,35 @@
     "friend": "Bạn bè",
     "private": "Riêng tư",
     "overVideoDuration": "Duet và Stitch không có sẵn cho video trên 60s"
+  },
+
+  "Footer": {
+    "about": "Giới thiệu",
+    "newsroom": "Bảng tin",
+    "contact": "Liên hệ",
+    "careers": "Sự nghiệp",
+    "byteDance": "ByteDance",
+    "tikTokForGood": "TikTok for Good",
+    "advertise": "Quảng cáo",
+    "developers": "Developers",
+    "transparency": "Minh bạch",
+    "tikTokRewards": "TikTok Rewards",
+    "tikTokBrowse": "TikTok Browse",
+    "tikTokEmbeds": "TikTok Embeds",
+    "help": "Trợ giúp",
+    "safety": "An toàn",
+    "terms": "Điều khoản",
+    "privacy": "Quyền riêng tư",
+    "creatorPortal": "Cổng thông tin Tác giả",
+    "communityGuidelines": "Hướng dẫn Cộng đồng",
+    "copyright": "© 2022 TikTok",
+    "accessibility": "Accessibility",
+    "termsOfUse": "Terms of Use",
+    "privacyPolicy": "Privacy Policy",
+
+    "company": "Công ty",
+    "programs": "Chương trình",
+    "support": "Hỗ trợ",
+    "legal": "Pháp lý"
   }
 }

@@ -2,7 +2,8 @@
   "Auth": {
     "signIn": "Log in",
     "signOut": "Log out",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "signInContent": "Log in to follow creators, like videos, and view comments."
   },
 
   "ModalAuth": {
@@ -52,26 +53,6 @@
     "seeMore": "See more",
     "seeLess": "See less",
 
-    "about": "About",
-    "newsroom": "Newsroom",
-    "contact": "Contact",
-    "careers": "Careers",
-    "byteDance": "ByteDance",
-    "tikTokForGood": "TikTok for Good",
-    "advertise": "Advertise",
-    "developers": "Developers",
-    "transparency": "Transparency",
-    "tikTokRewards": "TikTok Rewards",
-    "tikTokBrowse": "TikTok Browse",
-    "tikTokEmbeds": "TikTok Embeds",
-    "help": "Help",
-    "safety": "Safety",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "creatorPortal": "Creator Portal",
-    "communityGuidelines": "Community Guidelines",
-    "copyright": "© 2022 TikTok",
-
     "inbox": "Inbox",
     "message": "Message"
   },
@@ -119,5 +100,35 @@
     "friend": "Friend",
     "private": "Private",
     "overVideoDuration": "Duet and Stitch not available for videos over 60s"
+  },
+
+  "Footer": {
+    "about": "About",
+    "newsroom": "Newsroom",
+    "contact": "Contact",
+    "careers": "Careers",
+    "byteDance": "ByteDance",
+    "tikTokForGood": "TikTok for Good",
+    "advertise": "Advertise",
+    "developers": "Developers",
+    "transparency": "Transparency",
+    "tikTokRewards": "TikTok Rewards",
+    "tikTokBrowse": "TikTok Browse",
+    "tikTokEmbeds": "TikTok Embeds",
+    "help": "Help",
+    "safety": "Safety",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "creatorPortal": "Creator Portal",
+    "communityGuidelines": "Community Guidelines",
+    "copyright": "© 2022 TikTok",
+    "accessibility": "Accessibility",
+    "termsOfUse": "Terms of Use",
+    "privacyPolicy": "Privacy Policy",
+
+    "company": "Company",
+    "programs": "Programs",
+    "support": "Support",
+    "legal": "Legal"
   }
 }

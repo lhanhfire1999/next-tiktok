@@ -18,7 +18,7 @@ export const AUTH_MODAL_DATA = [
   {
     Icon: GoogleIcon,
     titleKey: 'ModalAuth.google',
-    onClick: () => signIn('google', { callbackUrl: '/' }),
+    onClick: (locale: string) => signIn('google', { callbackUrl: `/${locale}` }),
   },
   { Icon: TwitterIcon, titleKey: 'ModalAuth.twitter' },
   { Icon: LineIcon, titleKey: 'ModalAuth.line' },

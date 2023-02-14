@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import { signOut, useSession } from 'next-auth/react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import React, { useRef } from 'react'
 
 import { Button, ImageWithFallback, MoreIcon, Popper } from '~/components'
@@ -78,6 +78,7 @@ const MenuPopper = () => {
 
 const MainListPopper = () => {
   const t = useTranslations()
+  const locale = useLocale()
   const { data: session } = useSession()
   const { isShow: isShowLanguage, handleChangeShowLanguages } = useLanguage()
   const LIST = React.useMemo(() => {
@@ -101,7 +102,7 @@ const MainListPopper = () => {
               LeftIcon={<Icon />}
               onClick={
                 isSeparate
-                  ? () => signOut({ callbackUrl: '/' })
+                  ? () => signOut({ callbackUrl: `/${locale}` })
                   : isLanguages
                   ? handleChangeShowLanguages.bind(null, true)
                   : undefined
