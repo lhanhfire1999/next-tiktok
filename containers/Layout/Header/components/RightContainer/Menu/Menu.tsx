@@ -1,12 +1,14 @@
 import classNames from 'classnames/bind'
 import { signOut, useSession } from 'next-auth/react'
+import { useLocale, useTranslations } from 'next-intl'
 import React, { useRef } from 'react'
 
-import { BackIcon, Button, ImageWithFallback, MoreIcon, Popper } from '~/components'
-import { DEFAULT_IMAGE_FALLBACK, LANGUAGE, NON_USER_ITEMS, USER_ITEMS } from '~/constants'
+import { Button, ImageWithFallback, MoreIcon, Popper } from '~/components'
+import { DEFAULT_IMAGE_FALLBACK, NON_USER_ITEMS, USER_ITEMS } from '~/constants'
 import useOnClickOutside from '~/hooks/useOnClickOutside'
 import { LanguageProvider, useLanguage } from '../contexts/LanguageContext'
 import { MenuPopperProvider, useMenuPopper } from '../contexts/MenuPopperContext'
+import SubPopperLanguage from '../SubPopperLanguage'
 import ToggleThemeButton from '../ToggleThemeButton'
 import styles from './Menu.module.scss'
 
@@ -18,9 +20,9 @@ interface Children {
 
 const Menu: React.FC<Children> = ({ children }) => {
   return (
-    <LanguageProvider>
-      <MenuPopperProvider>{children}</MenuPopperProvider>
-    </LanguageProvider>
+    <MenuPopperProvider>
+      <LanguageProvider>{children}</LanguageProvider>
+    </MenuPopperProvider>
   )
 }
 
@@ -75,54 +77,38 @@ const MenuPopper = () => {
 }
 
 const MainListPopper = () => {
+  const t = useTranslations()
+  const locale = useLocale()
   const { data: session } = useSession()
   const { isShow: isShowLanguage, handleChangeShowLanguages } = useLanguage()
-
   const LIST = React.useMemo(() => {
     return session ? USER_ITEMS : NON_USER_ITEMS
   }, [session])
 
   if (isShowLanguage) {
-    return (
-      <>
-        <Popper.Header className={cx('header')}>
-          <i onMouseDown={handleChangeShowLanguages.bind(null, false)}>
-            <BackIcon className={cx('back-icon')} />
-          </i>
-          <h4 className={cx('title')}>{LANGUAGE.title}</h4>
-        </Popper.Header>
-
-        <Popper.MenuList className={cx('language-list')}>
-          {LANGUAGE.data.map((language) => (
-            <Popper.MenuItem key={language.code} className={cx('language-item')}>
-              {language.title}
-            </Popper.MenuItem>
-          ))}
-        </Popper.MenuList>
-      </>
-    )
+    return <SubPopperLanguage />
   }
 
   return (
     <Popper.MenuList>
-      {LIST.map(({ Icon, title, to, isTheme, isSeparate, children }, index) => {
+      {LIST.map(({ Icon, title, to, isTheme, isSeparate, children, id }) => {
         const isLanguages = !!children
 
         return (
-          <Popper.MenuItem key={index} className={cx('wrapper-item', { separate: isSeparate })}>
+          <Popper.MenuItem key={id} className={cx('wrapper-item', { separate: isSeparate })}>
             <Button
-              href={to}
+              href={to ? to(session?.user?.name || '') : null}
               className={cx('item')}
               LeftIcon={<Icon />}
               onClick={
                 isSeparate
-                  ? () => signOut({ callbackUrl: '/' })
+                  ? () => signOut({ callbackUrl: `/${locale}` })
                   : isLanguages
                   ? handleChangeShowLanguages.bind(null, true)
                   : undefined
               }
             >
-              {title}
+              {t(title as any)}
             </Button>
             {isTheme && <ToggleThemeButton />}
           </Popper.MenuItem>

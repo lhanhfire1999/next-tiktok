@@ -1,21 +1,23 @@
 'use client'
-import React from 'react'
-import { usePathname } from 'next/navigation'
 import classNames from 'classnames/bind'
+import { usePathname } from 'next/navigation'
+import React from 'react'
 
+import AuthModal from '~/containers/AuthModal'
+import { Locale } from '~/locales/i18n-config'
+import Footer from '../Footer'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 import styles from './DefaultLayout.module.scss'
-import AuthModal from '~/containers/AuthModal'
-import Footer from '../Footer'
 
 const cx = classNames.bind(styles)
 
 interface Prop {
   children: React.ReactNode
+  locale: Locale
 }
 
-const DefaultLayout: React.FC<Prop> = ({ children }) => {
+const DefaultLayout: React.FC<Prop> = ({ children, locale }) => {
   const pathname = usePathname()
 
   return (
@@ -24,12 +26,12 @@ const DefaultLayout: React.FC<Prop> = ({ children }) => {
 
       <div
         className={cx('content', {
-          upload: pathname === '/upload',
-          home: pathname === '/',
-          following: pathname === '/following',
+          upload: pathname === `/${locale}/upload`,
+          home: pathname === `/${locale}`,
+          following: pathname === `/${locale}/following`,
         })}
       >
-        {pathname !== '/upload' && (
+        {pathname !== `/${locale}/upload` && (
           <div className={cx('wrapper-sidebar')}>
             <Sidebar />
           </div>
@@ -38,7 +40,7 @@ const DefaultLayout: React.FC<Prop> = ({ children }) => {
         <div className={cx('main-content')}>{children}</div>
       </div>
 
-      {pathname === '/upload' && <Footer />}
+      {pathname === `/${locale}/upload` && <Footer />}
       <AuthModal />
     </>
   )

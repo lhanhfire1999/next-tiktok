@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './Button.module.scss'
+import LocalizedLink from '../LocalizedLink'
 
 interface Children {
   children: React.ReactNode
@@ -50,7 +50,7 @@ const Button: React.FC<ButtonProp> = ({
   })
 
   if (restProps.href) {
-    Comp = Link
+    Comp = LocalizedLink
   }
 
   if (restProps.disabled) {

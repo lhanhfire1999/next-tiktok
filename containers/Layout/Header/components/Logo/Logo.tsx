@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { useSWRConfig } from 'swr'
+import { LocalizedLink } from '~/components'
 
 import { useTheme } from '~/contexts/ThemeContext'
 
@@ -13,14 +13,14 @@ const Logo = () => {
   }
 
   return (
-    <Link href="/" onClick={handleClickLogo}>
+    <LocalizedLink href="/" onClick={handleClickLogo}>
       <Image
         src={isDarkTheme ? '/images/logo-theme-dark.svg' : '/images/logo-theme-light.svg'}
         alt="TikTok"
         width={118}
         height={42}
       />
-    </Link>
+    </LocalizedLink>
   )
 }
 

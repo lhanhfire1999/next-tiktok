@@ -12,17 +12,17 @@ import {
 } from '~/components'
 
 export const AUTH_MODAL_DATA = [
-  { Icon: QRIcon, title: 'Use QR code' },
-  { Icon: UserIcon, title: 'Use phone / mail / username' },
-  { Icon: FacebookIcon, title: 'Use with Facebook' },
+  { Icon: QRIcon, titleKey: 'ModalAuth.qr' },
+  { Icon: UserIcon, titleKey: 'ModalAuth.private' },
+  { Icon: FacebookIcon, titleKey: 'ModalAuth.facebook' },
   {
     Icon: GoogleIcon,
-    title: 'Use with Google',
-    onClick: () => signIn('google', { callbackUrl: '/' }),
+    titleKey: 'ModalAuth.google',
+    onClick: (locale: string) => signIn('google', { callbackUrl: `/${locale}` }),
   },
-  { Icon: TwitterIcon, title: 'Use with Twitter' },
-  { Icon: LineIcon, title: 'Use with Line' },
-  { Icon: KaKaoTalkIcon, title: 'Use with KaKaoTalk' },
-  { Icon: AppleIcon, title: 'Use with Apple' },
-  { Icon: InstagramIcon, title: 'Use with Instagram' },
+  { Icon: TwitterIcon, titleKey: 'ModalAuth.twitter' },
+  { Icon: LineIcon, titleKey: 'ModalAuth.line' },
+  { Icon: KaKaoTalkIcon, titleKey: 'ModalAuth.kakaoTalk' },
+  { Icon: AppleIcon, titleKey: 'ModalAuth.apple' },
+  { Icon: InstagramIcon, titleKey: 'ModalAuth.instagram' },
 ]

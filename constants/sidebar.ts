@@ -1,37 +1,37 @@
 import { FollowingIcon, HashtagIcon, HomeIcon, LiveIcon, MusicIcon } from '~/components'
 
 export const MAIN_NAV_SIDEBAR = [
-  { Icon: HomeIcon, title: 'For You', href: '/' },
-  { Icon: FollowingIcon, title: 'Following', href: '/following' },
-  { Icon: LiveIcon, title: 'LIVE', href: '/live' },
+  { Icon: HomeIcon, title: 'Common.forYou', href: '/' },
+  { Icon: FollowingIcon, title: 'Common.following', href: '/following' },
+  { Icon: LiveIcon, title: 'Common.live', href: '/live' },
 ]
 
 export const FOOTER_SIDEBAR = {
   layout1: [
-    { title: 'About', href: '/' },
-    { title: 'Newsroom ', href: '/' },
-    { title: 'Contact ', href: '/' },
-    { title: 'Careers ', href: '/' },
-    { title: 'ByteDance', href: '/' },
+    { title: 'Footer.about', href: '/' },
+    { title: 'Footer.newsroom', href: '/' },
+    { title: 'Footer.contact', href: '/' },
+    { title: 'Footer.careers', href: '/' },
+    { title: 'Footer.byteDance', href: '/' },
   ],
   layout2: [
-    { title: 'TikTok for Good', href: '/' },
-    { title: 'Advertise  ', href: '/' },
-    { title: 'Developers  ', href: '/' },
-    { title: 'Transparency  ', href: '/' },
-    { title: 'TikTok Rewards', href: '/' },
-    { title: 'TikTok Browse', href: '/' },
-    { title: 'TikTok Embeds', href: '/' },
+    { title: 'Footer.tikTokForGood', href: '/' },
+    { title: 'Footer.advertise', href: '/' },
+    { title: 'Footer.developers', href: '/' },
+    { title: 'Footer.transparency', href: '/' },
+    { title: 'Footer.tikTokRewards', href: '/' },
+    { title: 'Footer.tikTokBrowse', href: '/' },
+    { title: 'Footer.tikTokEmbeds', href: '/' },
   ],
   layout3: [
-    { title: 'Help', href: '/' },
-    { title: 'Safety ', href: '/' },
-    { title: 'Terms ', href: '/' },
-    { title: 'Privacy ', href: '/' },
-    { title: 'Creator Portal', href: '/' },
-    { title: 'Community Guidelines', href: '/' },
+    { title: 'Footer.help', href: '/' },
+    { title: 'Footer.safety', href: '/' },
+    { title: 'Footer.terms', href: '/' },
+    { title: 'Footer.privacy', href: '/' },
+    { title: 'Footer.creatorPortal', href: '/' },
+    { title: 'Footer.communityGuidelines', href: '/' },
   ],
-  layout4: [{ title: '© 2022 TikTok', href: null }],
+  layout4: [{ title: 'Footer.copyright', href: null }],
 }
 
 export const DISCOVER_CONTAINER_SIDEBAR = [

@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind'
 import { useSession } from 'next-auth/react'
-import Link from 'next/link'
+
 import React from 'react'
 
-import { Button, ImageWithFallback } from '~/components'
+import { Button, ImageWithFallback, LocalizedLink } from '~/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { Discover } from '~/services/discover'
 import { useHomeDiscover } from '../../contexts'
@@ -26,10 +26,10 @@ const UserDetails: React.FC<UserDetailsProps> = ({ data }) => {
       <i className={cx('wrapper-avatar')}>
         <ImageWithFallback src={data.avatar} alt={data.name} fill={true} className={cx('user-avatar')} />
       </i>
-      <Link href="/" className={cx('wrapper-names')}>
+      <LocalizedLink href="/" className={cx('wrapper-names')}>
         <h3 className={cx('name')}>{data.name}</h3>
         <h4 className={cx('user-name')}>{data.username}</h4>
-      </Link>
+      </LocalizedLink>
       <FollowButton isFollowing={data.is_followed} discoverId={data.id} />
     </div>
   )

@@ -10,7 +10,6 @@ const RightContainer = () => {
   return (
     <div className={cx('wrapper')}>
       <ButtonUpload />
-
       <ActionButtons />
 
       <Menu>

@@ -1,27 +1,21 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper-item {
-  label {
-    @include flex(flex, center, center);
-    padding: 8px;
-    border-radius: 4px;
-    background: transparent;
-    cursor: pointer;
-  }
+  @include flex(flex, center, center);
+  padding: 8px;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
 
-  label:hover {
+  &:hover {
     background: var(--colorBGView);
   }
 
-  label:active {
+  &:active {
     background: var(--colorBGInput);
   }
 
-  input {
-    display: none;
-  }
-
-  input:checked + label {
+  &.active {
     color: var(--colorLink);
   }
 
@@ -37,9 +31,7 @@
   }
 
   @include responsive('desktop') {
-    label {
-      justify-content: flex-start;
-    }
+    justify-content: flex-start;
 
     .title {
       display: block;

@@ -1,0 +1,40 @@
+@use '~/styles/abstracts/' as *;
+.header {
+  @include flex(flex, center, null);
+  position: relative;
+  height: 50px;
+
+  .title {
+    @include flex(flex, null, center);
+    flex: 1 0 auto;
+  }
+}
+
+.title {
+  cursor: default;
+}
+
+.back-icon {
+  @include flex;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.language-list {
+  max-height: 590px;
+  overflow-y: auto;
+
+  .language-item {
+    @include flex(flex, center, space-between);
+    padding: 10px 24px;
+  }
+
+  .language-item.active {
+    background: var(--colorBGView);
+  }
+}
+
+.check-icon {
+  color: var(--colorPrimary);
+  flex-shrink: 0;
+}

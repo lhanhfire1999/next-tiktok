@@ -1,20 +1,22 @@
 import { useSession } from 'next-auth/react'
-import React from 'react'
+import { useTranslations } from 'next-intl'
+
 import { Button, UploadIcon } from '~/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 
 const ButtonUpload = () => {
   const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
+  const t = useTranslations()
 
   return (
     <Button
-      href={session ? 'upload' : null}
+      href={session ? `/upload` : null}
       onClick={!session ? handleToggleModal.bind(null, true) : undefined}
       outlineGray
       LeftIcon={<UploadIcon width="100%" height="100%" />}
     >
-      Upload
+      {t('Common.upload')}
     </Button>
   )
 }

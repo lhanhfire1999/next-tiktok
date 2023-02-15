@@ -1,8 +1,11 @@
 'use client'
 import classNames from 'classnames/bind'
+import { useTranslations } from 'next-intl'
+
 import { UploadModalProvider } from '~/containers/Upload/contexts/UploadModalContext'
 import { FormContainer, UploadModal, UploadVideoContainer } from './component'
 import { UploadFormProvider } from './contexts'
+
 import styles from './Upload.module.scss'
 
 const cx = classNames.bind(styles)
@@ -20,10 +23,12 @@ const Upload: React.FC<UploadProp> = ({ children }) => {
 }
 
 const Content = () => {
+  const t = useTranslations('UploadPage')
+
   return (
     <div className={cx('wrapper')}>
-      <h2 className={cx('title')}>Upload video</h2>
-      <p className={cx('paragraph')}>Post a video to your account</p>
+      <h2 className={cx('title')}>{t('uploadVideo')}</h2>
+      <p className={cx('paragraph')}>{t('uploadVideoContent')}</p>
 
       <div className={cx('wrapper-content')}>
         <UploadVideoContainer />

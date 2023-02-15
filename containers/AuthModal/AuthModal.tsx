@@ -1,12 +1,14 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
-import { List, Modal } from '~/components'
-
 import classNames from 'classnames/bind'
+import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+
+import { List, Modal } from '~/components'
 import { AUTH_MODAL_DATA } from '~/constants'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { useTitle } from '~/hooks'
+
 import styles from './AuthModal.module.scss'
 
 const cx = classNames.bind(styles)
@@ -19,6 +21,9 @@ const AuthModal = () => {
 }
 
 const Content = () => {
+  const t = useTranslations()
+  const locale = useLocale()
+
   const { handleToggleModal } = useAuthModal()
   const [isSignIn, setIsSignIn] = useState(true)
   const scrollBarRef = useRef<HTMLDivElement>(null)
@@ -31,7 +36,7 @@ const Content = () => {
     setIsSignIn((prev) => !prev)
   }
 
-  useTitle(isSignIn ? 'Log in | TikTok' : 'Sign Up | TikTok')
+  useTitle(isSignIn ? `${t('Auth.signIn')} | TikTok` : `${t('Auth.signUp')} | TikTok`)
 
   useEffect(() => {
     scrollBarRef.current?.scrollTo(0, 0)
@@ -44,13 +49,17 @@ const Content = () => {
         <div className={cx('scroll-bar')} ref={scrollBarRef}>
           <div className={cx('content')}>
             <Modal.Title as="h2" className={cx('header-title')}>
-              {`${isSignIn ? 'Log in' : 'Sign Up'}`} to TikTok
+              {isSignIn ? t('ModalAuth.signIn') : t('ModalAuth.signUp')}
             </Modal.Title>
             <List className={cx('list')}>
-              {AUTH_MODAL_DATA.map(({ Icon, title, onClick }, key) => (
-                <List.Item key={key} className={cx('item', { disabled: !onClick })} onClick={onClick}>
+              {AUTH_MODAL_DATA.map(({ Icon, titleKey, onClick }, key) => (
+                <List.Item
+                  key={key}
+                  className={cx('item', { disabled: !onClick })}
+                  onClick={onClick?.bind(null, locale)}
+                >
                   <Icon className={cx('item-icon')} />
-                  <span className={cx('item-title')}>{title}</span>
+                  <span className={cx('item-title')}>{t(titleKey as any)}</span>
                 </List.Item>
               ))}
             </List>
@@ -59,22 +68,22 @@ const Content = () => {
 
         {!isSignIn && (
           <p className={cx('policy-confirm-tips')}>
-            {`By continuing, you agree to TikTok's `}
+            {t('ModalAuth.policyConfirm1')}
             <Link href="https://www.tiktok.com/legal/page/row/terms-of-service/en" target="_blank">
-              Terms of Service{' '}
+              {t('ModalAuth.terms')}
             </Link>
-            {`and confirm that you have read TikTok's `}
+            {t('ModalAuth.policyConfirm2')}
             <Link href="https://www.tiktok.com/legal/page/row/privacy-policy/en" target="_blank">
-              Privacy Policy
+              {t('ModalAuth.policy')}
             </Link>
-            .
+            {t('ModalAuth.policyConfirm3')}
           </p>
         )}
 
         <Modal.Footer className={cx('footer')}>
-          {`${isSignIn ? `Don't` : 'Already'} have an account?  `}
+          {isSignIn ? t('ModalAuth.inBottomText') : t('ModalAuth.upBottomText')}
           <span className={cx('footer-toggle-auth')} onClick={handleToggleIsSignIn}>
-            {isSignIn ? 'Sign up' : 'Log in'}
+            {isSignIn ? t('Auth.signUp') : t('Auth.signIn')}
           </span>
         </Modal.Footer>
       </Modal.Content>

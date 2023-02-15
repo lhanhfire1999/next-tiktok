@@ -1,10 +1,12 @@
 import classNames from 'classnames/bind'
+import { useTranslations } from 'next-intl'
 import React from 'react'
-import { Button, Modal } from '~/components'
-import styles from './CompoundUploadModal.module.scss'
 
+import { Button, Modal } from '~/components'
 import { useUploadForm } from '../../contexts/UploadFormContext'
 import { useUploadModal } from '../../contexts/UploadModalContext'
+
+import styles from './CompoundUploadModal.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -17,6 +19,7 @@ const UploadModal: React.FC<UploadModalProp> = ({ children }) => {
 }
 
 const ChangeVideoModalContent = () => {
+  const t = useTranslations('UploadPage')
   const { handleCloseModal } = useUploadModal()
   const { setValue } = useUploadForm()
 
@@ -29,21 +32,22 @@ const ChangeVideoModalContent = () => {
     <Modal.Content className={cx('change-video-modal-content')} onClickOutside={handleCloseModal}>
       <header>
         <Modal.Title as="h3" className={cx('title')}>
-          Replace this video
+          {t('replaceTitle')}
         </Modal.Title>
-        <p className={cx('paragraph')}>Caption and video settings will still be saved</p>
+        <p className={cx('paragraph')}>{t('replaceContent')}</p>
       </header>
       <span className={cx('btn', 'primary')} onClick={handleChangeVideo}>
-        Replace
+        {t('replace')}
       </span>
       <span className={cx('btn')} onClick={handleCloseModal}>
-        Continue editing
+        {t('continuesEditing')}
       </span>
     </Modal.Content>
   )
 }
 
 const PostModalContent = () => {
+  const t = useTranslations('UploadPage')
   const { handleCloseModal } = useUploadModal()
   const { reset } = useUploadForm()
 
@@ -55,14 +59,14 @@ const PostModalContent = () => {
   return (
     <Modal.Content className={cx('post-modal-content')} onClickOutside={handleCloseModal}>
       <Modal.Title as="h3" className={cx('title')}>
-        Your videos are being uploaded to TikTok!
+        {t('uploadModalTitle')}
       </Modal.Title>
 
       <Button className={cx('btn') + ' mt-6'} primary onClick={handleResetForm}>
-        Upload another video
+        {t('uploadModalUpload')}
       </Button>
       <Button className={cx('btn')} outlineGray href="/">
-        Return home page
+        {t('uploadModalReturn')}
       </Button>
     </Modal.Content>
   )

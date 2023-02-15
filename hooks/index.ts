@@ -4,3 +4,4 @@ export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffec
 export { default as useOnClickOutside } from './useOnClickOutside'
 export { default as useTitle } from './useTitle'
 export { default as useWindowSize } from './useWindowSize'
+export { default as useGlobalLanguage } from './useGlobalLanguage'

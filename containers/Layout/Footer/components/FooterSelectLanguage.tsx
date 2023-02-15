@@ -1,15 +1,18 @@
 import className from 'classnames/bind'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { SelectMenu } from '~/components'
-import { LANGUAGE } from '~/constants'
+import { useGlobalLanguage } from '~/hooks'
+
 import styles from './FooterSelectLanguage.module.scss'
 
 const cx = className.bind(styles)
 
 const SelectLanguage = () => {
+  const t = useTranslations()
   const [isShowLanguage, setIsShowLanguage] = useState(false)
-  const [selectedLanguage, setSelectedLanguage] = useState('English')
+  const { languageList, handleChangeLanguage: onChangeLanguage } = useGlobalLanguage()
 
   const handleClickSelectLanguage = () => {
     setIsShowLanguage((prev) => {
@@ -21,28 +24,27 @@ const SelectLanguage = () => {
     setIsShowLanguage(false)
   }
 
-  const handleChangeLanguage = (value: string) => {
-    setSelectedLanguage(value)
-    handleClosedSelectPopper()
+  const handleChangeLanguage = (newLocale: string) => {
+    onChangeLanguage(newLocale, () => setIsShowLanguage(false))
   }
   return (
     <div className={cx('wrapper-footer-bottom')}>
       <SelectMenu
         isActive={isShowLanguage}
-        selectedValue={selectedLanguage}
+        selectedValue={languageList[0]!.title}
         onClickOutSide={handleClosedSelectPopper}
         onClick={handleClickSelectLanguage}
         wrapperClassName={cx('wrapper-language')}
       >
         <SelectMenu.List className={cx('language-list')}>
-          {LANGUAGE.data.map(({ title }) => (
-            <SelectMenu.Item onClick={handleChangeLanguage.bind(null, title)} key={title}>
-              {title}
+          {languageList.map((item) => (
+            <SelectMenu.Item onClick={handleChangeLanguage.bind(null, item!.code)} key={item!.code}>
+              {item!.title}
             </SelectMenu.Item>
           ))}
         </SelectMenu.List>
       </SelectMenu>
-      <div className={cx('copyright')}>© 2023 TikTok</div>
+      <div className={cx('copyright')}>{t('Footer.copyright')}</div>
     </div>
   )
 }

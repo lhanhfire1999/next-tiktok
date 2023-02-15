@@ -1,5 +1,6 @@
 'use client'
 import classNames from 'classnames/bind'
+import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef } from 'react'
 import { useWatch } from 'react-hook-form'
 
@@ -13,6 +14,7 @@ import styles from './UploadVideoContainer.module.scss'
 const cx = classNames.bind(styles)
 
 const UploadVideoContainer = () => {
+  const t = useTranslations('UploadPage')
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   const { control, setValue, getValues, register, resetField } = useUploadForm()
@@ -63,7 +65,7 @@ const UploadVideoContainer = () => {
           <span className={cx('name')}>{uploadVideo![0].name}</span>
         </div>
         <span className={cx('button')} onClick={handleClickChangeVideo}>
-          Change video
+          {t('changeVideo')}
         </span>
       </div>
     )
@@ -83,19 +85,19 @@ const UploadVideoContainer = () => {
       />
 
       <UploadPageUploadVideoContainer.Icon className={cx('cloud-icon')} />
-      <h4 className={'mt-6'}>{UploadPageUploadVideoContainer.title}</h4>
-      <span className={'mt-1'}>{UploadPageUploadVideoContainer.content}</span>
+      <h4 className={'mt-6'}>{t(UploadPageUploadVideoContainer.title as any)}</h4>
+      <span className={'mt-1'}>{t(UploadPageUploadVideoContainer.content as any)}</span>
 
       <List className={cx('list') + ' mt-6'}>
         {UploadPageUploadVideoContainer.subContentList.map((content, idx) => (
           <List.Item key={idx} className={cx('sub-content')}>
-            {content}
+            {t(content as any)}
           </List.Item>
         ))}
       </List>
 
       <Button primary className={cx('button')}>
-        Select file
+        {t('selectFile')}
       </Button>
     </div>
   )

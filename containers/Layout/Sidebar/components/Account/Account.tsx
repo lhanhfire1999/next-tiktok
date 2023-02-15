@@ -1,8 +1,10 @@
-import React from 'react'
-import { List, TickIcon } from '~/components'
 import classNames from 'classnames/bind'
-import styles from './Account.module.scss'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import React from 'react'
+
+import { List, TickIcon } from '~/components'
+import styles from './Account.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -61,9 +63,10 @@ const Item: React.FC<ItemProp> = ({
 }
 
 const MoreOrLessButton: React.FC<MoreOrLessButtonProp> = ({ isShowMore = true, onClick }) => {
+  const t = useTranslations('Common')
   return (
     <p className={cx('btn')} onClick={onClick}>
-      {isShowMore ? 'See less' : 'See more'}
+      {isShowMore ? t('seeLess') : t('seeMore')}
     </p>
   )
 }
