@@ -70,7 +70,7 @@ const ActionList: React.FC<ActionListProp> = ({ data }) => {
       handleToggleModal(true)
       return
     }
-    handleUpdateLike(data.id)
+    handleUpdateLike(data.id, data.username)
   }
 
   return (

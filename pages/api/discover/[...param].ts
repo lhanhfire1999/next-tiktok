@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getDiscoverData, updateDiscover } from '~/lib/discoverUtil'
-import { DiscoverRequestQuery, DiscoverResponse } from '~/services/discover'
+import { DiscoverResponse, UpdateDiscoverRequestQuery } from '~/services/discover'
 
 const handler = (req: NextApiRequest, res: NextApiResponse<DiscoverResponse>) => {
   if (req.method === 'PUT') {
-    const { param: strategy, id } = req.query as unknown as DiscoverRequestQuery
+    const { param, id, username } = req.query as unknown as UpdateDiscoverRequestQuery
 
-    if (id && strategy) {
-      const isUpdated = updateDiscover({ id, strategy })
+    if (param && id && username) {
+      const isUpdated = updateDiscover({ id, username, param })
 
       if (isUpdated) return res.status(201).send({ message: 'Update success', data: getDiscoverData() })
 

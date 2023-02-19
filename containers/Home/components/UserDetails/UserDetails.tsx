@@ -15,6 +15,7 @@ const cx = classNames.bind(styles)
 interface FollowButtonProps {
   isFollowing: boolean
   discoverId: number
+  username: string
 }
 interface UserDetailsProps {
   data: Discover
@@ -30,12 +31,12 @@ const UserDetails: React.FC<UserDetailsProps> = ({ data }) => {
         <h3 className={cx('name')}>{data.name}</h3>
         <h4 className={cx('user-name')}>{data.username}</h4>
       </LocalizedLink>
-      <FollowButton isFollowing={data.is_followed} discoverId={data.id} />
+      <FollowButton isFollowing={data.is_followed} discoverId={data.id} username={data.username} />
     </div>
   )
 }
 
-const FollowButton: React.FC<FollowButtonProps> = ({ isFollowing, discoverId }) => {
+const FollowButton: React.FC<FollowButtonProps> = ({ isFollowing, discoverId, username }) => {
   const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
   const { handleUpdateFollow } = useHomeDiscover()
@@ -45,7 +46,7 @@ const FollowButton: React.FC<FollowButtonProps> = ({ isFollowing, discoverId }) 
       handleToggleModal(true)
       return
     }
-    handleUpdateFollow(discoverId)
+    handleUpdateFollow(discoverId, username)
   }
 
   return (

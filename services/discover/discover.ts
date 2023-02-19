@@ -1,4 +1,4 @@
-import { DiscoverRequestQuery, DiscoverResponse, DiscoverStrategyParam } from './type'
+import { DiscoverRequestQuery, DiscoverResponse, UpdateDiscoverRequestQuery } from './type'
 
 import queryString from 'query-string'
 
@@ -43,8 +43,8 @@ export const getFollowAccountList = async () => {
   }
 }
 
-export const updateFollowOrLikeDiscover = async ({ id, param }: { id: number; param: DiscoverStrategyParam }) => {
-  const queryParams = queryString.stringify({ id })
+export const updateFollowOrLikeDiscover = async ({ id, username, param }: UpdateDiscoverRequestQuery) => {
+  const queryParams = queryString.stringify({ id, username })
 
   try {
     const response = await fetch(`/api/discover/${param}?${queryParams}`, {

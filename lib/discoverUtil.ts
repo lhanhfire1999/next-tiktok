@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { Discover, DiscoverStrategyParam, UpdateStrategy } from '~/services/discover'
+import { Discover, UpdateDiscoverRequestQuery, UpdateStrategy } from '~/services/discover'
 
 const jsonDirectory = path.join(process.cwd(), '/tmp')
 
@@ -16,21 +16,41 @@ export const getDiscoverData = () => {
 
 export const getFollowAccountData = () => {
   const MOCKUP_DATA = getDiscoverData()
-  const followAccounts = MOCKUP_DATA.filter((item) => item.is_followed)
+  let usernameList: string[] = []
+
+  const followAccounts = [...MOCKUP_DATA].reduce<Discover[]>((prev, curr) => {
+    if (!curr.is_followed) return prev
+
+    const isUsernameExist = usernameList.some((item) => item === curr.username)
+    if (isUsernameExist) return prev
+
+    usernameList.push(curr.username)
+    return [...prev, curr]
+  }, [])
 
   return followAccounts
 }
 
-export const updateDiscover = ({ id, strategy }: { id: string | number; strategy: DiscoverStrategyParam }) => {
+export const updateDiscover = ({ id, username, param: strategy }: UpdateDiscoverRequestQuery) => {
   const MOCKUP_DATA = getDiscoverData()
-  const newData = [...MOCKUP_DATA]
-  const index = MOCKUP_DATA.findIndex((item) => item.id.toString() === id.toString())
+  const hasId = MOCKUP_DATA.some((item) => item.id.toString() === id!.toString())
 
-  if (index < 0) return false
+  if (!hasId) return false
 
-  if (strategy == UpdateStrategy.Follow) newData[index].is_followed = !MOCKUP_DATA[index].is_followed
+  if (strategy == UpdateStrategy.Follow) {
+    const newData = [...MOCKUP_DATA].map((item) => {
+      if (item.username === username) {
+        return { ...item, is_followed: !item.is_followed }
+      }
+      return item
+    })
+
+    saveData(newData)
+  }
 
   if (strategy == UpdateStrategy.Like) {
+    const newData = [...MOCKUP_DATA]
+    const index = newData.findIndex((item) => item.id.toString() === id!.toString())
     newData[index].is_liked = !newData[index].is_liked
 
     if (newData[index].is_liked) {
@@ -38,8 +58,8 @@ export const updateDiscover = ({ id, strategy }: { id: string | number; strategy
     } else {
       newData[index].likes = newData[index].likes - 1
     }
+    saveData(newData)
   }
 
-  saveData(newData)
   return true
 }

@@ -5,8 +5,8 @@ interface ContextProps {
   data: Discover[] | undefined
   isLoading: boolean
   handleUpPage: () => void
-  handleUpdateFollow: (id: number) => void
-  handleUpdateLike: (id: number) => void
+  handleUpdateFollow: (id: number, username: string) => void
+  handleUpdateLike: (id: number, username: string) => void
 }
 
 interface ProviderProps {
@@ -24,19 +24,20 @@ export const HomeDiscoverProvider: React.FC<ProviderProps> = ({ children }) => {
     setPage((prev) => prev + 1)
   }
 
-  const handleUpdateFollow = (id: number) => {
+  const handleUpdateFollow = (id: number, username: string) => {
     setData((prev) => {
-      const newData = [...prev]
-      const index = newData.findIndex((item) => item.id.toString() === id.toString())
-      newData[index].is_followed = !newData[index].is_followed
+      const newData = [...prev].map((item) => {
+        if (item.username === username) return { ...item, is_followed: !item.is_followed }
+        return item
+      })
 
       return newData
     })
 
-    updateFollowOrLikeDiscover({ id, param: UpdateStrategy.Follow })
+    updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Follow })
   }
 
-  const handleUpdateLike = (id: number) => {
+  const handleUpdateLike = (id: number, username: string) => {
     setData((prev) => {
       const newData = [...prev]
       const index = newData.findIndex((item) => item.id.toString() === id.toString())
@@ -51,7 +52,7 @@ export const HomeDiscoverProvider: React.FC<ProviderProps> = ({ children }) => {
       return newData
     })
 
-    updateFollowOrLikeDiscover({ id, param: UpdateStrategy.Like })
+    updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Like })
   }
 
   useEffect(() => {
