@@ -34,7 +34,7 @@ export const HomeDiscoverProvider: React.FC<ProviderProps> = ({ children }) => {
       return newData
     })
 
-    // updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Follow })
+    updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Follow })
   }
 
   const handleUpdateLike = (id: number, username: string) => {
@@ -52,7 +52,7 @@ export const HomeDiscoverProvider: React.FC<ProviderProps> = ({ children }) => {
       return newData
     })
 
-    // updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Like })
+    updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Like })
   }
 
   useEffect(() => {
