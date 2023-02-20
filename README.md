@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Responsive Next Tiktok Website
 
-## Getting Started
+ Demo URL: https://next13-tiktok.vercel.app
 
-First, run the development server:
+ A fullstack Tiktok clone with NextJs's latest version 13.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- NextJs, TypeScript, Scss
+- SWR
+- react-hook-form
+- next-auth (Authentication).
+- next-intl (Internationalization).
+- And other libraries as classnames, query-string, ...
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Features
 
-## Learn More
+- Authentication (with Google)
+- Internationalized Routing (English and Vietnamese)
+- Infinite scroll for video
+- Upload video 
+- Toggle theme (Dark / White Mode)
+- Follow User
+- Like a Video
+- Search accounts
+- Responsive and SEO
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![Homepage](https://user-images.githubusercontent.com/68579816/220102664-c7d8ebba-7be8-4faf-902f-fd398ca20002.png "Homepage")
 
-## Deploy on Vercel
+![Modal Auth](https://user-images.githubusercontent.com/68579816/220102799-d41fffe2-f6f0-4956-83ba-0e17d4c9fe33.png "Modal Auth")
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Homepage when login](https://user-images.githubusercontent.com/68579816/220103059-803b325b-21bf-48ad-826f-c7a8f2becfa0.png "Homepage when login")
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Home page with white mode and vietnamese](https://user-images.githubusercontent.com/68579816/220100887-c65345b2-536d-4a5f-9d76-df3d2951bb3e.png "Home page with white mode and vietnamese")
+
+![Upload video](https://user-images.githubusercontent.com/68579816/220103541-f9f6e9b8-d7d5-468c-8852-c43bbb9cb36c.png "Upload video")
+
+![Upload video with white mode and vietnamese](https://user-images.githubusercontent.com/68579816/220103802-2903e92c-8554-4c6b-a81a-fe97d8d9e75b.png "Upload video with white mode and vietnamese")
+
+![Search accounts](https://user-images.githubusercontent.com/68579816/220105569-2b7ff898-2fc6-49a4-aa96-d49529f3588a.png "Search accounts")
+
+
+## Resource
+
+    NextJs 13: https://beta.nextjs.org/docs
+
+    SWR: https://swr.vercel.app/docs/getting-started
+    
+    next-intl: https://next-intl-docs.vercel.app/docs/getting-started
+    
+    react-hook-form: https://react-hook-form.com/get-started/
+    
+    next-auth: https://next-auth.js.org/getting-started/example
+
+    Search accounts API: https://tiktok.fullstack.edu.vn/api
+    
+    Video API: https://next13-tiktok.vercel.app/api/discover
+    
+    Following accounts API: https://next13-tiktok.vercel.app/api/follow-account
+    
+    Suggest accounts API: https://next13-tiktok.vercel.app/api/suggest-account
+    
+    Upload Video API: https://next13-tiktok.vercel.app/api/upload
+    
