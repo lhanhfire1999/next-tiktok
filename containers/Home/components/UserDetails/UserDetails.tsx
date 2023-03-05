@@ -14,7 +14,7 @@ const cx = classNames.bind(styles)
 
 interface FollowButtonProps {
   isFollowing: boolean
-  discoverId: number
+  discoverId: string
   username: string
 }
 interface UserDetailsProps {
