@@ -1,13 +1,6 @@
 {
   "data": [
     {
-      "id": "15",
-      "user_name": "emilie__nereng",
-      "name": "Emilie Nereng",
-      "image_url": "https://i.imgur.com/pXsm02b.png",
-      "has_tick": true
-    },
-    {
       "id": "16",
       "user_name": "laura__pol",
       "name": "Laura Pol",
@@ -62,6 +55,13 @@
       "name": "Solana",
       "image_url": "https://i.imgur.com/7ZTJrKs.png",
       "has_tick": false
+    },
+    {
+      "id": "14",
+      "user_name": "emilie__nereng",
+      "name": "Emilie Nereng",
+      "image_url": "https://i.imgur.com/pXsm02b.png",
+      "has_tick": true
     }
   ]
 }

@@ -4,7 +4,7 @@ export enum UpdateStrategy {
 }
 
 export interface Discover {
-  id: number
+  id: string
   name: string
   username: string
   avatar: string
