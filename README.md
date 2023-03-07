@@ -12,6 +12,7 @@
 - react-hook-form
 - next-auth (Authentication).
 - next-intl (Internationalization).
+- MongoDB (Mongoose)
 - And other libraries as classnames, query-string, ...
 
 
@@ -22,8 +23,8 @@
 - Infinite scroll for video
 - Upload video 
 - Toggle theme (Dark / White Mode)
-- Follow User
-- Like a Video
+- Follow user
+- Like a video
 - Search accounts
 - Responsive and SEO
 
