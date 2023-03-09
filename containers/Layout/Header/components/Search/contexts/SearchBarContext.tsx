@@ -21,7 +21,7 @@ export const SearchBarProvider: React.FC<SearchBarContextProp> = ({ children }) 
 
   useEffect(() => {
     setSearchText(() => {
-      const querySearch = searchParams.get('q')
+      const querySearch = searchParams?.get('q')
       if (pathname === `/${locale}/search` && querySearch) {
         return querySearch
       }

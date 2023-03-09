@@ -4,7 +4,7 @@ import React from 'react'
 import CompoundVideoDetail from './CompoundVideoDetail'
 
 interface ContainerProp {
-  videoId: string
+  videoId?: string
 }
 
 const VideoDetail: React.FC<ContainerProp> = ({ videoId }) => {
