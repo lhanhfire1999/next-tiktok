@@ -20,6 +20,10 @@ interface Prop {
 const DefaultLayout: React.FC<Prop> = ({ children, locale }) => {
   const pathname = usePathname()
 
+  if (pathname === `/${locale}/video`) {
+    return <>{children}</>
+  }
+
   return (
     <>
       <Header />

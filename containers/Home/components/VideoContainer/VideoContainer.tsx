@@ -81,7 +81,7 @@ const ActionList: React.FC<ActionListProp> = ({ data }) => {
         </i>
         <span className={cx('count')}>{data.likes}</span>
       </List.Item>
-      <List.Item className={cx('btn')}>
+      <List.Item href={`/video?id=${data.id}`} className={cx('btn')}>
         <i className={cx('wrapper-icon')}>
           <CommentIcon className={cx('icon')} />
         </i>

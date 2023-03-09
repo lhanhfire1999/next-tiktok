@@ -23,8 +23,11 @@ export interface Discover {
 
 export type DiscoverStrategyParam = UpdateStrategy.Follow | UpdateStrategy.Like
 
-export interface UpdateDiscoverRequestQuery {
-  id?: string | number
+export interface DiscoverDetailRequestQuery {
+  id?: string
+}
+
+export interface UpdateDiscoverRequestQuery extends DiscoverDetailRequestQuery {
   username?: string
   param?: DiscoverStrategyParam
 }
@@ -37,4 +40,9 @@ export interface DiscoverRequestQuery extends UpdateDiscoverRequestQuery {
 export interface DiscoverResponse {
   message: string
   data?: Discover[]
+}
+
+export interface DiscoverDetailResponse {
+  message: string
+  data?: Discover
 }
