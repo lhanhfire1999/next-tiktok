@@ -19,7 +19,9 @@ const Content = () => {
   return (
     <div className={cx('wrapper')}>
       <LeftContainer className={cx('left-container')} />
-      <RightContainer className={cx('right-container')} />
+      <RightContainer className={cx('right-container')}>
+        <RightContainer.TopContent />
+      </RightContainer>
     </div>
   )
 }

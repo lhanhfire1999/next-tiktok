@@ -12,13 +12,12 @@ import styles from './VideoContainer.module.scss'
 
 const cx = classNames.bind(styles)
 
-interface VideoContainerProp {
+interface ChildrenProp {
   children: React.ReactNode
-  className?: string
 }
 
-interface VideoDescriptionProp {
-  videoDescription: string
+interface VideoContainerProp extends ChildrenProp {
+  className?: string
 }
 
 interface VideoProp {
@@ -29,23 +28,19 @@ interface ActionListProp {
   data: Discover
 }
 
-interface VideoMusic {
-  name: string
-}
-
 const VideoContainer: React.FC<VideoContainerProp> = ({ children, className }) => {
   return <div className={cx('wrapper', className)}>{children}</div>
 }
 
-const VideoDescription: React.FC<VideoDescriptionProp> = ({ videoDescription }) => {
-  return <p className={cx('video-description')}>{videoDescription}</p>
+const VideoDescription: React.FC<ChildrenProp> = ({ children }) => {
+  return <p className={cx('video-description')}>{children}</p>
 }
 
-const VideoMusic: React.FC<VideoMusic> = ({ name }) => {
+const VideoMusic: React.FC<ChildrenProp> = ({ children }) => {
   return (
     <div className={cx('wrapper-video-music')}>
       <MusicIcon className={cx('music-icon')} />
-      <LocalizedLink href="/">{name}</LocalizedLink>
+      <LocalizedLink href="/">{children}</LocalizedLink>
     </div>
   )
 }

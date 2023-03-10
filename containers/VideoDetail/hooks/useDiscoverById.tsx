@@ -4,7 +4,7 @@ import useSWR from 'swr'
 import { getDiscoverById } from '~/services/discover'
 
 const useDiscoverById = (videoId: string) => {
-  const { data: response, mutate, error } = useSWR(videoId ? { id: videoId } : null, getDiscoverById)
+  const { data, mutate, error } = useSWR(videoId ? { id: videoId } : null, getDiscoverById)
 
   useEffect(() => {
     if (!!error?.status) {
@@ -13,8 +13,8 @@ const useDiscoverById = (videoId: string) => {
   }, [error])
 
   return {
-    data: response?.data,
-    isLoading: !error && !response?.data,
+    data,
+    isLoading: !error && !data,
     mutate,
     isError: !!error?.status,
   }

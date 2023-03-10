@@ -1,2 +1,14 @@
+@use '~/styles/abstracts/' as *;
 .wrapper {
+  padding-top: 30px;
+}
+
+.top-content {
+  padding: 22px 32px 0;
+
+  .info-content {
+    @include responsive('desktop') {
+      margin-bottom: 15px !important;
+    }
+  }
 }

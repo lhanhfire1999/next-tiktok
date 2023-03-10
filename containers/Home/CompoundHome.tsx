@@ -21,18 +21,18 @@ const Home: React.FC<HomeProps> = ({ children }) => {
 }
 
 const Content = () => {
-  const { data, isLoading } = useHomeDiscover()
+  const { data, isLoading, handleUpdateFollow } = useHomeDiscover()
 
   return (
     <>
       <MainContainer.List>
         {data?.map((info, index) => (
           <MainContainer.CardItem key={info.id} isLastCard={index === data.length - 1}>
-            <UserDetails data={info} />
+            <UserDetails data={info} onUpdateFollow={handleUpdateFollow} />
 
             <VideoContainer>
-              <VideoContainer.VideoDescription videoDescription={info.caption} />
-              <VideoContainer.VideoMusic name={info.music_name} />
+              <VideoContainer.VideoDescription>{info.caption} </VideoContainer.VideoDescription>
+              <VideoContainer.VideoMusic>{info.music_name} </VideoContainer.VideoMusic>
             </VideoContainer>
 
             <VideoContainer className={cx('wrapper-video')}>

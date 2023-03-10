@@ -82,7 +82,7 @@ export const getDiscoverById = async ({ id }: DiscoverDetailRequestQuery) => {
     if (response.ok) {
       const res: DiscoverDetailResponse = await response.json()
 
-      return res
+      return res.data
     } else {
       throw response
     }
