@@ -13,6 +13,7 @@ interface ItemProp extends Children {
   className?: string
   onClick?: () => void
   href?: string | null
+  title?: string
 }
 
 const List: React.FC<ListProp> = ({ children, className }) => {
@@ -20,14 +21,14 @@ const List: React.FC<ListProp> = ({ children, className }) => {
 }
 
 // eslint-disable-next-line react/display-name
-const Item = React.forwardRef<HTMLLIElement, ItemProp>(({ children, href, className, onClick }, ref) => {
+const Item = React.forwardRef<HTMLLIElement, ItemProp>(({ children, href, className, title, onClick }, ref) => {
   const handleClick: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.stopPropagation()
     if (onClick) onClick()
   }
 
   return (
-    <li ref={ref} className={!href ? className : undefined} onClick={handleClick}>
+    <li ref={ref} className={!href ? className : undefined} onClick={handleClick} title={title}>
       {href ? (
         <LocalizedLink href={href} className={className}>
           {children}

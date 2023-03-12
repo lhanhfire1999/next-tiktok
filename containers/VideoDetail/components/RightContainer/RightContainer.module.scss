@@ -3,12 +3,113 @@
   padding-top: 30px;
 }
 
+// Top content
 .top-content {
-  padding: 22px 32px 0;
+  padding: 22px 32px 16px;
+  border-bottom: 1px solid var(--colorLinePrimary2);
 
   .info-content {
-    @include responsive('desktop') {
-      margin-bottom: 15px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .copy-link-container {
+    @include flex(flex, center, flex-start);
+    height: 34px;
+
+    line-height: 2rem;
+    font-size: 1.4rem;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    background: var(--colorBGInput);
+    border-radius: 8px;
+    overflow: hidden;
+
+    p {
+      @include text-shorten(1);
+      flex: 1 1 auto;
+      margin-left: 12px;
+    }
+
+    button {
+      display: block;
+      border: none;
+      outline: none;
+      color: var(--colorTextPrimary);
+      background-color: transparent;
+      font-weight: 700;
+      flex: 0 0 auto;
+      user-select: none;
+      padding: 0 18px;
+      height: 100%;
+      transition: background 0.2s;
+
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--colorBGView);
+    }
+  }
+}
+
+.wrapper-action-buttons {
+  @include flex(flex, center, null);
+  column-gap: 20px;
+  margin-bottom: 16px;
+
+  @include responsive('tablet') {
+    @include flex(flex, center, space-between);
+  }
+
+  .left-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 12px;
+
+    .button {
+      @include flex;
+    }
+
+    .button.cursor-pointer {
+      cursor: pointer;
+    }
+
+    .wrapper-icon {
+      @include flex;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 6px;
+      transition: all ease-in-out 200ms;
+      background-color: var(--colorBGInput);
+
+      &.active .like-icon {
+        color: var(--colorPrimary);
+      }
+
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .quantity {
+      display: block;
+      color: var(--colorTextSecondary);
+      font-size: 1.2rem;
+      line-height: 1.7rem;
+      text-align: center;
+    }
+  }
+
+  .right-actions-buttons {
+    @include flex(flex, center, flex-end);
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .wrapper-icon {
+      display: flex;
+      cursor: pointer;
     }
   }
 }

@@ -1,14 +1,14 @@
 @use '~/styles/abstracts/' as *;
 
 .wrapper {
-  @include responsive('desktop') {
+  @include responsive('tablet') {
     @include flex(flex, null, null);
   }
 
   .left-container {
     height: 50vh;
 
-    @include responsive('desktop') {
+    @include responsive('tablet') {
       flex-grow: 1;
       width: 100%;
       height: 100vh;
@@ -16,7 +16,7 @@
   }
 
   .right-container {
-    @include responsive('desktop') {
+    @include responsive('tablet') {
       flex: 0 0 544px;
       min-width: 544px;
     }

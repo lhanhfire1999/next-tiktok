@@ -42,6 +42,11 @@ export function middleware(request: NextRequest) {
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request)
 
+    if (request.url.includes('?')) {
+      const searchParams = `?${request.url.split('?')[1]}`
+      return NextResponse.redirect(new URL(`/${locale}/${pathname}${searchParams}`, request.url))
+    }
+
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
     return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url))
