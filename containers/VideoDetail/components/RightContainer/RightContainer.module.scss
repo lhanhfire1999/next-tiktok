@@ -1,10 +1,18 @@
 @use '~/styles/abstracts/' as *;
 .wrapper {
-  padding-top: 30px;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+
+  @include responsive('tablet') {
+    height: 100vh;
+    padding-top: 30px;
+  }
 }
 
-// Top content
-.top-content {
+// Top container
+.top-container {
+  flex: 0 0 auto;
   padding: 22px 32px 16px;
   border-bottom: 1px solid var(--colorLinePrimary2);
 
@@ -112,4 +120,90 @@
       cursor: pointer;
     }
   }
+}
+
+// Bottom container
+.bottom-container {
+  flex: 0 0 auto;
+  padding: 21px 30px;
+  border-top: 1px solid var(--colorLinePrimary2);
+
+  .login-bar {
+    color: var(--colorPrimary);
+    font-weight: 600;
+    height: 100%;
+    background: var(--colorBGPlaceholderOpaque);
+    border-radius: 2px;
+    padding: 14px 16px;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  .wrapper-bottom-comment {
+    @include flex(flex, flex-end, null);
+    position: relative;
+    bottom: 0;
+    left: 0;
+
+    .text-bar {
+      @include flex(flex, center, flex-start);
+      color: rgba(22, 24, 35, 0.75);
+      flex: 1 1 auto;
+      background-color: var(--colorBGInput);
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0px 9px;
+      transition: border-color 0.2s;
+
+      &:focus-within {
+        border-color: var(--colorLinePrimary);
+      }
+
+      .text {
+        display: block;
+        outline: none;
+        width: 100%;
+        word-break: break-all;
+        overflow-y: auto;
+        margin: 10px 8px 10px 0px;
+
+        font-size: 14px;
+        line-height: 17px;
+        caret-color: var(--colorPrimary);
+        background-color: transparent;
+        min-height: 17px;
+        max-height: 68px;
+        overflow-y: auto;
+        cursor: text;
+
+        &:empty:not(:focus)::before {
+          content: attr(data-placeholder);
+        }
+      }
+    }
+
+    button {
+      height: 40px;
+      flex: 0 0 48px;
+      border: none;
+      outline: none;
+      user-select: none;
+      background-color: transparent;
+      text-align: right;
+      color: var(--colorTextQuaternary);
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin-right: 4px;
+      cursor: default;
+
+      &.active {
+        color: var(--colorPrimary);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.comment-container {
+  flex: 1 1 auto;
 }

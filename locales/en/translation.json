@@ -54,8 +54,7 @@
     "seeLess": "See less",
 
     "inbox": "Inbox",
-    "message": "Message",
-    "copyLink": "Copy Link"
+    "message": "Message"
   },
 
   "UploadPage": {
@@ -131,5 +130,12 @@
     "programs": "Programs",
     "support": "Support",
     "legal": "Legal"
+  },
+
+  "VideoDetail": {
+    "copyLink": "Copy Link",
+    "loginToComment": "Log in to comment",
+    "addCommentPlaceholder": "Add comment...",
+    "post": "Post"
   }
 }

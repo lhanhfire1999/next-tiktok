@@ -1,10 +1,12 @@
 import classNames from 'classnames/bind'
+import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useSearchParams } from 'next/navigation'
 import React, { useMemo } from 'react'
 
 import { CircleTwitterIcon, CommentIcon, FacebookIcon, HeartIcon, List } from '~/components'
 import { UserDetails, VideoContainer } from '~/containers/Home/components'
+import { useAuthModal } from '~/contexts/AuthModalContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
 
 import styles from './RightContainer.module.scss'
@@ -39,12 +41,12 @@ const RightContainer: React.FC<ContainerProp> = ({ className, children }) => {
   return <div className={cx(className, 'wrapper')}>{children}</div>
 }
 
-const TopContent = () => {
-  const { data, handleUpdateFollow } = useVideoDetail()
-  const t = useTranslations('Common')
-
+const TopContainer = () => {
+  const t = useTranslations('VideoDetail')
   const pathname = usePathname()
   const searchParams = useSearchParams()
+
+  const { data, handleUpdateFollow } = useVideoDetail()
 
   const getCurrentUrl = useMemo(() => {
     return `${process.env.NEXT_PUBLIC_URL}${pathname}?id=${searchParams?.get('id')}`
@@ -59,7 +61,7 @@ const TopContent = () => {
   }
 
   return (
-    <div className={cx('top-content')}>
+    <div className={cx('top-container')}>
       <UserDetails data={data} onUpdateFollow={handleUpdateFollow} className={cx('info-content')} />
 
       <VideoContainer>
@@ -96,6 +98,40 @@ const TopContent = () => {
   )
 }
 
-const CompoundRightContainer = Object.assign(RightContainer, { TopContent })
+const BottomContainer = () => {
+  const t = useTranslations('VideoDetail')
+  const { data: session } = useSession()
+  const { handleToggleModal } = useAuthModal()
+
+  const handleClickLoginBar = () => {
+    if (!session) {
+      handleToggleModal(true)
+      return
+    }
+  }
+
+  return (
+    <div className={cx('bottom-container')}>
+      {!session ? (
+        <div className={cx('login-bar')} onClick={handleClickLoginBar}>
+          {t('loginToComment')}
+        </div>
+      ) : (
+        <div className={cx('wrapper-bottom-comment')}>
+          <div className={cx('text-bar')}>
+            <p className={cx('text')} contentEditable={true} data-placeholder={t('addCommentPlaceholder')}></p>
+          </div>
+          <button className={cx({ active: false })}>{t('post')}</button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+const CommentContainer = () => {
+  return <div className={cx('comment-container')}>Comment container</div>
+}
+
+const CompoundRightContainer = Object.assign(RightContainer, { TopContainer, BottomContainer, CommentContainer })
 
 export default CompoundRightContainer

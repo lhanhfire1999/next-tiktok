@@ -20,7 +20,9 @@ const Content = () => {
     <div className={cx('wrapper')}>
       <LeftContainer className={cx('left-container')} />
       <RightContainer className={cx('right-container')}>
-        <RightContainer.TopContent />
+        <RightContainer.TopContainer />
+        <RightContainer.CommentContainer />
+        <RightContainer.BottomContainer />
       </RightContainer>
     </div>
   )

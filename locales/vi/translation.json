@@ -54,8 +54,7 @@
     "seeLess": "Ẩn bớt",
 
     "inbox": "Hộp thư",
-    "message": "Tin nhắn",
-    "copyLink": "Sao chép liên kết"
+    "message": "Tin nhắn"
   },
 
   "UploadPage": {
@@ -131,5 +130,12 @@
     "programs": "Chương trình",
     "support": "Hỗ trợ",
     "legal": "Pháp lý"
+  },
+
+  "VideoDetail": {
+    "copyLink": "Sao chép liên kết",
+    "loginToComment": "Đăng nhập để bình luận",
+    "addCommentPlaceholder": "Thêm bình luận...",
+    "post": "Đăng"
   }
 }
