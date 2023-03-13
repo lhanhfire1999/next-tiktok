@@ -1,0 +1,87 @@
+@use '~/styles/abstracts/' as *;
+// Comment list container
+.comment-container {
+  padding: 24px 32px;
+  flex: 0 0 auto;
+  order: 3;
+
+  @include responsive('tablet') {
+    flex: 1 1 auto;
+    height: 100%;
+    overflow-y: auto;
+    order: 2;
+  }
+}
+
+// Comment item container
+.comment-item-container {
+  margin-bottom: 16px;
+
+  .comment-item-wrapper {
+    display: flex;
+    margin-bottom: 16px;
+
+    .avatar {
+      flex: 0 0 auto;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+
+    .content-wrapper {
+      flex: 1 1 auto;
+
+      .username {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 25px;
+        color: var(--colorTextPrimary);
+        cursor: pointer;
+      }
+      .comment-content {
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        white-space: pre-line;
+        word-break: break-word;
+        margin-bottom: 6px;
+      }
+
+      .comment-sub-content {
+        font-size: 1.4rem;
+
+        .time {
+          color: rgba(22, 24, 35, 0.5);
+          line-height: 2rem;
+        }
+
+        .button {
+          color: rgba(22, 24, 35, 0.5);
+          font-weight: 400;
+          margin-left: 24px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .show-replies {
+    @include flex(flex, center, null);
+    color: rgba(22, 24, 35, 0.5);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    margin-left: 52px;
+
+    .content {
+      margin-right: 6px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .sub-comment-list {
+    margin-left: 52px;
+  }
+}

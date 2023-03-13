@@ -8,6 +8,7 @@ import { CircleTwitterIcon, CommentIcon, FacebookIcon, HeartIcon, List } from '~
 import { UserDetails, VideoContainer } from '~/containers/Home/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
+import CompoundComment from '../CompoundComment'
 
 import styles from './RightContainer.module.scss'
 
@@ -117,7 +118,7 @@ const BottomContainer = () => {
           {t('loginToComment')}
         </div>
       ) : (
-        <div className={cx('wrapper-bottom-comment')}>
+        <div className={cx('bottom-comment-wrapper')}>
           <div className={cx('text-bar')}>
             <p className={cx('text')} contentEditable={true} data-placeholder={t('addCommentPlaceholder')}></p>
           </div>
@@ -129,7 +130,13 @@ const BottomContainer = () => {
 }
 
 const CommentContainer = () => {
-  return <div className={cx('comment-container')}>Comment container</div>
+  return (
+    <CompoundComment>
+      <CompoundComment.CommentList>
+        <CompoundComment.CommentItem parentId="2" parentUsername="tintin" subCommentList={['1', '2'] as any} />
+      </CompoundComment.CommentList>
+    </CompoundComment>
+  )
 }
 
 const CompoundRightContainer = Object.assign(RightContainer, { TopContainer, BottomContainer, CommentContainer })

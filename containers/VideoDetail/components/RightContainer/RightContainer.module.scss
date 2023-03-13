@@ -15,6 +15,11 @@
   flex: 0 0 auto;
   padding: 22px 32px 16px;
   border-bottom: 1px solid var(--colorLinePrimary2);
+  order: 1;
+
+  @include responsive('tablet') {
+    order: 1;
+  }
 
   .info-content {
     margin-bottom: 15px !important;
@@ -126,7 +131,16 @@
 .bottom-container {
   flex: 0 0 auto;
   padding: 21px 30px;
-  border-top: 1px solid var(--colorLinePrimary2);
+
+  border-bottom: 1px solid var(--colorLinePrimary2);
+  order: 2;
+
+  @include responsive('tablet') {
+    order: 3;
+    border-top-color: transparent;
+    border-bottom: none;
+    border-top: 1px solid var(--colorLinePrimary2);
+  }
 
   .login-bar {
     color: var(--colorPrimary);
@@ -139,7 +153,7 @@
     cursor: pointer;
   }
 
-  .wrapper-bottom-comment {
+  .bottom-comment-wrapper {
     @include flex(flex, flex-end, null);
     position: relative;
     bottom: 0;
@@ -202,8 +216,4 @@
       }
     }
   }
-}
-
-.comment-container {
-  flex: 1 1 auto;
 }
