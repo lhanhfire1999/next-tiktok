@@ -49,12 +49,12 @@
         font-size: 1.4rem;
 
         .time {
-          color: rgba(22, 24, 35, 0.5);
+          color: var(--colorTextTertiary);
           line-height: 2rem;
         }
 
         .button {
-          color: rgba(22, 24, 35, 0.5);
+          color: var(--colorTextTertiary);
           font-weight: 400;
           margin-left: 24px;
           cursor: pointer;
@@ -65,7 +65,7 @@
 
   .show-replies {
     @include flex(flex, center, null);
-    color: rgba(22, 24, 35, 0.5);
+    color: var(--colorTextTertiary);
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
