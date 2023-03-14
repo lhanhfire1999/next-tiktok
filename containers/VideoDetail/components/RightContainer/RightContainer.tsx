@@ -47,7 +47,7 @@ const TopContainer = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const { data, handleUpdateFollow } = useVideoDetail()
+  const { data, handleUpdateFollow, handleUpdateLike } = useVideoDetail()
 
   const getCurrentUrl = useMemo(() => {
     return `${process.env.NEXT_PUBLIC_URL}${pathname}?id=${searchParams?.get('id')}`
@@ -55,6 +55,27 @@ const TopContainer = () => {
 
   const handleCopyVideoLink = async () => {
     await navigator.clipboard.writeText(getCurrentUrl)
+  }
+
+  const handleClickLikeOrCommentButton = ({ strategy }: { strategy: ACTION_NAMES.Like | ACTION_NAMES.Comment }) => {
+    if (strategy === ACTION_NAMES.Like) {
+      handleUpdateLike(data!.id, data!.username)
+      return
+    }
+  }
+
+  const getShareUrl = ({ strategy }: { strategy: ACTION_NAMES.ShareToFB | ACTION_NAMES.ShareToTwitter }) => {
+    if (strategy === ACTION_NAMES.ShareToFB) {
+      return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(getCurrentUrl)}&t=${encodeURIComponent(
+        `${data!.username} on TopTop`
+      )}`
+    }
+
+    if (strategy === ACTION_NAMES.ShareToTwitter) {
+      return `http://twitter.com/share?text=${encodeURIComponent(
+        `${data!.username} on TopTop`
+      )}&url=${encodeURIComponent(getCurrentUrl)}`
+    }
   }
 
   if (!data) {
@@ -74,7 +95,11 @@ const TopContainer = () => {
         <List className={cx('left-action-buttons')}>
           {ACTION_BUTTONS.leftContainer.map(({ id, Icon }) => (
             <List.Item key={id} className={cx('button', { 'cursor-pointer': id === ACTION_NAMES.Like })}>
-              <i key={id} className={cx('wrapper-icon', { active: data.is_liked })}>
+              <i
+                key={id}
+                className={cx('wrapper-icon', { active: data.is_liked })}
+                onClick={handleClickLikeOrCommentButton.bind(null, { strategy: id })}
+              >
                 <Icon className={cx('icon', { 'like-icon': id === ACTION_NAMES.Like })} />
               </i>
               <span className={cx('quantity')}> {id === ACTION_NAMES.Like ? data.likes : data.comments}</span>
@@ -84,7 +109,14 @@ const TopContainer = () => {
 
         <List className={cx('right-actions-buttons')}>
           {ACTION_BUTTONS.rightContainer.map(({ id, Icon }) => (
-            <List.Item key={id} className={cx('wrapper-icon')} title={id}>
+            <List.Item
+              key={id}
+              className={cx('wrapper-icon')}
+              href={getShareUrl({ strategy: id })}
+              title={id}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Icon width="2.4rem" height="2.4rem" />
             </List.Item>
           ))}

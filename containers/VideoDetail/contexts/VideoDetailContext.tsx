@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext } from 'react'
 import { KeyedMutator } from 'swr'
-import { Discover, DiscoverDetailResponse, updateFollowOrLikeDiscover, UpdateStrategy } from '~/services/discover'
+import { Discover, updateFollowOrLikeDiscover, UpdateStrategy } from '~/services/discover'
 import useDiscoverById from '../hooks/useDiscoverById'
 
 interface ProviderProp {
@@ -25,12 +25,20 @@ export const VideoDetailProvider: React.FC<ProviderProp> = ({ children, videoId 
 
   const handleUpdateFollow = async (id: string, username: string) => {
     await updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Follow })
-    data && mutate({ ...data, is_followed: !data.is_followed })
+    data && mutate({ ...data, is_followed: !data.is_followed }, false)
   }
 
   const handleUpdateLike = async (id: string, username: string) => {
     await updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Like })
-    mutate()
+    if (data && data.is_liked) {
+      mutate({ ...data, is_liked: false, likes: data.likes - 1 }, false)
+      return
+    }
+
+    if (data && !data.is_liked) {
+      mutate({ ...data, is_liked: true, likes: data.likes + 1 }, false)
+      return
+    }
   }
 
   return (
