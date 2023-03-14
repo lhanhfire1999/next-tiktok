@@ -29,10 +29,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<DiscoverRespons
         }
 
         if (param === UpdateStrategy.Like) {
-          await DiscoverModel.findOneAndUpdate({ id: id }, [
+          await DiscoverModel.findOneAndUpdate<Discover>({ id: id }, [
             {
               $set: {
                 is_liked: { $not: '$is_liked' },
+                likes: {
+                  $cond: {
+                    if: { $eq: ['$is_liked', true] },
+                    then: {
+                      $sum: ['$likes', -1],
+                    },
+                    else: {
+                      $sum: ['$likes', 1],
+                    },
+                  },
+                },
               },
             },
           ])
