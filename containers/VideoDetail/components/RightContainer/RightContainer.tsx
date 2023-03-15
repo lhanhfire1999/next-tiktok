@@ -2,11 +2,12 @@ import classNames from 'classnames/bind'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useSearchParams } from 'next/navigation'
-import React, { useMemo } from 'react'
+import React, { FormEvent, useMemo } from 'react'
 
 import { CircleTwitterIcon, CommentIcon, FacebookIcon, HeartIcon, List } from '~/components'
 import { UserDetails, VideoContainer } from '~/containers/Home/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
+import { UploadCommentProvider, useUploadComment } from '../../contexts/UploadCommentContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
 import CompoundComment from '../CompoundComment'
 
@@ -39,7 +40,11 @@ const ACTION_BUTTONS = {
 } as const
 
 const RightContainer: React.FC<ContainerProp> = ({ className, children }) => {
-  return <div className={cx(className, 'wrapper')}>{children}</div>
+  return (
+    <UploadCommentProvider>
+      <div className={cx(className, 'wrapper')}>{children}</div>
+    </UploadCommentProvider>
+  )
 }
 
 const TopContainer = () => {
@@ -135,6 +140,11 @@ const BottomContainer = () => {
   const t = useTranslations('VideoDetail')
   const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
+  const { comment, handleUpdateComment: onUpdateComment, commentContentRef } = useUploadComment()
+
+  const handleChangeCommentContent = (e: FormEvent<HTMLParagraphElement>) => {
+    onUpdateComment(e.currentTarget.innerHTML || '')
+  }
 
   const handleClickLoginBar = () => {
     if (!session) {
@@ -152,9 +162,17 @@ const BottomContainer = () => {
       ) : (
         <div className={cx('bottom-comment-wrapper')}>
           <div className={cx('text-bar')}>
-            <p className={cx('text')} contentEditable={true} data-placeholder={t('addCommentPlaceholder')}></p>
+            <p
+              className={cx('text')}
+              ref={commentContentRef}
+              data-placeholder={t('addCommentPlaceholder')}
+              contentEditable
+              suppressContentEditableWarning
+              onInput={handleChangeCommentContent}
+            />
           </div>
-          <button className={cx({ active: false })}>{t('post')}</button>
+
+          <button className={cx({ active: !!comment })}>{t('post')}</button>
         </div>
       )}
     </div>
