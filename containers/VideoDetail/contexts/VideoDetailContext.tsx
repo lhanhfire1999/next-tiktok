@@ -1,6 +1,7 @@
 'use client'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { KeyedMutator } from 'swr'
+import { useSocket } from '~/contexts'
 import { Discover, updateFollowOrLikeDiscover, UpdateStrategy } from '~/services/discover'
 import useDiscoverById from '../hooks/useDiscoverById'
 
@@ -22,6 +23,14 @@ const Context = React.createContext<null | ContextProp>(null)
 
 export const VideoDetailProvider: React.FC<ProviderProp> = ({ children, videoId }) => {
   const { data, isError, isLoading, mutate } = useDiscoverById(videoId)
+  const { socket } = useSocket()
+
+  useEffect(() => {
+    if (socket && videoId) {
+      socket.emit('joinChannel', videoId)
+      return
+    }
+  }, [socket, videoId])
 
   const handleUpdateFollow = async (id: string, username: string) => {
     await updateFollowOrLikeDiscover({ id, username, param: UpdateStrategy.Follow })

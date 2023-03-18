@@ -1,3 +1,5 @@
+import { Pagination } from '~/types/common'
+
 export enum UpdateStrategy {
   Follow = 'follow',
   Like = 'like',
@@ -32,10 +34,7 @@ export interface UpdateDiscoverRequestQuery extends DiscoverDetailRequestQuery {
   param?: DiscoverStrategyParam
 }
 
-export interface DiscoverRequestQuery extends UpdateDiscoverRequestQuery {
-  page?: string | number
-  offset?: string | number
-}
+export interface DiscoverRequestQuery extends UpdateDiscoverRequestQuery, Pagination {}
 
 export interface DiscoverResponse {
   message: string
