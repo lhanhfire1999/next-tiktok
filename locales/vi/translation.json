@@ -136,6 +136,9 @@
     "copyLink": "Sao chép liên kết",
     "loginToComment": "Đăng nhập để bình luận",
     "addCommentPlaceholder": "Thêm bình luận...",
-    "post": "Đăng"
+    "post": "Đăng",
+    "firstComment": "Hãy trở thành người đầu tiên bình luận!",
+    "reply": "Trả lời",
+    "viewMoreReplies": "Xem thêm câu trả lời khác"
   }
 }

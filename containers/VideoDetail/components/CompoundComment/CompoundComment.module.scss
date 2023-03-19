@@ -85,3 +85,16 @@
     margin-left: 52px;
   }
 }
+
+.no-have-comment {
+  display: none;
+
+  @include responsive('tablet') {
+    @include flex();
+    color: var(--colorTextTertiary);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    height: 100%;
+  }
+}

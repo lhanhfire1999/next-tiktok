@@ -4,11 +4,12 @@ import { useTranslations } from 'next-intl'
 import { usePathname, useSearchParams } from 'next/navigation'
 import React, { FormEvent, useMemo } from 'react'
 
-import { CircleTwitterIcon, CommentIcon, FacebookIcon, HeartIcon, List } from '~/components'
+import { CircleTwitterIcon, CommentIcon, FacebookIcon, HeartIcon, List, Loading } from '~/components'
 import { UserDetails, VideoContainer } from '~/containers/Home/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { UploadCommentProvider, useUploadComment } from '../../contexts/UploadCommentContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
+import useCommentById from '../../hooks/useCommentById'
 import CompoundComment from '../CompoundComment'
 
 import styles from './RightContainer.module.scss'
@@ -180,11 +181,19 @@ const BottomContainer = () => {
 }
 
 const CommentContainer = () => {
+  const { data: comments, isLoading } = useCommentById()
+
   return (
     <CompoundComment>
-      <CompoundComment.CommentList>
-        <CompoundComment.CommentItem parentId="2" parentUsername="tintin" subCommentList={['1', '2'] as any} />
-      </CompoundComment.CommentList>
+      {isLoading && <Loading isMaxHeight />}
+      {!comments.length && <CompoundComment.NoHaveComment />}
+      {!!comments.length && (
+        <CompoundComment.CommentList>
+          {comments.map((comment, index) => (
+            <CompoundComment.CommentItem key={index} commentData={comment} />
+          ))}
+        </CompoundComment.CommentList>
+      )}
     </CompoundComment>
   )
 }

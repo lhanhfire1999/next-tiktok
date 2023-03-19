@@ -18,15 +18,15 @@ export interface SocketData {
 // Service interface
 export interface Comment {
   _id: string
-  content: String
-  discover_id: String
-  user_id: String
-  username: String
-  created_at: Date
-  updated_at: Date
+  videoId: string
+  content: string
+  username: string
+  userImage: string
+  createdAt: Date
+  updatedAt: Date
   reply?: Comment[]
 }
 
 export interface CommentRequestQuery extends Pagination {
-  id: string
+  videoId: string
 }

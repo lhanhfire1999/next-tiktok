@@ -61,12 +61,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<DiscoverRespons
   }
 
   if (req.method === 'GET') {
-    const { param: id } = req.query as { param: string }
-    const data = await DiscoverModel.findOne<Discover>({ id }).lean()
+    try {
+      await dbConnect()
+      const { param: id } = req.query as { param: string }
+      const data = await DiscoverModel.findOne<Discover>({ id })
 
-    if (!data) return res.status(422).send({ message: 'VideoId is invalid' })
+      if (!data) return res.status(422).send({ message: 'VideoId is invalid' })
 
-    return res.status(201).send({ message: 'Discover detail fetch success', data })
+      return res.status(201).send({ message: 'Discover detail fetch success', data })
+    } catch (e: any) {
+      res.status(422).send({ message: 'Fetch data fail' })
+    }
   }
 
   return res.status(404).send({ message: 'Invalid request' })

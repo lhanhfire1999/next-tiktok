@@ -51,14 +51,14 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
 
         socket.join(user.channelId)
 
-        console.log('joinChannel', allUsers)
-        console.log('joinChannel', socket.rooms)
+        // console.log('joinChannel', allUsers)
+        // console.log('joinChannel', socket.rooms)
       })
 
       // When close browser
       socket.on('disconnect', () => {
         allUsers = [...allUsers].filter((user) => user.userId !== socket.id)
-        console.log(socket.id + ' disconnected.')
+        // console.log(socket.id + ' disconnected.')
       })
     })
   }

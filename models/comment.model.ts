@@ -10,7 +10,8 @@ const CommentSchema = new Schema<Comment>(
     },
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+    _id: false,
     collection: 'comments',
   }
 )

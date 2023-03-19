@@ -1,7 +1,10 @@
 'use client'
 import classNames from 'classnames/bind'
+
+import { Loading } from '~/components'
 import { LeftContainer, RightContainer } from './components'
-import { VideoDetailProvider } from './contexts/VideoDetailContext'
+import { useVideoDetail, VideoDetailProvider } from './contexts/VideoDetailContext'
+
 import styles from './VideoDetail.module.scss'
 
 interface VideoDetailProp {
@@ -16,6 +19,12 @@ const VideoDetail: React.FC<VideoDetailProp> = ({ videoId, children }) => {
 }
 
 const Content = () => {
+  const { isLoading } = useVideoDetail()
+
+  if (isLoading) {
+    return <Loading isMaxHeightWindow />
+  }
+
   return (
     <div className={cx('wrapper')}>
       <LeftContainer className={cx('left-container')} />

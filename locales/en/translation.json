@@ -136,6 +136,9 @@
     "copyLink": "Copy Link",
     "loginToComment": "Log in to comment",
     "addCommentPlaceholder": "Add comment...",
-    "post": "Post"
+    "post": "Post",
+    "firstComment": "Be the first to comment!",
+    "reply": "Reply",
+    "viewMoreReplies": "View more replies"
   }
 }
