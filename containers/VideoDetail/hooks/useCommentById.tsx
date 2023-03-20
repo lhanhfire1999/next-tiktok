@@ -1,5 +1,6 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
+import { useSocketListener } from '~/contexts'
 import { Comment, getCommentsById } from '~/services/comment'
 
 const useCommentById = () => {
@@ -7,6 +8,10 @@ const useCommentById = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
   const [data, setData] = useState<Comment[]>([])
+
+  useSocketListener('sendCommentToClient', (newComment) => {
+    setData((prev) => [newComment, ...prev])
+  })
 
   const id = useMemo(() => {
     return searchParams?.get('id')

@@ -2,6 +2,9 @@ import type { Server as HTTPServer } from 'http'
 import type { Socket as NetSocket } from 'net'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Server as IOServer } from 'socket.io'
+
+import dbConnect from '~/lib/dbConnection'
+import CommentModel from '~/models/comment.model'
 import { ClientToServerEvents, InterServerEvents, ServerToClientEvents, SocketData } from '~/services/comment'
 
 interface SocketServer extends HTTPServer {
@@ -53,6 +56,30 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
 
         // console.log('joinChannel', allUsers)
         // console.log('joinChannel', socket.rooms)
+      })
+
+      // Create comment
+      socket.on('createComment', async (comment, isReply) => {
+        const { videoId, content, username, userImage, createdAt = new Date(), reply = [] } = comment
+
+        await dbConnect()
+
+        const newCommentModal = new CommentModel({
+          videoId,
+          content,
+          username,
+          userImage,
+          createdAt,
+          reply,
+        })
+
+        if (isReply) {
+        } else {
+          await newCommentModal.save()
+
+          comment._id = newCommentModal._id
+          io.to(videoId).emit('sendCommentToClient', comment)
+        }
       })
 
       // When close browser

@@ -43,7 +43,7 @@ const CommentItem: React.FC<CommentItemProp> = ({ commentData }) => {
         <ImageWithFallback className={cx('avatar')} src={userImage} alt={`${username}-avatar`} width="40" height="40" />
         <div className={cx('content-wrapper')}>
           <h4 className={cx('username')}>{username}</h4>
-          <p className={cx('comment-content')}>{content}</p>
+          <p className={cx('comment-content')} dangerouslySetInnerHTML={{ __html: content }} />
           <p className={cx('comment-sub-content')}>
             <span className={cx('time')}>{moment(createdAt).fromNow()}</span>
             <span className={cx('button')}>{t('reply')}</span>
@@ -79,7 +79,7 @@ const ReplyCommentContainer: React.FC<ReplyCommentContainerProp> = ({ replyComme
   return (
     <CommentList hasSubCommentList={true}>
       {replyComments.map((replyComment) => (
-        <CommentItem key={replyComment._id} commentData={replyComment} />
+        <CommentItem key={replyComment!._id} commentData={replyComment} />
       ))}
     </CommentList>
   )

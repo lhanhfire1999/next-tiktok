@@ -49,7 +49,10 @@ export const SocketProvider: React.FC<ProviderProp> = ({ children }) => {
   return <Context.Provider value={{ socket: socket.current }}>{children}</Context.Provider>
 }
 
-export const useSocketSubscription = (eventName: keyof ServerToClientEvents, eventHandler: () => void) => {
+export const useSocketListener = (
+  eventName: keyof ServerToClientEvents,
+  eventHandler: ServerToClientEvents[keyof ServerToClientEvents]
+) => {
   const { socket } = useContext(Context) as ContextProp
 
   // when the component, *which uses this hook* mounts,

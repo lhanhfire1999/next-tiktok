@@ -209,10 +209,11 @@
       font-weight: 600;
       font-size: 1.4rem;
       margin-right: 4px;
-      cursor: default;
+      pointer-events: none;
 
       &.active {
         color: var(--colorPrimary);
+        pointer-events: auto;
         cursor: pointer;
       }
     }

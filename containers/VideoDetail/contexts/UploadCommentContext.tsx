@@ -6,7 +6,7 @@ interface ProviderProp {
 
 interface ContextProp {
   comment: string
-  handleUpdateComment: (value: string) => void
+  handleUpdateComment: (value: string, isTwoWayBinding?: boolean) => void
   commentContentRef: React.RefObject<HTMLParagraphElement>
 }
 
