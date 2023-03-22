@@ -10,7 +10,8 @@ import { useAuthModal, useSocket } from '~/contexts'
 import { Comment } from '~/services/comment'
 import { UploadCommentProvider, useUploadComment } from '../../contexts/UploadCommentContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
-import useCommentById from '../../hooks/useCommentById'
+import { useFetchCommentById } from '../../hooks'
+
 import CompoundComment from '../CompoundComment'
 
 import styles from './RightContainer.module.scss'
@@ -161,7 +162,6 @@ const BottomContainer = () => {
         content: commentContent.trim(),
         userImage,
         username,
-        createdAt: new Date(),
       }
 
       socket.emit('createComment', newComment)
@@ -205,19 +205,24 @@ const BottomContainer = () => {
 }
 
 const CommentContainer = () => {
-  const { data: comments, isLoading } = useCommentById()
+  const { data: comments, isLoading, handleIncreasePage } = useFetchCommentById()
 
   return (
     <CompoundComment>
-      {isLoading && <Loading isMaxHeight />}
       {!comments.length && <CompoundComment.NoHaveComment />}
       {!!comments.length && (
         <CompoundComment.CommentList>
-          {comments.map((comment) => (
-            <CompoundComment.CommentItem key={comment!._id} commentData={comment} />
+          {comments.map((comment, index) => (
+            <CompoundComment.CommentItem
+              key={comment!._id}
+              commentData={comment}
+              isLastItem={comments.length - 1 === index}
+              onUpPage={handleIncreasePage}
+            />
           ))}
         </CompoundComment.CommentList>
       )}
+      {isLoading && <Loading />}
     </CompoundComment>
   )
 }

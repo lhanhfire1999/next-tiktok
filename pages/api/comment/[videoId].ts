@@ -11,14 +11,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse<Com
 
     try {
       await dbConnect()
-
       const data = await CommentModel.find<Comment>({ videoId })
+        .sort({ createdAt: -1 })
         .skip(parseInt(offset as string) * (parseInt(page as string) - 1))
         .limit(parseInt(offset as string))
 
       return res.status(201).send({ message: 'Success', data: data })
     } catch (e: any) {
-      res.status(422).send({ message: 'Something went wrong at Server' })
+      res.status(422).send({ message: e || 'Something went wrong at Server' })
     }
   }
 

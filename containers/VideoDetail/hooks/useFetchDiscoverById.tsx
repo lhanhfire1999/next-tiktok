@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import useSWR from 'swr'
 import { getDiscoverById } from '~/services/discover'
 
-const useDiscoverById = (videoId: string) => {
+const useFetchDiscoverById = (videoId: string) => {
   const { data, mutate, error } = useSWR(videoId ? { id: videoId } : null, getDiscoverById)
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const useDiscoverById = (videoId: string) => {
   }
 }
 
-export default useDiscoverById
+export default useFetchDiscoverById

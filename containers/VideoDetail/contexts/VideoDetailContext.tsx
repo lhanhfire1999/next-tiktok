@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import { KeyedMutator } from 'swr'
 import { useSocket } from '~/contexts'
 import { Discover, updateFollowOrLikeDiscover, UpdateStrategy } from '~/services/discover'
-import useDiscoverById from '../hooks/useDiscoverById'
+import { useFetchDiscoverById } from '../hooks'
 
 interface ProviderProp {
   children: React.ReactNode
@@ -22,7 +22,7 @@ interface ContextProp {
 const Context = React.createContext<null | ContextProp>(null)
 
 export const VideoDetailProvider: React.FC<ProviderProp> = ({ children, videoId }) => {
-  const { data, isError, isLoading, mutate } = useDiscoverById(videoId)
+  const { data, isError, isLoading, mutate } = useFetchDiscoverById(videoId)
   const { socket } = useSocket()
 
   useEffect(() => {

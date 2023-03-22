@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useSocketListener } from '~/contexts'
 import { Comment, getCommentsById } from '~/services/comment'
 
-const useCommentById = () => {
+const useFetchCommentById = () => {
   const searchParams = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
@@ -19,12 +19,10 @@ const useCommentById = () => {
 
   const fetchData = async (videoId: string) => {
     setIsLoading(true)
-    const res = await getCommentsById({ videoId, page: page, offset: 5 })
-
+    const res = await getCommentsById({ videoId, page: page, offset: 7 })
     setData((prev) => {
-      if (res.data?.length) {
-        const newData = [...prev, ...res.data]
-        return newData
+      if (res.data && res.data.length > 0) {
+        return [...prev, ...res.data]
       }
       return prev
     })
@@ -39,7 +37,6 @@ const useCommentById = () => {
   useEffect(() => {
     if (id) {
       fetchData(id)
-      return
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, page])
@@ -47,4 +44,4 @@ const useCommentById = () => {
   return { isLoading, data, handleIncreasePage }
 }
 
-export default useCommentById
+export default useFetchCommentById

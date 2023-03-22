@@ -60,7 +60,7 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
 
       // Create comment
       socket.on('createComment', async (comment, isReply) => {
-        const { videoId, content, username, userImage, createdAt = new Date(), reply = [] } = comment
+        const { videoId, content, username, userImage, reply = [] } = comment
 
         await dbConnect()
 
@@ -69,7 +69,6 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
           content,
           username,
           userImage,
-          createdAt,
           reply,
         })
 

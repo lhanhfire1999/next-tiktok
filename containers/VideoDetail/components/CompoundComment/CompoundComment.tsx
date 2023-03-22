@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 
 import { DownIcon, ImageWithFallback, List } from '~/components'
+import { useInfiniteScroll } from '~/hooks'
 import { Comment } from '~/services/comment'
 
 import styles from './CompoundComment.module.scss'
@@ -18,6 +19,8 @@ interface CommentListProp extends ChildrenProp {
 
 interface CommentItemProp {
   commentData: Comment
+  isLastItem?: boolean
+  onUpPage?: () => void
 }
 
 interface ReplyCommentContainerProp {
@@ -34,11 +37,13 @@ const CommentList: React.FC<CommentListProp> = ({ children, hasSubCommentList })
   return <List className={cx({ 'sub-comment-list': hasSubCommentList })}>{children}</List>
 }
 
-const CommentItem: React.FC<CommentItemProp> = ({ commentData }) => {
+const CommentItem: React.FC<CommentItemProp> = ({ commentData, isLastItem, onUpPage }) => {
   const t = useTranslations('VideoDetail')
   const { content, username, userImage, reply, createdAt } = commentData
+  const { scrollTriggerRef } = useInfiniteScroll(isLastItem ? { callback: onUpPage } : {})
+
   return (
-    <List.Item className={cx('comment-item-container')}>
+    <List.Item className={cx('comment-item-container')} ref={isLastItem ? scrollTriggerRef : null}>
       <div className={cx('comment-item-wrapper')}>
         <ImageWithFallback className={cx('avatar')} src={userImage} alt={`${username}-avatar`} width="40" height="40" />
         <div className={cx('content-wrapper')}>

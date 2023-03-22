@@ -29,7 +29,7 @@ export interface Comment {
   content: string
   username: string
   userImage: string
-  createdAt: Date
+  createdAt?: Date
   reply?: Comment[]
 }
 
