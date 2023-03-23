@@ -12,7 +12,7 @@ interface ContextProp {
 
 const Context = React.createContext<ContextProp | null>(null)
 
-export const UploadCommentProvider: React.FC<ProviderProp> = ({ children }) => {
+export const CommentProvider: React.FC<ProviderProp> = ({ children }) => {
   const [comment, setComment] = useState<string>('')
   const commentContentRef = useRef<HTMLParagraphElement>(null)
 
@@ -28,6 +28,6 @@ export const UploadCommentProvider: React.FC<ProviderProp> = ({ children }) => {
   return <Context.Provider value={{ comment, handleUpdateComment, commentContentRef }}>{children}</Context.Provider>
 }
 
-export const useUploadComment = () => {
+export const useComment = () => {
   return useContext(Context) as ContextProp
 }

@@ -8,9 +8,9 @@ import { CircleTwitterIcon, CommentIcon, FacebookIcon, HeartIcon, List, Loading 
 import { UserDetails, VideoContainer } from '~/containers/Home/components'
 import { useAuthModal, useSocket } from '~/contexts'
 import { Comment } from '~/services/comment'
-import { UploadCommentProvider, useUploadComment } from '../../contexts/UploadCommentContext'
+import { CommentProvider, useComment } from '../../contexts/CommentContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
-import { useFetchCommentById } from '../../hooks'
+import { useFetchCommentById, usePostSocketComment } from '../../hooks'
 
 import CompoundComment from '../CompoundComment'
 
@@ -44,9 +44,9 @@ const ACTION_BUTTONS = {
 
 const RightContainer: React.FC<ContainerProp> = ({ className, children }) => {
   return (
-    <UploadCommentProvider>
+    <CommentProvider>
       <div className={cx(className, 'wrapper')}>{children}</div>
-    </UploadCommentProvider>
+    </CommentProvider>
   )
 }
 
@@ -141,32 +141,13 @@ const TopContainer = () => {
 
 const BottomContainer = () => {
   const t = useTranslations('VideoDetail')
-  const { socket } = useSocket()
   const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
-  const { comment: commentContent, handleUpdateComment: onUpdateComment, commentContentRef } = useUploadComment()
-  const searchParams = useSearchParams()
+  const { comment: commentContent, handleUpdateComment: onUpdateComment, commentContentRef } = useComment()
+  const { handlePost } = usePostSocketComment({ commentContent, callback: onUpdateComment.bind(null, '', true) })
 
   const handleChangeCommentContent = (e: FormEvent<HTMLParagraphElement>) => {
     onUpdateComment(e.currentTarget.innerHTML || '')
-  }
-
-  const handlePost = () => {
-    const videoId = searchParams.get('id')
-    const userImage = session?.user?.image
-    const username = session?.user?.name
-
-    if (videoId && userImage && username) {
-      const newComment: Comment = {
-        videoId,
-        content: commentContent.trim(),
-        userImage,
-        username,
-      }
-
-      socket.emit('createComment', newComment)
-    }
-    onUpdateComment('', true)
   }
 
   const handleClickLoginBar = () => {
