@@ -139,6 +139,8 @@
     "post": "Post",
     "firstComment": "Be the first to comment!",
     "reply": "Reply",
-    "viewMoreReplies": "View more replies"
+    "replyTo": "Reply to",
+    "viewMoreReplies": "View more replies",
+    "removeReply": "Remove reply"
   }
 }

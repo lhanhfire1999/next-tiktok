@@ -131,7 +131,6 @@
 .bottom-container {
   flex: 0 0 auto;
   padding: 21px 30px;
-
   border-bottom: 1px solid var(--colorLinePrimary2);
   order: 2;
 
@@ -153,16 +152,25 @@
     cursor: pointer;
   }
 
+  .reply {
+    display: inline-block;
+    color: var(--colorTextPrimary);
+    word-break: break-all;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 8px;
+  }
+
   .bottom-comment-wrapper {
     @include flex(flex, flex-end, null);
-    position: relative;
-    bottom: 0;
-    left: 0;
+    gap: 2px;
 
-    .text-bar {
+    .comment-bar {
       @include flex(flex, center, flex-start);
       color: var(--colorTextSecondary);
       flex: 1 1 auto;
+      min-width: 200px;
       background-color: var(--colorBGInput);
       border: 1px solid transparent;
       border-radius: 8px;
@@ -172,7 +180,7 @@
         border-color: var(--colorLinePrimary);
       }
 
-      .text {
+      .paragraph {
         display: block;
         min-height: 17px;
         max-height: 68px;
@@ -197,19 +205,19 @@
       }
     }
 
-    button {
+    .btn {
       height: 40px;
-      flex: 0 0 48px;
+      flex: 0 0 52px;
       border: none;
       outline: none;
       user-select: none;
       background-color: transparent;
-      text-align: right;
       color: var(--colorTextQuaternary);
       font-weight: 600;
       font-size: 1.4rem;
       margin-right: 4px;
       pointer-events: none;
+      text-align: center;
 
       &.active {
         color: var(--colorPrimary);

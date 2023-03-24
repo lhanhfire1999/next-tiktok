@@ -59,7 +59,7 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
       })
 
       // Create comment
-      socket.on('createComment', async (comment, isReply) => {
+      socket.on('createComment', async (comment, parentCommentId) => {
         const { videoId, content, username, userImage, reply = [] } = comment
 
         await dbConnect()
@@ -72,8 +72,10 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
           reply,
         })
 
-        if (isReply) {
+        if (parentCommentId) {
+          // This is create reply comment base on parentId
         } else {
+          // This is create comment
           await newCommentModal.save()
 
           comment._id = newCommentModal._id

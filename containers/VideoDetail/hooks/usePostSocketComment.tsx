@@ -2,16 +2,17 @@ import { useSession } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
 import { useSocket } from '~/contexts'
 import { Comment } from '~/services/comment'
+import { useCommentContent } from '../contexts/CommentContentContext'
 
 interface Prop {
   callback?: () => void
-  commentContent: string
 }
 
-const usePostSocketComment = ({ commentContent, callback }: Prop) => {
+const usePostSocketComment = ({ callback }: Prop) => {
   const { data: session } = useSession()
   const { socket } = useSocket()
   const searchParams = useSearchParams()
+  const { commentContentRef } = useCommentContent()
 
   const handlePost = () => {
     const videoId = searchParams.get('id')
@@ -21,15 +22,16 @@ const usePostSocketComment = ({ commentContent, callback }: Prop) => {
     if (videoId && userImage && username) {
       const newComment: Comment = {
         videoId,
-        content: commentContent.trim(),
+        content: commentContentRef.current!.innerHTML.trim(),
         userImage,
         username,
       }
 
       socket.emit('createComment', newComment)
-    }
-    if (callback) {
-      callback()
+
+      if (callback) {
+        callback()
+      }
     }
   }
 

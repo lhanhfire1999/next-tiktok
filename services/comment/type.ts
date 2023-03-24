@@ -9,7 +9,7 @@ export interface ServerToClientEvents {
 // On from socket server
 export interface ClientToServerEvents {
   joinChannel: (id: string) => void
-  createComment: (newComment: Comment, isReply?: boolean) => void
+  createComment: (newComment: Comment, parentCommentId?: string | null) => void
 }
 
 export interface InterServerEvents {}

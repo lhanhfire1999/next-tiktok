@@ -2,16 +2,17 @@ import classNames from 'classnames/bind'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useSearchParams } from 'next/navigation'
-import React, { FormEvent, useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { CircleTwitterIcon, CommentIcon, FacebookIcon, HeartIcon, List, Loading } from '~/components'
 import { UserDetails, VideoContainer } from '~/containers/Home/components'
-import { useAuthModal, useSocket } from '~/contexts'
-import { Comment } from '~/services/comment'
-import { CommentProvider, useComment } from '../../contexts/CommentContext'
+import { useAuthModal } from '~/contexts'
+import { useEventListener } from '~/hooks'
+
+import { CommentContentProvider, useCommentContent } from '../../contexts/CommentContentContext'
+import { CommentReplyProvider, useCommentReply } from '../../contexts/CommentReplyContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
 import { useFetchCommentById, usePostSocketComment } from '../../hooks'
-
 import CompoundComment from '../CompoundComment'
 
 import styles from './RightContainer.module.scss'
@@ -44,9 +45,11 @@ const ACTION_BUTTONS = {
 
 const RightContainer: React.FC<ContainerProp> = ({ className, children }) => {
   return (
-    <CommentProvider>
-      <div className={cx(className, 'wrapper')}>{children}</div>
-    </CommentProvider>
+    <CommentContentProvider>
+      <CommentReplyProvider>
+        <div className={cx(className, 'wrapper')}>{children}</div>
+      </CommentReplyProvider>
+    </CommentContentProvider>
   )
 }
 
@@ -139,16 +142,42 @@ const TopContainer = () => {
   )
 }
 
+const CommentContainer = () => {
+  const { data: comments, isLoading, handleIncreasePage } = useFetchCommentById()
+
+  return (
+    <CompoundComment>
+      {!comments.length && <CompoundComment.NoHaveComment />}
+      {!!comments.length && (
+        <CompoundComment.CommentList>
+          {comments.map((comment, index) => (
+            <CompoundComment.CommentItem
+              key={comment._id!}
+              commentData={comment}
+              isLastItem={comments.length - 1 === index}
+              onUpPage={handleIncreasePage}
+            >
+              {!!comment.reply && comment.reply.length > 0 && (
+                <CompoundComment.ReplyCommentContainer
+                  replyCommentData={comment.reply}
+                  parentCommentId={comment._id!}
+                />
+              )}
+            </CompoundComment.CommentItem>
+          ))}
+        </CompoundComment.CommentList>
+      )}
+      {isLoading && <Loading />}
+    </CompoundComment>
+  )
+}
+
 const BottomContainer = () => {
   const t = useTranslations('VideoDetail')
   const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
-  const { comment: commentContent, handleUpdateComment: onUpdateComment, commentContentRef } = useComment()
-  const { handlePost } = usePostSocketComment({ commentContent, callback: onUpdateComment.bind(null, '', true) })
-
-  const handleChangeCommentContent = (e: FormEvent<HTMLParagraphElement>) => {
-    onUpdateComment(e.currentTarget.innerHTML || '')
-  }
+  const { commentContentRef } = useCommentContent()
+  const { replyComment } = useCommentReply()
 
   const handleClickLoginBar = () => {
     if (!session) {
@@ -164,47 +193,68 @@ const BottomContainer = () => {
           {t('loginToComment')}
         </div>
       ) : (
-        <div className={cx('bottom-comment-wrapper')}>
-          <div className={cx('text-bar')}>
-            <p
-              className={cx('text')}
-              ref={commentContentRef}
-              data-placeholder={t('addCommentPlaceholder')}
-              contentEditable
-              suppressContentEditableWarning
-              onInput={handleChangeCommentContent}
-            />
-          </div>
+        <>
+          {replyComment.username && <span className={cx('reply')}>{`Reply to ${replyComment.username}:`}</span>}
+          <div className={cx('bottom-comment-wrapper')}>
+            <div className={cx('comment-bar')}>
+              <p
+                className={cx('paragraph')}
+                ref={commentContentRef}
+                data-placeholder={t('addCommentPlaceholder')}
+                contentEditable
+                suppressContentEditableWarning
+              />
+            </div>
 
-          <button className={cx({ active: !!commentContent })} onClick={handlePost}>
-            {t('post')}
-          </button>
-        </div>
+            <PostButton />
+            <RemoveReplyButton />
+          </div>
+        </>
       )}
     </div>
   )
 }
 
-const CommentContainer = () => {
-  const { data: comments, isLoading, handleIncreasePage } = useFetchCommentById()
+const PostButton = () => {
+  const t = useTranslations('VideoDetail')
+  const [isActive, setIsActive] = useState(false)
+  const { commentContentRef, handleUpdateComment } = useCommentContent()
+
+  const { handlePost } = usePostSocketComment({
+    callback: handleUpdateComment.bind(null, ''),
+  })
+
+  const handleTogglePostBtn = () => {
+    // To avoid spam, so should use textContent
+    if (commentContentRef.current?.textContent) {
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
+  }
+  useEventListener('input', handleTogglePostBtn, commentContentRef)
 
   return (
-    <CompoundComment>
-      {!comments.length && <CompoundComment.NoHaveComment />}
-      {!!comments.length && (
-        <CompoundComment.CommentList>
-          {comments.map((comment, index) => (
-            <CompoundComment.CommentItem
-              key={comment!._id}
-              commentData={comment}
-              isLastItem={comments.length - 1 === index}
-              onUpPage={handleIncreasePage}
-            />
-          ))}
-        </CompoundComment.CommentList>
-      )}
-      {isLoading && <Loading />}
-    </CompoundComment>
+    <button className={cx('btn', { active: isActive })} onClick={handlePost}>
+      {t('post')}
+    </button>
+  )
+}
+
+const RemoveReplyButton = () => {
+  const t = useTranslations('VideoDetail')
+  const { replyComment, handleChangeReplyComment } = useCommentReply()
+
+  const handleRemoveReply = () => {
+    handleChangeReplyComment({ parentCommentId: null, username: null })
+  }
+
+  if (!replyComment.username) return null
+
+  return (
+    <button className={cx('btn', { active: true })} onClick={handleRemoveReply}>
+      {t('removeReply')}
+    </button>
   )
 }
 

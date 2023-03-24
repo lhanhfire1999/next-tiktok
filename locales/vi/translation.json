@@ -139,6 +139,8 @@
     "post": "Đăng",
     "firstComment": "Hãy trở thành người đầu tiên bình luận!",
     "reply": "Trả lời",
-    "viewMoreReplies": "Xem thêm câu trả lời khác"
+    "replyTo": "Trả lời",
+    "viewMoreReplies": "Xem thêm câu trả lời khác",
+    "removeReply": "Huỷ trả lời"
   }
 }

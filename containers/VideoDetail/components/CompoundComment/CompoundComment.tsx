@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { DownIcon, ImageWithFallback, List } from '~/components'
 import { useInfiniteScroll } from '~/hooks'
 import { Comment } from '~/services/comment'
+import { useCommentReply } from '../../contexts/CommentReplyContext'
 
 import styles from './CompoundComment.module.scss'
 
@@ -21,10 +22,14 @@ interface CommentItemProp {
   commentData: Comment
   isLastItem?: boolean
   onUpPage?: () => void
+  // children is replyCommentComp
+  children?: React.ReactNode
+  isReply?: boolean
 }
 
 interface ReplyCommentContainerProp {
-  replyComments?: Comment[]
+  replyCommentData: Comment[]
+  parentCommentId: string
 }
 
 const cx = classNames.bind(styles)
@@ -37,10 +42,15 @@ const CommentList: React.FC<CommentListProp> = ({ children, hasSubCommentList })
   return <List className={cx({ 'sub-comment-list': hasSubCommentList })}>{children}</List>
 }
 
-const CommentItem: React.FC<CommentItemProp> = ({ commentData, isLastItem, onUpPage }) => {
+const CommentItem: React.FC<CommentItemProp> = ({ commentData, isLastItem, onUpPage, children, isReply }) => {
   const t = useTranslations('VideoDetail')
-  const { content, username, userImage, reply, createdAt } = commentData
-  const { scrollTriggerRef } = useInfiniteScroll(isLastItem ? { callback: onUpPage } : {})
+  const { _id, content, username, userImage, createdAt } = commentData
+  const { scrollTriggerRef } = useInfiniteScroll(isLastItem && !isReply ? { callback: onUpPage } : {})
+  const { handleChangeReplyComment } = useCommentReply()
+
+  const handleReplyComment = () => {
+    handleChangeReplyComment({ parentCommentId: isReply ? _id! : null, username })
+  }
 
   return (
     <List.Item className={cx('comment-item-container')} ref={isLastItem ? scrollTriggerRef : null}>
@@ -51,17 +61,19 @@ const CommentItem: React.FC<CommentItemProp> = ({ commentData, isLastItem, onUpP
           <p className={cx('comment-content')} dangerouslySetInnerHTML={{ __html: content }} />
           <p className={cx('comment-sub-content')}>
             <span className={cx('time')}>{moment(createdAt).fromNow()}</span>
-            <span className={cx('button')}>{t('reply')}</span>
+            <span className={cx('button')} onClick={handleReplyComment}>
+              {t('reply')}
+            </span>
           </p>
         </div>
       </div>
 
-      <ReplyCommentContainer replyComments={reply} />
+      {children}
     </List.Item>
   )
 }
 
-const ReplyCommentContainer: React.FC<ReplyCommentContainerProp> = ({ replyComments }) => {
+const ReplyCommentContainer: React.FC<ReplyCommentContainerProp> = ({ replyCommentData, parentCommentId }) => {
   const t = useTranslations('VideoDetail')
   const [showSubComments, setShowSubComments] = useState(false)
 
@@ -69,22 +81,22 @@ const ReplyCommentContainer: React.FC<ReplyCommentContainerProp> = ({ replyComme
     setShowSubComments(true)
   }
 
-  if (!replyComments || !replyComments.length) {
+  if (!replyCommentData || !replyCommentData.length) {
     return null
   }
 
   if (!showSubComments) {
     return (
       <p className={cx('show-replies')} onClick={handleShowSubComments}>
-        <span className={cx('content')}>{`${t('viewMoreReplies')} (${replyComments.length})`}</span>
+        <span className={cx('content')}>{`${t('viewMoreReplies')} (${replyCommentData.length})`}</span>
         <DownIcon width="14" height="14" />
       </p>
     )
   }
   return (
     <CommentList hasSubCommentList={true}>
-      {replyComments.map((replyComment) => (
-        <CommentItem key={replyComment!._id} commentData={replyComment} />
+      {replyCommentData.map((replyComment) => (
+        <CommentItem key={replyComment._id!} commentData={replyComment} isReply />
       ))}
     </CommentList>
   )
@@ -95,6 +107,11 @@ const NoHaveComment = () => {
   return <p className={cx('no-have-comment')}>{t('firstComment')}</p>
 }
 
-const CompoundComment = Object.assign(CommentContainer, { CommentList, CommentItem, NoHaveComment })
+const CompoundComment = Object.assign(CommentContainer, {
+  CommentList,
+  CommentItem,
+  NoHaveComment,
+  ReplyCommentContainer,
+})
 
 export default CompoundComment
