@@ -1,8 +1,10 @@
 import { useSession } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
 import { useSocket } from '~/contexts'
 import { Comment } from '~/services/comment'
-import { useCommentContent } from '../contexts/CommentContentContext'
+import { useCommentContentBar } from '../contexts/CommentContentBarContext'
+import { useCommentReply } from '../contexts/CommentReplyContext'
 
 interface Prop {
   callback?: () => void
@@ -12,7 +14,13 @@ const usePostSocketComment = ({ callback }: Prop) => {
   const { data: session } = useSession()
   const { socket } = useSocket()
   const searchParams = useSearchParams()
-  const { commentContentRef } = useCommentContent()
+  const { commentContentRef } = useCommentContentBar()
+  const { replyComment, handleChangeReplyComment } = useCommentReply()
+
+  const isReply = useMemo(() => {
+    if (replyComment.parentCommentId && replyComment.username) return true
+    return false
+  }, [replyComment])
 
   const handlePost = () => {
     const videoId = searchParams.get('id')
@@ -27,11 +35,10 @@ const usePostSocketComment = ({ callback }: Prop) => {
         username,
       }
 
-      socket.emit('createComment', newComment)
+      socket.emit('createComment', newComment, isReply ? replyComment.parentCommentId! : null)
 
-      if (callback) {
-        callback()
-      }
+      if (isReply) handleChangeReplyComment({ parentCommentId: null, username: null })
+      if (callback) callback()
     }
   }
 

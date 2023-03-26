@@ -4,6 +4,7 @@ import { Pagination } from '~/types/common'
 // Emit from socket server
 export interface ServerToClientEvents {
   sendCommentToClient: (comment: Comment) => void
+  sendReplyCommentToClient: (comment: Comment) => void
 }
 
 // On from socket server
@@ -19,7 +20,6 @@ export interface SocketData {
 }
 
 // Service interface
-
 export interface ReplyComment {
   isReply?: boolean
 }

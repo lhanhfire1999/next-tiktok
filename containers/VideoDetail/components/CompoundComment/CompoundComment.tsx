@@ -24,7 +24,7 @@ interface CommentItemProp {
   onUpPage?: () => void
   // children is replyCommentComp
   children?: React.ReactNode
-  isReply?: boolean
+  parentCommentId?: string
 }
 
 interface ReplyCommentContainerProp {
@@ -42,18 +42,18 @@ const CommentList: React.FC<CommentListProp> = ({ children, hasSubCommentList })
   return <List className={cx({ 'sub-comment-list': hasSubCommentList })}>{children}</List>
 }
 
-const CommentItem: React.FC<CommentItemProp> = ({ commentData, isLastItem, onUpPage, children, isReply }) => {
+const CommentItem: React.FC<CommentItemProp> = ({ commentData, isLastItem, onUpPage, children, parentCommentId }) => {
   const t = useTranslations('VideoDetail')
   const { _id, content, username, userImage, createdAt } = commentData
-  const { scrollTriggerRef } = useInfiniteScroll(isLastItem && !isReply ? { callback: onUpPage } : {})
+  const { scrollTriggerRef } = useInfiniteScroll(isLastItem && !parentCommentId ? { callback: onUpPage } : {})
   const { handleChangeReplyComment } = useCommentReply()
 
   const handleReplyComment = () => {
-    handleChangeReplyComment({ parentCommentId: isReply ? _id! : null, username })
+    handleChangeReplyComment({ parentCommentId: parentCommentId || _id!, username })
   }
 
   return (
-    <List.Item className={cx('comment-item-container')} ref={isLastItem ? scrollTriggerRef : null}>
+    <List.Item className={cx('comment-item-container')} ref={!parentCommentId && isLastItem ? scrollTriggerRef : null}>
       <div className={cx('comment-item-wrapper')}>
         <ImageWithFallback className={cx('avatar')} src={userImage} alt={`${username}-avatar`} width="40" height="40" />
         <div className={cx('content-wrapper')}>
@@ -96,7 +96,7 @@ const ReplyCommentContainer: React.FC<ReplyCommentContainerProp> = ({ replyComme
   return (
     <CommentList hasSubCommentList={true}>
       {replyCommentData.map((replyComment) => (
-        <CommentItem key={replyComment._id!} commentData={replyComment} isReply />
+        <CommentItem key={replyComment._id!} commentData={replyComment} parentCommentId={parentCommentId} />
       ))}
     </CommentList>
   )

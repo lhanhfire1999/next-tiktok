@@ -11,7 +11,7 @@ interface ContextProp {
 
 const Context = React.createContext<ContextProp | null>(null)
 
-export const CommentContentProvider: React.FC<ProviderProp> = ({ children }) => {
+export const CommentContentBarProvider: React.FC<ProviderProp> = ({ children }) => {
   const commentContentRef = useRef<HTMLParagraphElement>(null)
 
   const handleUpdateComment = (value: string) => {
@@ -30,6 +30,6 @@ export const CommentContentProvider: React.FC<ProviderProp> = ({ children }) => 
   )
 }
 
-export const useCommentContent = () => {
+export const useCommentContentBar = () => {
   return useContext(Context) as ContextProp
 }

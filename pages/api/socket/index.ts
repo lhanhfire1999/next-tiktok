@@ -64,18 +64,24 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
 
         await dbConnect()
 
-        const newCommentModal = new CommentModel({
-          videoId,
-          content,
-          username,
-          userImage,
-          reply,
-        })
-
         if (parentCommentId) {
           // This is create reply comment base on parentId
+          const comment = await CommentModel.findById(parentCommentId)
+
+          if (comment) {
+            comment.reply?.unshift({ videoId, content, username, userImage })
+            await comment.save()
+            io.to(videoId).emit('sendReplyCommentToClient', comment)
+          }
         } else {
           // This is create comment
+          const newCommentModal = new CommentModel({
+            videoId,
+            content,
+            username,
+            userImage,
+            reply,
+          })
           await newCommentModal.save()
 
           comment._id = newCommentModal._id

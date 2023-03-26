@@ -9,7 +9,7 @@ import { UserDetails, VideoContainer } from '~/containers/Home/components'
 import { useAuthModal } from '~/contexts'
 import { useEventListener } from '~/hooks'
 
-import { CommentContentProvider, useCommentContent } from '../../contexts/CommentContentContext'
+import { CommentContentBarProvider, useCommentContentBar } from '../../contexts/CommentContentBarContext'
 import { CommentReplyProvider, useCommentReply } from '../../contexts/CommentReplyContext'
 import { useVideoDetail } from '../../contexts/VideoDetailContext'
 import { useFetchCommentById, usePostSocketComment } from '../../hooks'
@@ -45,11 +45,11 @@ const ACTION_BUTTONS = {
 
 const RightContainer: React.FC<ContainerProp> = ({ className, children }) => {
   return (
-    <CommentContentProvider>
+    <CommentContentBarProvider>
       <CommentReplyProvider>
         <div className={cx(className, 'wrapper')}>{children}</div>
       </CommentReplyProvider>
-    </CommentContentProvider>
+    </CommentContentBarProvider>
   )
 }
 
@@ -176,7 +176,7 @@ const BottomContainer = () => {
   const t = useTranslations('VideoDetail')
   const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
-  const { commentContentRef } = useCommentContent()
+  const { commentContentRef } = useCommentContentBar()
   const { replyComment } = useCommentReply()
 
   const handleClickLoginBar = () => {
@@ -218,21 +218,26 @@ const BottomContainer = () => {
 const PostButton = () => {
   const t = useTranslations('VideoDetail')
   const [isActive, setIsActive] = useState(false)
-  const { commentContentRef, handleUpdateComment } = useCommentContent()
+  const { commentContentRef, handleUpdateComment } = useCommentContentBar()
 
   const { handlePost } = usePostSocketComment({
-    callback: handleUpdateComment.bind(null, ''),
+    callback: () => {
+      handleUpdateComment('')
+      setIsActive(false)
+    },
   })
 
-  const handleTogglePostBtn = () => {
-    // To avoid spam, so should use textContent
-    if (commentContentRef.current?.textContent) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
-    }
-  }
-  useEventListener('input', handleTogglePostBtn, commentContentRef)
+  useEventListener(
+    'input',
+    () => {
+      if (commentContentRef.current?.textContent) {
+        setIsActive(true)
+      } else {
+        setIsActive(false)
+      }
+    },
+    commentContentRef
+  )
 
   return (
     <button className={cx('btn', { active: isActive })} onClick={handlePost}>

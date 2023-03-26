@@ -13,6 +13,23 @@ const useFetchCommentById = () => {
     setData((prev) => [newComment, ...prev])
   })
 
+  useSocketListener('sendReplyCommentToClient', (newComment) => {
+    const { _id, reply } = newComment
+
+    setData((prevComments) => {
+      const newData = [...prevComments]
+
+      newData.forEach((comment) => {
+        if (comment._id === _id) {
+          comment.reply = [...reply!]
+        }
+        return comment
+      })
+
+      return [...newData]
+    })
+  })
+
   const id = useMemo(() => {
     return searchParams?.get('id')
   }, [searchParams])
