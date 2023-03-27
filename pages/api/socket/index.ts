@@ -5,7 +5,9 @@ import { Server as IOServer } from 'socket.io'
 
 import dbConnect from '~/lib/dbConnection'
 import CommentModel from '~/models/comment.model'
+import DiscoverModel from '~/models/discover.model'
 import { ClientToServerEvents, InterServerEvents, ServerToClientEvents, SocketData } from '~/services/comment'
+import { Discover } from '~/services/discover'
 
 interface SocketServer extends HTTPServer {
   io?: IOServer | undefined
@@ -82,6 +84,7 @@ const socketHandler = (req: NextApiRequest, res: NextApiResponseWithSocket) => {
             userImage,
             reply,
           })
+          await DiscoverModel.findOneAndUpdate<Discover>({ id: videoId }, { $inc: { comments: 1 } }, { new: true })
           await newCommentModal.save()
 
           comment._id = newCommentModal._id

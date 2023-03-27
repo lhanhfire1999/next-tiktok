@@ -219,11 +219,16 @@ const PostButton = () => {
   const t = useTranslations('VideoDetail')
   const [isActive, setIsActive] = useState(false)
   const { commentContentRef, handleUpdateComment } = useCommentContentBar()
+  const { data, mutate } = useVideoDetail()
+  const { replyComment } = useCommentReply()
 
   const { handlePost } = usePostSocketComment({
     callback: () => {
       handleUpdateComment('')
       setIsActive(false)
+      if (!replyComment.parentCommentId && !replyComment.username) {
+        data && mutate({ ...data, comments: data.comments + 1 }, false)
+      }
     },
   })
 
