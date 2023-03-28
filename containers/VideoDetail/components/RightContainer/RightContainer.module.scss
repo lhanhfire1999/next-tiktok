@@ -172,6 +172,7 @@
       flex: 1 1 auto;
       min-width: 200px;
       background-color: var(--colorBGInput);
+      padding: 10px 4px 10px 0px;
       border: 1px solid transparent;
       border-radius: 8px;
       transition: border-color 0.2s;
@@ -189,7 +190,7 @@
 
         outline: none;
         word-break: break-all;
-        margin: 10px 4px 10px 0px;
+
         padding: 0 8px;
 
         font-size: 14px;
@@ -199,7 +200,7 @@
 
         cursor: text;
 
-        &:empty:not(:focus)::before {
+        &:empty::before {
           content: attr(data-placeholder);
         }
       }
