@@ -20,5 +20,6 @@ namespace NodeJS {
     DATABASE_URL: string
     SECRET: string
     MONGODB_URI: string
+    NEXT_PUBLIC_URL: string
   }
 }

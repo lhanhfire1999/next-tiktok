@@ -2,10 +2,9 @@
 import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 
-import { AuthModalProvider } from '~/contexts/AuthModalContext'
-import { ThemeProvider } from '~/contexts/ThemeContext'
-import { Locale } from '~/locales/i18n-config'
 import { NextIntlClientProvider } from 'next-intl/client'
+import { Locale } from '~/locales/i18n-config'
+import { AuthModalProvider, SocketProvider, ThemeProvider } from '~/contexts'
 
 interface ProviderProp {
   children: React.ReactNode
@@ -15,13 +14,15 @@ interface ProviderProp {
 
 const Provider: React.FC<ProviderProp> = ({ children, ...restProps }) => {
   return (
-    <NextIntlClientProvider {...restProps}>
-      <SessionProvider>
-        <AuthModalProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </AuthModalProvider>
-      </SessionProvider>
-    </NextIntlClientProvider>
+    <SocketProvider>
+      <NextIntlClientProvider {...restProps}>
+        <SessionProvider>
+          <AuthModalProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+          </AuthModalProvider>
+        </SessionProvider>
+      </NextIntlClientProvider>
+    </SocketProvider>
   )
 }
 

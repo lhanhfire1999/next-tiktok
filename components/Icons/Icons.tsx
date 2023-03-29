@@ -518,9 +518,36 @@ export const UserIcon = ({ width = '2rem', height = '2rem', className = '' }) =>
   )
 }
 
+export const CircleTwitterIcon = ({ width = '2.4rem', height = '2.4rem', className = '' }) => {
+  return (
+    <svg
+      width={width}
+      data-e2e=""
+      height={height}
+      viewBox="0 0 48 48"
+      fill="currentColor"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M24.0002 47.001C36.7028 47.001 47.0002 36.7035 47.0002 24.001C47.0002 11.2984 36.7028 1.00098 24.0002 1.00098C11.2977 1.00098 1.00024 11.2984 1.00024 24.001C1.00024 36.7035 11.2977 47.001 24.0002 47.001Z"
+        fill="#1DA1F2"
+      ></path>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M38.2029 13.5327C37.3894 14.0824 35.5215 14.8813 34.6003 14.8813V14.8829C33.5484 13.7237 32.0675 13 30.4252 13C27.2353 13 24.6488 15.7287 24.6488 19.0925C24.6488 19.5598 24.7001 20.0157 24.795 20.4529H24.794C20.4671 20.3331 15.7348 18.0452 12.886 14.1294C11.1344 17.3277 12.6501 20.8848 14.6378 22.1809C13.9574 22.235 12.7049 22.0982 12.1153 21.4913C12.0758 23.6142 13.0434 26.4269 16.5714 27.4473C15.8919 27.8329 14.6892 27.7223 14.1662 27.6402C14.3497 29.4322 16.7285 31.775 19.3297 31.775C18.4026 32.9063 14.9144 34.9582 11 34.3054C13.6584 36.0118 16.7568 37 20.0362 37C29.3556 37 36.5929 29.0322 36.2034 19.2027C36.2019 19.1919 36.2019 19.1811 36.2009 19.1693C36.2019 19.144 36.2034 19.1187 36.2034 19.0925C36.2034 19.0619 36.2009 19.0331 36.2 19.0035C37.0484 18.3914 38.1868 17.3087 39 15.8836C38.5284 16.1577 37.1134 16.7064 35.7968 16.8426C36.6418 16.3615 37.8937 14.7858 38.2029 13.5327Z"
+        fill="white"
+      ></path>
+    </svg>
+  )
+}
+
 export const FacebookIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
-    <svg width={width} data-e2e="" height={height} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={width} height={height} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path
         className={className}
         d="M24 47C36.7025 47 47 36.7025 47 24C47 11.2975 36.7025 1 24 1C11.2975 1 1 11.2975 1 24C1 36.7025 11.2975 47 24 47Z"
@@ -536,7 +563,7 @@ export const FacebookIcon = ({ width = '2rem', height = '2rem', className = '' }
 
 export const GoogleIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
-    <svg width={width} data-e2e="" height={height} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={width} height={height} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path
         className={className}
         fillRule="evenodd"
@@ -568,7 +595,14 @@ export const GoogleIcon = ({ width = '2rem', height = '2rem', className = '' }) 
 
 export const TwitterIcon = ({ width = '2rem', height = '2rem', className = '' }) => {
   return (
-    <svg width={width} data-e2e="" height={height} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width={width}
+      data-e2e=""
+      height={height}
+      viewBox="0 0 48 48"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         className={className}
         fillRule="evenodd"
@@ -874,6 +908,21 @@ export const CheckIcon = ({ width = '1.6rem', height = '1.6rem', className = '' 
         clipRule="evenodd"
         d="M13.9637 0.370662C14.1617 0.168152 14.4882 0.170371 14.6834 0.375552L15.6676 1.40986C15.8531 1.60483 15.851 1.91164 15.6629 2.10407L6.33538 11.644C5.86141 12.1288 5.09629 12.1169 4.6365 11.6177L0.326723 6.93829C0.144403 6.74033 0.151478 6.43358 0.342731 6.24424L1.35546 5.24162C1.55673 5.04237 1.88315 5.0499 2.07502 5.25822L5.5238 9.0028L13.9637 0.370662Z"
       ></path>
+    </svg>
+  )
+}
+
+export const CloseXIcon = ({ width = '1.8rem', height = '1.8rem', className = '' }) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      className={className}
+      viewBox="0 0 9 10"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M1.35299 0.792837L4.49961 3.93944L7.64545 0.792566C7.8407 0.597249 8.15733 0.597223 8.35262 0.792508L8.70669 1.14658C8.90195 1.34184 8.90195 1.65842 8.70669 1.85368L5.56027 5.0001L8.70672 8.14655C8.90198 8.34181 8.90198 8.65839 8.70672 8.85366L8.35316 9.20721C8.1579 9.40247 7.84132 9.40247 7.64606 9.20721L4.49961 6.06076L1.35319 9.20719C1.15793 9.40245 0.841345 9.40245 0.646083 9.20719L0.292629 8.85373C0.0973708 8.65847 0.0973653 8.3419 0.292617 8.14664L3.43895 5.0001L0.292432 1.85357C0.0972034 1.65834 0.0971656 1.34182 0.292347 1.14655L0.645801 0.792924C0.841049 0.597582 1.1577 0.597543 1.35299 0.792837Z"></path>
     </svg>
   )
 }

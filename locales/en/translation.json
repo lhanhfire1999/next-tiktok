@@ -130,5 +130,17 @@
     "programs": "Programs",
     "support": "Support",
     "legal": "Legal"
+  },
+
+  "VideoDetail": {
+    "copyLink": "Copy Link",
+    "loginToComment": "Log in to comment",
+    "addCommentPlaceholder": "Add comment...",
+    "post": "Post",
+    "firstComment": "Be the first to comment!",
+    "reply": "Reply",
+    "replyTo": "Reply to",
+    "viewMoreReplies": "View more replies",
+    "removeReply": "Remove reply"
   }
 }

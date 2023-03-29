@@ -33,7 +33,7 @@ const useGlobalLanguage = () => {
     }
 
     let query = {}
-    if (searchParams.get('q')) {
+    if (searchParams?.get('q')) {
       query = { q: searchParams.get('q'), ...query }
     }
 

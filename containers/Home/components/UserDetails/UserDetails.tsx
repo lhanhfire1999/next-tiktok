@@ -6,61 +6,53 @@ import React from 'react'
 import { Button, ImageWithFallback, LocalizedLink } from '~/components'
 import { useAuthModal } from '~/contexts/AuthModalContext'
 import { Discover } from '~/services/discover'
-import { useHomeDiscover } from '../../contexts'
 
 import styles from './UserDetails.module.scss'
 
 const cx = classNames.bind(styles)
 
-interface FollowButtonProps {
-  isFollowing: boolean
-  discoverId: string
-  username: string
-}
 interface UserDetailsProps {
   data: Discover
+  className?: string
+  onUpdateFollow: (id: string, username: string) => void | Promise<void>
 }
 
-const UserDetails: React.FC<UserDetailsProps> = ({ data }) => {
-  return (
-    <div className={cx('wrapper')}>
-      <i className={cx('wrapper-avatar')}>
-        <ImageWithFallback src={data.avatar} alt={data.name} fill={true} className={cx('user-avatar')} />
-      </i>
-      <LocalizedLink href="/" className={cx('wrapper-names')}>
-        <h3 className={cx('name')}>{data.name}</h3>
-        <h4 className={cx('user-name')}>{data.username}</h4>
-      </LocalizedLink>
-      <FollowButton isFollowing={data.is_followed} discoverId={data.id} username={data.username} />
-    </div>
-  )
-}
-
-const FollowButton: React.FC<FollowButtonProps> = ({ isFollowing, discoverId, username }) => {
+const UserDetails: React.FC<UserDetailsProps> = ({ data, className, onUpdateFollow }) => {
+  const { id, username, is_followed, avatar, name } = data
   const { data: session } = useSession()
   const { handleToggleModal } = useAuthModal()
-  const { handleUpdateFollow } = useHomeDiscover()
 
   const handleClickFollowButton = () => {
     if (!session) {
       handleToggleModal(true)
       return
     }
-    handleUpdateFollow(discoverId, username)
+
+    onUpdateFollow(id, username)
   }
 
   return (
-    <div className={cx('wrapper-btn')}>
-      <Button
-        small
-        primary={!isFollowing}
-        outlinePrimary={!isFollowing}
-        outlineGray={isFollowing}
-        className={cx('follow-btn')}
-        onClick={handleClickFollowButton}
-      >
-        {isFollowing ? 'Following' : 'Follow'}
-      </Button>
+    <div className={cx(className, 'wrapper')}>
+      <i className={cx('wrapper-avatar')}>
+        <ImageWithFallback src={avatar} alt={name} fill={true} className={cx('user-avatar')} />
+      </i>
+      <LocalizedLink href="/" className={cx('wrapper-names')}>
+        <h3 className={cx('name')}>{name}</h3>
+        <h4 className={cx('user-name')}>{username}</h4>
+      </LocalizedLink>
+
+      <div className={cx('wrapper-btn')}>
+        <Button
+          small
+          primary={!is_followed}
+          outlinePrimary={!is_followed}
+          outlineGray={is_followed}
+          className={cx('follow-btn')}
+          onClick={handleClickFollowButton}
+        >
+          {is_followed ? 'Following' : 'Follow'}
+        </Button>
+      </div>
     </div>
   )
 }

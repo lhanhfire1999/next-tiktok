@@ -1,4 +1,10 @@
-import { DiscoverRequestQuery, DiscoverResponse, UpdateDiscoverRequestQuery } from './type'
+import {
+  DiscoverDetailRequestQuery,
+  DiscoverDetailResponse,
+  DiscoverRequestQuery,
+  DiscoverResponse,
+  UpdateDiscoverRequestQuery,
+} from './type'
 
 import queryString from 'query-string'
 
@@ -57,6 +63,26 @@ export const updateFollowOrLikeDiscover = async ({ id, username, param }: Update
     if (response.ok) {
       const res: DiscoverResponse = await response.json()
       return res
+    } else {
+      throw response
+    }
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getDiscoverById = async ({ id }: DiscoverDetailRequestQuery) => {
+  try {
+    const response = await fetch(`/api/discover/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    if (response.ok) {
+      const res: DiscoverDetailResponse = await response.json()
+
+      return res.data
     } else {
       throw response
     }

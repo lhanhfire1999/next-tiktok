@@ -130,5 +130,17 @@
     "programs": "Chương trình",
     "support": "Hỗ trợ",
     "legal": "Pháp lý"
+  },
+
+  "VideoDetail": {
+    "copyLink": "Sao chép liên kết",
+    "loginToComment": "Đăng nhập để bình luận",
+    "addCommentPlaceholder": "Thêm bình luận...",
+    "post": "Đăng",
+    "firstComment": "Hãy trở thành người đầu tiên bình luận!",
+    "reply": "Trả lời",
+    "replyTo": "Trả lời",
+    "viewMoreReplies": "Xem thêm câu trả lời khác",
+    "removeReply": "Huỷ trả lời"
   }
 }

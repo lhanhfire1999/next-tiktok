@@ -4,7 +4,7 @@ import classNames from 'classnames/bind'
 import { List } from '~/components'
 import styles from './MainContainer.module.scss'
 import { useHomeDiscover } from '../../contexts'
-import { useInfinityScroll } from '../../hooks'
+import { useInfiniteScroll } from '~/hooks'
 
 const cx = classNames.bind(styles)
 
@@ -23,16 +23,15 @@ const MainContainer: React.FC<ChildrenProp> = ({ children }) => {
 
 const CardItem: React.FC<CardItemProp> = ({ children, className, isLastCard }) => {
   const { handleUpPage } = useHomeDiscover()
-  const lastCardRef = useRef<HTMLLIElement>(null)
 
   const handleScrollToLastCard = () => {
     handleUpPage()
   }
 
-  useInfinityScroll(lastCardRef, handleScrollToLastCard)
+  const { scrollTriggerRef } = useInfiniteScroll(isLastCard ? { callback: handleScrollToLastCard } : {})
 
   return (
-    <List.Item className={cx('card-item', className)} ref={isLastCard ? lastCardRef : null}>
+    <List.Item className={cx('card-item', className)} ref={isLastCard ? scrollTriggerRef : null}>
       {children}
     </List.Item>
   )

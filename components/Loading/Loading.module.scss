@@ -5,6 +5,14 @@
   width: 100%;
   height: 40px;
 
+  &.max-height {
+    height: 100%;
+  }
+
+  &.max-height-window {
+    height: 100vh;
+  }
+
   & > .ball {
     width: 12px;
     height: 12px;
