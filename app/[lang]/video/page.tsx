@@ -1,13 +1,13 @@
+import { Suspense } from 'react'
+import { Loading } from '~/components'
 import { VideoDetail } from '~/containers'
 
-interface Prop {
-  searchParams?: {
-    id?: string
-  }
-}
-
-const Video = async (props: Prop) => {
-  return <VideoDetail videoId={props?.searchParams?.id} />
+const Video = () => {
+  return (
+    <Suspense fallback={<Loading isMaxHeightWindow />}>
+      <VideoDetail />
+    </Suspense>
+  )
 }
 
 export default Video
