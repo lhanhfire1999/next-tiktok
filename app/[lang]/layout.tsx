@@ -13,6 +13,17 @@ const roboto = Roboto({
   display: 'fallback',
 })
 
+export const metadata = {
+  title: 'TikTok - Make Your Day',
+  description:
+    'TikTok - trends start here. On a device or on the web, viewers can watch and discover millions of personalized short videos. Download the app to get started.',
+  icons: {
+    icon: '/images/favicon.png',
+    shortcut: '/images/favicon.png',
+    apple: '/images/favicon.png',
+  },
+}
+
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }

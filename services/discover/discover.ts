@@ -73,7 +73,7 @@ export const updateFollowOrLikeDiscover = async ({ id, username, param }: Update
 
 export const getDiscoverById = async ({ id }: DiscoverDetailRequestQuery) => {
   try {
-    const response = await fetch(`/api/discover/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/discover/${id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ const usePostSocketComment = ({ callback }: Prop) => {
   }, [replyComment])
 
   const handlePost = () => {
-    const videoId = searchParams.get('id')
+    const videoId = searchParams?.get('id')
     const userImage = session?.user?.image
     const username = session?.user?.name
 

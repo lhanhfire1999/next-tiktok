@@ -1,13 +1,42 @@
+import { Suspense } from 'react'
+import { Loading } from '~/components'
 import { VideoDetail } from '~/containers'
+import { getDiscoverById } from '~/services/discover'
 
-interface Prop {
-  searchParams?: {
-    id?: string
+type Props = {
+  searchParams?: { id?: string }
+}
+
+export const dynamic = 'force-dynamic'
+
+export const generateMetadata = async (props: Props) => {
+  const videoId = props?.searchParams?.id
+  if (!videoId) return {}
+
+  const video = await getDiscoverById({ id: videoId })
+  if (!video) return {}
+
+  return {
+    openGraph: {
+      title: `${video.username} on TopTop`,
+      description: 'Video | TopTop',
+      images: [
+        {
+          url: video.avatar,
+        },
+      ],
+      // locale: 'en-US',
+      type: 'website',
+    },
   }
 }
 
-const Video = async (props: Prop) => {
-  return <VideoDetail videoId={props?.searchParams?.id} />
+const Video = () => {
+  return (
+    <Suspense fallback={<Loading isMaxHeightWindow />}>
+      <VideoDetail />
+    </Suspense>
+  )
 }
 
 export default Video

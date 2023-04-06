@@ -1,13 +1,11 @@
 'use client'
-import { notFound } from 'next/navigation'
-import React from 'react'
+import { notFound, useSearchParams } from 'next/navigation'
 import CompoundVideoDetail from './CompoundVideoDetail'
 
-interface ContainerProp {
-  videoId?: string
-}
+const VideoDetail = () => {
+  const searchParams = useSearchParams()
+  const videoId = searchParams?.get('id')
 
-const VideoDetail: React.FC<ContainerProp> = ({ videoId }) => {
   if (!videoId) {
     notFound()
   }
