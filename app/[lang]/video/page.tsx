@@ -25,7 +25,6 @@ export const generateMetadata = async (props: Props) => {
           url: video.avatar,
         },
       ],
-      // locale: 'en-US',
       type: 'website',
     },
   }
