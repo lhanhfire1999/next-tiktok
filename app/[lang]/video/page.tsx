@@ -27,6 +27,13 @@ export const generateMetadata = async (props: Props) => {
       ],
       type: 'website',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${video.username} on TopTop`,
+      description: 'Video | TopTop',
+      siteId: video.username,
+      images: [video.avatar],
+    },
   }
 }
 
