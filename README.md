@@ -1,6 +1,6 @@
 # Responsive Next Tiktok Website
 
- Demo URL: https://next13-tiktok.vercel.app
+ Demo URL: https://next-tiktok.onrender.com
 
  A fullstack Tiktok clone with NextJs's latest version 13.
 
@@ -8,6 +8,7 @@
 ## Technologies
 
 - NextJs, TypeScript, Scss
+- Socket.IO
 - SWR
 - react-hook-form
 - next-auth (Authentication).
@@ -20,7 +21,9 @@
 
 - Authentication (with Google)
 - Internationalized Routing (English and Vietnamese)
-- Infinite scroll for video
+- Infinite scroll for video and comment
+- Realtime comment and reply comment
+- Social sharing (Facebook and Twitter)
 - Upload video 
 - Toggle theme (Dark / White Mode)
 - Follow user
@@ -39,6 +42,8 @@
 
 ![Home page with white mode and vietnamese](https://user-images.githubusercontent.com/68579816/220100887-c65345b2-536d-4a5f-9d76-df3d2951bb3e.png "Home page with white mode and vietnamese")
 
+![Video detail page](https://user-images.githubusercontent.com/68579816/231850236-5117e426-29b2-46a4-95e8-0c1b9f99b0e6.png "Video detail page")
+
 ![Upload video](https://user-images.githubusercontent.com/68579816/220103541-f9f6e9b8-d7d5-468c-8852-c43bbb9cb36c.png "Upload video")
 
 ![Upload video with white mode and vietnamese](https://user-images.githubusercontent.com/68579816/220103802-2903e92c-8554-4c6b-a81a-fe97d8d9e75b.png "Upload video with white mode and vietnamese")
@@ -49,6 +54,8 @@
 ## Resource
 
     NextJs 13: https://beta.nextjs.org/docs
+    
+    Socket.IO: https://socket.io/get-started/
 
     SWR: https://swr.vercel.app/docs/getting-started
     
@@ -60,11 +67,11 @@
 
     Search accounts API: https://tiktok.fullstack.edu.vn/api
     
-    Video API: https://next13-tiktok.vercel.app/api/discover
+    Video API: https://next-tiktok.onrender.com/api/discover
     
-    Following accounts API: https://next13-tiktok.vercel.app/api/follow-account
+    Following accounts API: https://next-tiktok.onrender.com/api/follow-account
     
-    Suggest accounts API: https://next13-tiktok.vercel.app/api/suggest-account
+    Suggest accounts API: https://next-tiktok.onrender.com/api/suggest-account
     
-    Upload Video API: https://next13-tiktok.vercel.app/api/upload
+    Upload Video API: https://next-tiktok.onrender.com/api/upload
     
